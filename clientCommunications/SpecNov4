@@ -1,0 +1,30 @@
+1. display blog post (what's this look like, see 5)
+
+One page.  Title at top. Static part under. Blog post on right column.  Tag links on left column.
+
+
+2. two people can generate post, only one can post them to site. (set up two users: one user, one admin - both can create post, admin can add them to blog and edit them.).
+
+Admin - approves posts and allows/creates users and give users 'roles'.  roles = admin or user.
+
+3. utilize TinyMCE? or similar.  rich text and images.
+
+
+
+4. tag post. (How to utilize? Multiple tags per post. can access prior post via tags?)
+
+Multiple tags per post. 
+
+
+5. Static pages? (one page for the blog + additional static pages?)
+
+no static page.  static part of page.
+
+
+6. Schedule posts? Expiration date of posts,post go live when.
+
+when post expires, display prior post.  Expired post live forever.
+
+
+
+
