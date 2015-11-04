@@ -1,6 +1,6 @@
 <%-- 
-    Document   : users
-    Created on : Nov 4, 2015, 11:01:53 AM
+    Document   : login
+    Created on : Nov 4, 2015, 11:34:01 AM
     Author     : apprentice
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>AEGiS Content Management System</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>LOGIN</h1>
     </body>
 </html>
