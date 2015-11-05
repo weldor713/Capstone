@@ -6,6 +6,13 @@
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.png">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+            tinymce.init({
+                selector: "#staticContent"         <!--mytextarea-->
+            });
+        </script>
+
     </head>
     <body>
         <div class="container">
@@ -31,7 +38,35 @@
                 </ul>
             </div>
         </div>
-        
+
+        <div class="container"> 
+            <hr>
+            <h2>Static Area Management</h2>
+        </div>
+        <div class="container">
+            <!--<form role="form">-->
+            <div class="form-group">
+                <label for="comment">Enter Static Content:</label>
+                <form>
+           
+                    <!--<form method="post"--> 
+                          <!--onsubmit="tempHome.jsp">-->
+                    <textarea id="staticContent"></textarea>           <!--mytextarea-->
+
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+
+                </form>
+
+
+                <!--<textarea class="form-control" rows="5" id="comment"></textarea>-->
+            </div>
+
+            <!--</form>-->
+        </div>
+
+
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </body>
