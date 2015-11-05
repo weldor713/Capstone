@@ -10,10 +10,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author apprentice
- */
 @Repository("postDAO")
 @Transactional
 public class PostDAOImpl implements PostDAO {
@@ -25,11 +21,9 @@ public class PostDAOImpl implements PostDAO {
     public void persistPost(Post post) {
         sessionFactory.getCurrentSession().beginTransaction();
         sessionFactory.getCurrentSession().persist(post);
-
     }
 
     @Override
-    
     public Post findPostById(int id) {
         return (Post) sessionFactory.getCurrentSession().get(Post.class, id);
     }
