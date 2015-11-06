@@ -16,4 +16,6 @@
 
     <!-- Bean definitions go here -->
     
+    <bean id="cmsDao" class="com.aegis.cms.dao.CmsDaoInMemImpl"></bean>
+    
 </beans>

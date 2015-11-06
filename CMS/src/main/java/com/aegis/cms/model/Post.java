@@ -11,16 +11,7 @@ public class Post {
     private Set<Tag> tags;
     private LocalDate postDate;
     private LocalDate expiration;
-    private boolean isApproved;
-    private boolean isVisible;
-
-    public boolean isIsVisible() {
-        return isVisible;
-    }
-
-    public void setIsVisible(boolean isVisible) {
-        this.isVisible = isVisible;
-    }
+    private boolean isPublished;
 
     public int getPostId() {
         return postId;
@@ -79,10 +70,10 @@ public class Post {
     }
 
     public boolean getIsApproved() {
-        return isApproved;
+        return isPublished;
     }
 
-    public void setIsApproved(boolean isApproved) {
-        this.isApproved = isApproved;
+    public void setIsPublished(boolean isPublished) {
+        this.isPublished = isPublished;
     }
 }
