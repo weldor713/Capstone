@@ -1,0 +1,53 @@
+
+
+User stories:
+
+
+As a public user I want to see the blog page when I go to "/".
+
+I want all visible posts to display on the main page.
+
+I want to make a post.
+
+I want to set a post's title.
+
+I want to set a post's expiration date.
+
+I want my posts to be saved somewhere.
+
+I want my tag information to be saved somewhere
+
+
+
+I want to edit a post.
+
+I want to delete a post.
+
+I want to approve a post.
+
+I want all posts to display in the management area.
+
+I want to edit a static content area.
+
+I want to set a post's expiration.
+
+I want to remove a user.
+
+I want my user information to be saved somewhere.
+
+I want to edit a user.
+
+I want to set a post's go live date.
+
+I want to search by post's tags.
+
+I want to set post's tag.
+
+I want to log in.
+
+
+
+
+
+
+
