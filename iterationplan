@@ -1,0 +1,18 @@
+AEGiS CMS Project 
+
+ITERATION #1 - Nov. 3 - Nov. 6
+TO DO:
+- User stories
+- Wireframes
+- Sitemap
+- Class diagrams
+- Entity relationship diagram
+- Implementation plan for controllers and dao
+- Stubs for all JSPs
+- Implement CreatePostController
+- Implement CreatePost.jsp including AJAX calls
+- Implement create post methods in CmsDao
+- Implement display of posts on index including AJAX calls
+
+POST MORTEM:
+
