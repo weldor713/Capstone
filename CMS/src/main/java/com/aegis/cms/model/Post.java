@@ -12,6 +12,15 @@ public class Post {
     private LocalDate postDate;
     private LocalDate expiration;
     private boolean isApproved;
+    private boolean isVisible;
+
+    public boolean isIsVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
 
     public int getPostId() {
         return postId;
