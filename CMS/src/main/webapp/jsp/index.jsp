@@ -19,6 +19,7 @@
         </style>
     </head>
     <body>
+<<<<<<< HEAD
         <br>
         <div class="container">
             <div class="jumbotron">
@@ -62,5 +63,9 @@
             <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/postDisplay.js"></script>
+=======
+        <h1>Hello World!</h1>
+        <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
+>>>>>>> 3ca970f2afbb6eea112ae436e6239647543f7e63
     </body>
 </html>
