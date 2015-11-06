@@ -33,32 +33,34 @@
                     omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde omnis iste natus error
                     sit voluptatem accusantium dolo.
                 </div>
+            
                 <br>
             
 
 
             <div class="row">
                 <div class="col-sm-2" style="background-color:lavenderblush;">
-                    <p>Tags</p>
+                    <p id="tag">Tags</p>
                     <p>Here</p>
                     <p>Tag 1</p>
-                    <p>Tag 2 </p>
-                    <p>Tag 3</p>
+               
 
                 </div>
                 <div class="container col-sm-10" style="background-color:lightgoldenrodyellow;">
                     <!--                <div class="col-sm-9 col-sm-offset-1" style="background-color:lightgoldenrodyellow;">-->
                     <div class="col-sm-12" style="background-color:lavenderblush;">
-                        <p id="title">Todays Blog Title.</p>
-                        <p id ="post">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicaboSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicaboSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicaboSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ea
-                            que ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                    </div>
+                        <div id="blogContent">
+                        </div>
+                        
+                        
                 <hr>
+            </div>
             </div>
             </div>
             </div>
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
             <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+            <script src="${pageContext.request.contextPath}/js/postDisplay.js"></script>
     </body>
 </html>

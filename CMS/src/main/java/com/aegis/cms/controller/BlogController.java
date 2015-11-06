@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  *
  * @author apprentice
  */
-@Controller
+//@Controller                              //TODO needs something bean
 public class BlogController {
     private Dao dao;
 
@@ -76,7 +76,7 @@ public class BlogController {
         return dao.viewTagsByPost();
     }
 
-    @RequestMapping(value = "/Tags/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/Posts/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Set<Post> viewPostsByTag(Tag tag) {
         return dao.viewPostsByTag();

@@ -10,6 +10,7 @@ import com.aegis.cms.model.Tag;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,17 +19,41 @@ import java.util.Set;
  *
  * @author apprentice
  */
-public class DaoImpl implements Dao{
+public class DaoImpl implements Dao {
 
-   private Map<Integer, Tag> tagMap = new HashMap<>();
-   private Map<Integer, Post> postMap = new HashMap<>();
-   private static int creationCounter = 0;
+    Tag a = new Tag();
+    Tag b = new Tag();
+    Tag c = new Tag();
+    Post d = new Post();
+    Post e = new Post();
+    Post f = new Post();
+
+    public DaoImpl() {
+
+        Set<Tag> tagg = new HashSet<>();
+        tagg.add(a);
+        tagg.add(c);
+        tagg.add(b);
+
+        d.setTags(tagg);
+        e.setTags(tagg);
+        f.setTags(tagg);
+
+        createTag(a);
+        createTag(b);
+        createTag(c);
+
+    }
+
+    private Map<Integer, Tag> tagMap = new HashMap<>();
+    private Map<Integer, Post> postMap = new HashMap<>();
+    private static int creationCounter = 0;
 
     @Override
     public Tag createTag(Tag t) {
         t.setTagId(creationCounter);
-        creationCounter ++;
-        tagMap.put(t.getTagId(),t);
+        creationCounter++;
+        tagMap.put(t.getTagId(), t);
         return t;
     }
 
@@ -44,12 +69,12 @@ public class DaoImpl implements Dao{
 
     @Override
     public void deleteTag(int id) {
-         tagMap.remove(id);
+        tagMap.remove(id);
     }
-    
-     @Override
+
+    @Override
     public Set<Tag> viewTagsByPost() {
-       return null;         //TODO finish method 
+        return null;         //TODO finish method 
     }
 
     @Override
@@ -63,5 +88,11 @@ public class DaoImpl implements Dao{
         post = postMap.values();
         return new ArrayList(post);
     }
-    
+
+    public List<Tag> viewAllTags() {
+        Collection<Tag> tag;
+        tag = tagMap.values();
+        return new ArrayList(tag);
+    }
+
 }
