@@ -1,26 +1,28 @@
 package com.aegis.cms.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Post {
-    private int postId;
+//    private int postId;
+
     private String title;
     private String body;
-    private User author;
-    private Set<Tag> tags;
+//    private User author;
+    private Set<Tag> tags = new HashSet<>();
     private LocalDate postDate;
     private LocalDate expiration;
-    private boolean isPublished;
+//    private boolean isPublished;
 
-    public int getPostId() {
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
-    }
-
+//    public int getPostId() {
+//        return postId;
+//    }
+//
+//    public void setPostId(int postId) {
+//        this.postId = postId;
+//    }
     public String getTitle() {
         return title;
     }
@@ -37,43 +39,53 @@ public class Post {
         this.body = body;
     }
 
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
-
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
+//
     public Set<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
+    public void setTags(String tagnames) {
+        Set<Tag> tagSet = new HashSet<>();
+        String[] tempArray = tagnames.split(",");
+        for(int i = 0; i < tempArray.length; i++){
+            Tag tempTag = new Tag();
+            tempTag.setTagName(tempArray[i]);
+            tempTag.setTagId(i);
+            tagSet.add(tempTag);
+        }
+        this.tags.addAll(tagSet);
     }
-
+    
     public LocalDate getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(LocalDate postDate) {
-        this.postDate = postDate;
+    public void setPostDate(String postDate) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        this.postDate = LocalDate.parse(postDate, dtf);
     }
-
+//
     public LocalDate getExpiration() {
         return expiration;
     }
 
-    public void setExpiration(LocalDate expiration) {
-        this.expiration = expiration;
+    public void setExpiration(String expiration) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        this.expiration = LocalDate.parse(expiration, dtf);
     }
-
-    public boolean getIsApproved() {
-        return isPublished;
-    }
-
-    public void setIsPublished(boolean isPublished) {
-        this.isPublished = isPublished;
-    }
+//
+//    public boolean getIsApproved() {
+//        return isPublished;
+//    }
+//
+//    public void setIsPublished(boolean isPublished) {
+//        this.isPublished = isPublished;
+//    }
 }

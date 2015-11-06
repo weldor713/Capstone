@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 
@@ -26,15 +27,17 @@ public class CreatePostsController {
         return "createPosts";
     }
     
-    @RequestMapping(value="/post", method=RequestMethod.POST)
+    @RequestMapping(value="/makePost", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void addPost(@RequestBody Post post){
+    @ResponseBody
+    public Post addPost(@RequestBody Post post){
         dao.addPost(post);
+        return post;
     }
     
     @RequestMapping(value="/tag", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void addtag(@RequestBody Tag tag){
-        dao.addTag(tag);ggit
+        dao.addTag(tag);
     }
 }
