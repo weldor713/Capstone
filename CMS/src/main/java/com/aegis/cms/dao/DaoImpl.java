@@ -35,9 +35,9 @@ public class DaoImpl implements Dao {
         tagg.add(c);
         tagg.add(b);
 
-        d.setTags(tagg);
-        e.setTags(tagg);
-        f.setTags(tagg);
+        d.getTags().addAll(tagg);
+        e.getTags().addAll(tagg);
+        f.getTags().addAll(tagg);
 
         createTag(a);
         createTag(b);
