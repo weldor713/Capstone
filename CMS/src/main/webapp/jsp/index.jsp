@@ -19,24 +19,24 @@
         </style>
     </head>
     <body>
-<a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
-<br>
+        <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
+        <br>
         <div class="container">
             <div class="jumbotron">
-            <h1 class="serif">David's Blog<span class="glyphicon glyphicon-sunglasses"></span></h1>
+                <h1 class="serif">David's Blog<span class="glyphicon glyphicon-sunglasses"></span></h1>
             </div>
         </div>
-            <div class ="container">
-                <!-- display staticContentId -->
+        <div class ="container">
+            <!-- display staticContentId -->
 
-                <div  id="static">Static part goes here.ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo
-                    ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde 
-                    omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde omnis iste natus error
-                    sit voluptatem accusantium dolo.
-                </div>
-            
-                <br>
-            
+            <div  id="static">Static part goes here.ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo
+                ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde 
+                omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde omnis iste natus error
+                sit voluptatem accusantium dolo.
+            </div>
+
+            <br>
+
 
 
             <div class="row">
@@ -44,7 +44,7 @@
                     <p id="tag">Tags</p>
                     <p>Here</p>
                     <p>Tag 1</p>
-               
+
 
                 </div>
                 <div class="container col-sm-10" style="background-color:lightgoldenrodyellow;">
@@ -52,17 +52,17 @@
                     <div class="col-sm-12" style="background-color:lavenderblush;">
                         <div id="blogContent">
                         </div>
-                        
-                        
-                <hr>
+
+
+                        <hr>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-            </div>
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-            <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-            <script src="${pageContext.request.contextPath}/js/postDisplay.js"></script>
+        </div>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/postDisplay.js"></script>
 
     </body>
 </html>

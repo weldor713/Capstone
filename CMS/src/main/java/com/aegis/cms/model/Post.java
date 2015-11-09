@@ -63,8 +63,9 @@ public class Post {
         this.tags.addAll(tagSet);
     }
     
-    public LocalDate getPostDate() {
-        return postDate;
+    public String getPostDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        return postDate.format(dtf);
     }
 
     public void setPostDate(String postDate) {
