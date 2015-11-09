@@ -1,28 +1,51 @@
 package com.aegis.cms.model;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "post")
 public class Post {
-//    private int postId;
-
+    
+    @Id
+    @GeneratedValue
+    @Column(name = "post_id")
+    private int postId;
+    @Column(name = "title")
     private String title;
+    @Column(name = "body")
     private String body;
+    
 //    private User author;
+    
+    @ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+    @JoinTable(name = "post_tag",
+                joinColumns = {@JoinColumn(name="post_id")},
+                inverseJoinColumns = {@JoinColumn(name="tag_id")})
     private Set<Tag> tags = new HashSet<>();
-    private LocalDate postDate;
-    private LocalDate expiration;
+    
+    @Column(name = "postDate")
+    private String postDate;
+    private String expiration;
 //    private boolean isPublished;
 
-//    public int getPostId() {
-//        return postId;
-//    }
-//
-//    public void setPostId(int postId) {
-//        this.postId = postId;
-//    }
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
     public String getTitle() {
         return title;
     }
@@ -57,29 +80,25 @@ public class Post {
         for(int i = 0; i < tempArray.length; i++){
             Tag tempTag = new Tag();
             tempTag.setTagName(tempArray[i]);
-            tempTag.setTagId(i);
             tagSet.add(tempTag);
         }
         this.tags.addAll(tagSet);
     }
-    
+//    
     public String getPostDate() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        return postDate.format(dtf);
+        return postDate;
     }
 
     public void setPostDate(String postDate) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        this.postDate = LocalDate.parse(postDate, dtf);
+        this.postDate = postDate;
     }
 //
-    public LocalDate getExpiration() {
+    public String getExpiration() {
         return expiration;
     }
 
     public void setExpiration(String expiration) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        this.expiration = LocalDate.parse(expiration, dtf);
+        this.expiration = expiration;
     }
 //
 //    public boolean getIsApproved() {

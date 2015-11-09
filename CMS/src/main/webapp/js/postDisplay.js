@@ -14,9 +14,9 @@ function loadPosts() {
             blogRoll.append($('<p>').text(post.title + " " + post.postDate)) // </p>
                     .append(post.body);
             
-            $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<span>').text(tag.tagName + " "));
-            });
+//            $.each(post.tags, function (index, tag) {
+//                blogRoll.append($('<span>').text(tag.tagName + " "));
+//            });
         });
     });
 }

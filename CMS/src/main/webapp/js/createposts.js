@@ -11,7 +11,7 @@ $(document).ready(function () {
             url: 'makePost',
             data: JSON.stringify({
                 title: $('#add-title').val(),
-                body: tinyMCE.activeEditor.getContent({format: 'raw'}),
+                body: tinymce.activeEditor.getContent({format: 'raw'}),
 //               author: $('#add-author').val(),
                 tags: $('#add-tags').val(),
                 postDate: $('#add-postDate').val(),
@@ -23,10 +23,10 @@ $(document).ready(function () {
             dataType: 'json'
         }).success(function (data, status) {
             $('#add-title').val("");
-            $('#add-body').val("");
             $('#add-tags').val("");
             $('#add-postDate').val("");
             $('#add-expiration').val("");
+            tinymce.activeEditor.setContent("");
             console.log("Success!");
         }).error(function (data, status) {
             console.log("Error!");
