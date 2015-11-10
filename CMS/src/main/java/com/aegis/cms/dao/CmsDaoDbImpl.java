@@ -42,13 +42,19 @@ public class CmsDaoDbImpl implements CmsDao {
 
     @Override
     public void addTag(Tag tag) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        currentSession().save(tag);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<Post> getAllPosts() {
         return (List<Post>) currentSession().createCriteria(Post.class).list();
+    }
+    
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List<Tag> getAllTags() {
+        return (List<Tag>) currentSession().createCriteria(Tag.class).list();
     }
     
 }

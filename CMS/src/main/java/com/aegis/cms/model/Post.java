@@ -1,7 +1,7 @@
 package com.aegis.cms.model;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,10 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 @Entity
 @Table(name = "post")
-public class Post {
+public class Post implements Serializable {
     
     @Id
     @GeneratedValue
@@ -33,10 +36,13 @@ public class Post {
     @JoinTable(name = "post_tag",
                 joinColumns = {@JoinColumn(name="post_id")},
                 inverseJoinColumns = {@JoinColumn(name="tag_id")})
-    private Set<Tag> tags = new HashSet<>();
+    @JsonManagedReference
+    private Set<Tag> tags;
     
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "postDate")
     private Date postDate;
+    @Temporal(value = TemporalType.DATE)
     @Column(name = "expiration")
     private Date expiration;
 //    private boolean isPublished;
@@ -76,17 +82,10 @@ public class Post {
         return tags;
     }
 
-    public void setTags(String tagnames) {
-        Set<Tag> tagSet = new HashSet<>();
-        String[] tempArray = tagnames.split(",");
-        for(int i = 0; i < tempArray.length; i++){
-            Tag tempTag = new Tag();
-            tempTag.setTagName(tempArray[i]);
-            tagSet.add(tempTag);
-        }
-        this.tags.addAll(tagSet);
+    public void setTags(Set<Tag> tagnames) {
+        this.tags = tagnames;
     }
-//    
+    
     public Date getPostDate() {
         return postDate;
     }

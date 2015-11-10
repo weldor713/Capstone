@@ -1,5 +1,6 @@
 package com.aegis.cms.model;
 
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonBackReference;
 
 @Entity
 @Table(name = "tag")
-public class Tag {
+public class Tag implements Serializable {
     
     @Id
     @GeneratedValue
@@ -21,7 +23,8 @@ public class Tag {
     @Column(name = "tagName", unique = true)
     private String tagName;
     
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
+    @ManyToMany(fetch=FetchType.EAGER, mappedBy = "tags")
+    @JsonBackReference
     private Set<Post> posts;
 
     public Set<Post> getPosts() {
