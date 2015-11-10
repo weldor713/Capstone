@@ -1,12 +1,7 @@
-
 package com.aegis.cms.model;
 
-import java.io.Serializable;
 
-public class User implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
-
+public class User {
 
     private int userId;
     private String userName;
@@ -53,12 +48,6 @@ public class User implements Serializable {
     public void setPublicName(String publicName) {
         this.publicName = publicName;
     }
-    
-        public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
-    public boolean isIsEnabled() {
-        return isEnabled;
-    }
+
 }
