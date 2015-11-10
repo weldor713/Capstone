@@ -1,27 +1,31 @@
 package com.aegis.cms.model;
 
+import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tag")
-public class Tag {
-    
+public class Tag implements Serializable {
+
     @Id
     @GeneratedValue
-    @Column(name = "tag_id")
+    @Column(name = "tag_id", unique = true)
     private int tagId;
-    
-    @Column(name = "tagName")
+
+    @Column(name = "tagName", unique = true)
     private String tagName;
+
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tag")
     
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
     private Set<Post> posts;
 
     public Set<Post> getPosts() {
