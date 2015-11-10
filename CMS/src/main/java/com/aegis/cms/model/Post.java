@@ -83,17 +83,17 @@ public class Post implements Serializable {
         return tags;
     }
 
-//    public void setTags(String tags) {
-//        Set<Tag> tagSet = new HashSet<>();
-//        String[] tempArray = tags.split(",");
-//        for(int i = 0; i < tempArray.length; i++){
-//            Tag tempTag = new Tag();
-//            tempTag.setTagName(tempArray[i]);
-//            tagSet.add(tempTag);
-//        }
-//        this.tags.addAll(tagSet);
-//        //tags = tagSet;
-//    }
+    public void setTags(String tags) {
+        Set<Tag> tagSet = new HashSet<>();
+        String[] tempArray = tags.split(",");
+        for(int i = 0; i < tempArray.length; i++){
+            Tag tempTag = new Tag();
+            tempTag.setTagName(tempArray[i]);
+            tagSet.add(tempTag);
+        }
+        this.tags.addAll(tagSet);
+        //tags = tagSet;
+    }
     
     public void setTags(Set<Tag> tagnames) {
         tags = tagnames;

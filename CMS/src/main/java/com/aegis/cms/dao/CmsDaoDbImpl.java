@@ -9,6 +9,7 @@ import com.aegis.cms.model.Post;
 import com.aegis.cms.model.Tag;
 import java.util.List;
 import javax.inject.Inject;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
@@ -48,7 +49,7 @@ public class CmsDaoDbImpl implements CmsDao {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List<Post> getAllPosts() {
-        return (List<Post>) currentSession().createCriteria(Post.class).list();
+        return (List<Post>) currentSession().createCriteria(Post.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
     
     @Override
