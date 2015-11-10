@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -29,6 +31,11 @@ public class Post implements Serializable {
     private String body;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinTable(name = "post_tag",
+            joinColumns = {
+                @JoinColumn(name = "post_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "tag_id")})
     private Set<Tag> tags;
 
     @Column(name = "postDate")
