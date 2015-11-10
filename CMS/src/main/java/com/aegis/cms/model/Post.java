@@ -27,13 +27,8 @@ public class Post {
     @Column(name = "body")
     private String body;
     
-//    private User author;
-    
     @ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-    @JoinTable(name = "post_tag",
-                joinColumns = {@JoinColumn(name="post_id")},
-                inverseJoinColumns = {@JoinColumn(name="tag_id")})
-    private Set<Tag> tags = new HashSet<>();
+    private Set<Tag> tags;
     
     @Column(name = "postDate")
     private Date postDate;

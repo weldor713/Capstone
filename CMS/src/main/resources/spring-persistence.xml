@@ -23,7 +23,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
         <property name="url"
                   value="jdbc:mysql://localhost:3306/CmsTest"/>
         <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value="nbanflmlb"/>
         <property name="initialSize" value="5"/>
         <property name="maxActive" value="10"/>
     </bean>
