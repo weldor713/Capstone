@@ -1,5 +1,6 @@
 package com.aegis.cms.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -35,8 +36,9 @@ public class Post {
     private Set<Tag> tags = new HashSet<>();
     
     @Column(name = "postDate")
-    private String postDate;
-    private String expiration;
+    private Date postDate;
+    @Column(name = "expiration")
+    private Date expiration;
 //    private boolean isPublished;
 
     public int getPostId() {
@@ -85,19 +87,19 @@ public class Post {
         this.tags.addAll(tagSet);
     }
 //    
-    public String getPostDate() {
+    public Date getPostDate() {
         return postDate;
     }
 
-    public void setPostDate(String postDate) {
+    public void setPostDate(Date postDate) {
         this.postDate = postDate;
     }
 //
-    public String getExpiration() {
+    public Date getExpiration() {
         return expiration;
     }
 
-    public void setExpiration(String expiration) {
+    public void setExpiration(Date expiration) {
         this.expiration = expiration;
     }
 //

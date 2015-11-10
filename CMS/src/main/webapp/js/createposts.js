@@ -14,8 +14,8 @@ $(document).ready(function () {
                 body: tinymce.activeEditor.getContent({format: 'raw'}),
 //               author: $('#add-author').val(),
                 tags: $('#add-tags').val(),
-                postDate: $('#add-postDate').val(),
-                expiration: $('#add-expiration').val()
+                postDate: $('#add-postDate').datepicker('getDate'),
+                expiration: $('#add-expiration').datepicker('getDate')
 //               isPublished: $('#add-isPublished').val()
             }),
             headers: {'Accept': 'application/json',
@@ -32,6 +32,10 @@ $(document).ready(function () {
             console.log("Error!");
         });
     });
+
+//    $("#add-expiration").datepicker("getDate");
+//    $("#add-postDate").datepicker("getDate");
+
 
     $(function () {
         $("#add-postDate").datepicker({

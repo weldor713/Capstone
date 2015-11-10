@@ -50,7 +50,7 @@
                                 Post Date:
                             </label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control"
+                                <input type="test" class="form-control"
                                        id="add-postDate" />
                             </div>
                         </div>

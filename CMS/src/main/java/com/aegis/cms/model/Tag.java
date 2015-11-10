@@ -18,7 +18,7 @@ public class Tag {
     @Column(name = "tag_id")
     private int tagId;
     
-    @Column(name = "tagName")
+    @Column(name = "tagName", unique = true)
     private String tagName;
     
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
