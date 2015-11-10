@@ -27,13 +27,8 @@
             </div>
         </div>
         <div class ="container">
-            <!-- display staticContentId -->
 
-            <div  id="static">Static part goes here.ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo
-                ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde 
-                omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde omnis iste natus error
-                sit voluptatem accusantium dolo.
-            </div>
+            <div  id="static"></div>
 
             <br>
 
@@ -63,6 +58,7 @@
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/postDisplay.js"></script>
+        <script src="${pageContext.request.contextPath}/js/staticContentManager.js"></script>
 
     </body>
 </html>
