@@ -1,6 +1,7 @@
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.Post;
+import com.aegis.cms.model.StaticContent;
 import com.aegis.cms.model.Tag;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,5 +20,25 @@ public class CmsDaoInMemImpl implements CmsDao {
     
     public List<Post> getAllPosts(){
         return blog;
+    }
+
+    @Override
+    public void addStaticContent(StaticContent cont) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updateStaticContent(StaticContent cont) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteStaticContent(StaticContent cont) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public StaticContent getStaticContent() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

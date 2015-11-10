@@ -7,11 +7,11 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.png">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
-            tinymce.init({
-                selector: "#staticContent"         <!--mytextarea-->
-            });
-        </script>
+        <!--        <script type="text/javascript">
+                    tinymce.init({
+                        selector: "#staticContent"
+                    });
+                </script>-->
 
     </head>
     <body>
@@ -44,30 +44,27 @@
             <h2>Static Area Management</h2>
         </div>
         <div class="container">
-            <!--<form role="form">-->
             <div class="form-group">
                 <label for="comment">Enter Static Content:</label>
                 <form>
-           
-                    <!--<form method="post"--> 
-                          <!--onsubmit="tempHome.jsp">-->
-                    <textarea id="staticContent"></textarea>           <!--mytextarea-->
-
-                    <div class="col-sm-10">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                    <div class="form-group">                        
+                        <input type="textarea"class="form-control"
+                               id="staticContent" placeholder="Body"/>
                     </div>
-
                 </form>
-
-
-                <!--<textarea class="form-control" rows="5" id="comment"></textarea>-->
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <button type="submit" id="add-content-button" class="btn btn-default">
+                            Add
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            <!--</form>-->
         </div>
 
 
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/staticContentManager.js"></script>
     </body>
 </html>
