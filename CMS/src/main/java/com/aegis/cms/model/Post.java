@@ -2,6 +2,7 @@ package com.aegis.cms.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,7 +38,7 @@ public class Post implements Serializable {
                 joinColumns = {@JoinColumn(name="post_id")},
                 inverseJoinColumns = {@JoinColumn(name="tag_id")})
     @JsonManagedReference
-    private Set<Tag> tags;
+    private Set<Tag> tags = new HashSet<Tag>();
     
     @Temporal(value = TemporalType.DATE)
     @Column(name = "postDate")
@@ -82,8 +83,20 @@ public class Post implements Serializable {
         return tags;
     }
 
+//    public void setTags(String tags) {
+//        Set<Tag> tagSet = new HashSet<>();
+//        String[] tempArray = tags.split(",");
+//        for(int i = 0; i < tempArray.length; i++){
+//            Tag tempTag = new Tag();
+//            tempTag.setTagName(tempArray[i]);
+//            tagSet.add(tempTag);
+//        }
+//        this.tags.addAll(tagSet);
+//        //tags = tagSet;
+//    }
+    
     public void setTags(Set<Tag> tagnames) {
-        this.tags = tagnames;
+        tags = tagnames;
     }
     
     public Date getPostDate() {
