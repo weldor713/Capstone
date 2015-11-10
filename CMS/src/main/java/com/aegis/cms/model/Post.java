@@ -43,6 +43,7 @@ public class Post implements Serializable {
     @Temporal(value = TemporalType.DATE)
     @Column(name = "postDate")
     private Date postDate;
+    
     @Temporal(value = TemporalType.DATE)
     @Column(name = "expiration")
     private Date expiration;
@@ -86,6 +87,11 @@ public class Post implements Serializable {
 //    public void setTags(String tags) {
 //        Set<Tag> tagSet = new HashSet<>();
 //        String[] tempArray = tags.split(",");
+    
+    public void setTags(Set<Tag> tagnames) {
+        this.tags = tagnames;
+//        Set<Tag> tagSet = new HashSet<>();
+//        String[] tempArray = tagnames.split(",");
 //        for(int i = 0; i < tempArray.length; i++){
 //            Tag tempTag = new Tag();
 //            tempTag.setTagName(tempArray[i]);
@@ -93,10 +99,6 @@ public class Post implements Serializable {
 //        }
 //        this.tags.addAll(tagSet);
 //        //tags = tagSet;
-//    }
-    
-    public void setTags(Set<Tag> tagnames) {
-        tags = tagnames;
     }
     
     public Date getPostDate() {
