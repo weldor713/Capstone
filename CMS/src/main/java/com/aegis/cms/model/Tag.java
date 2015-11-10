@@ -1,8 +1,36 @@
 package com.aegis.cms.model;
 
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tag")
 public class Tag {
+    
+    @Id
+    @GeneratedValue
+    @Column(name = "tag_id")
     private int tagId;
+    
+    @Column(name = "tagName")
     private String tagName;
+    
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
+    private Set<Post> posts;
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
 
     public int getTagId() {
         return tagId;
