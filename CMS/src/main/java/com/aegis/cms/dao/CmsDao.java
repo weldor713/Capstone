@@ -11,4 +11,6 @@ public interface CmsDao {
     public void addTag(Tag tag);
 
     public List<Post> getAllPosts();
+    
+    public List<Tag> getAllTags();
 }

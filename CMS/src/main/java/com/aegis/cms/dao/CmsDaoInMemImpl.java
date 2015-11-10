@@ -20,4 +20,8 @@ public class CmsDaoInMemImpl implements CmsDao {
     public List<Post> getAllPosts(){
         return blog;
     }
+    
+    public List<Tag> getAllTags(){
+        return tags;
+    }
 }
