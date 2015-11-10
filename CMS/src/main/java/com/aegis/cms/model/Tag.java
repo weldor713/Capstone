@@ -30,7 +30,7 @@ public class Tag implements Serializable {
     @Column(name = "tagName", unique = true)
     private String tagName;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tag")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
     private Set<Post> posts;
 
     public Set<Post> getPosts() {
