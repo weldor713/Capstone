@@ -15,6 +15,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tag")
 public class Tag implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     @Id
     @GeneratedValue

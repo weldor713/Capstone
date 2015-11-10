@@ -1,5 +1,6 @@
 package com.aegis.cms.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,15 +10,15 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "post")
-public class Post {
-    
+public class Post implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue
     @Column(name = "post_id")
@@ -26,10 +27,10 @@ public class Post {
     private String title;
     @Column(name = "body")
     private String body;
-    
-    @ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private Set<Tag> tags;
-    
+
     @Column(name = "postDate")
     private Date postDate;
     @Column(name = "expiration")
@@ -43,6 +44,7 @@ public class Post {
     public void setPostId(int postId) {
         this.postId = postId;
     }
+
     public String getTitle() {
         return title;
     }
@@ -74,7 +76,7 @@ public class Post {
     public void setTags(String tagnames) {
         Set<Tag> tagSet = new HashSet<>();
         String[] tempArray = tagnames.split(",");
-        for(int i = 0; i < tempArray.length; i++){
+        for (int i = 0; i < tempArray.length; i++) {
             Tag tempTag = new Tag();
             tempTag.setTagName(tempArray[i]);
             tagSet.add(tempTag);
@@ -82,6 +84,7 @@ public class Post {
         this.tags.addAll(tagSet);
     }
 //    
+
     public Date getPostDate() {
         return postDate;
     }
@@ -90,6 +93,7 @@ public class Post {
         this.postDate = postDate;
     }
 //
+
     public Date getExpiration() {
         return expiration;
     }
@@ -105,4 +109,8 @@ public class Post {
 //    public void setIsPublished(boolean isPublished) {
 //        this.isPublished = isPublished;
 //    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 }
