@@ -12,6 +12,7 @@ public class Post implements Serializable {
     private String body;
 //    private User author;
     private Set<Tag> tags = new HashSet();
+
     private Date postDate;
     private Date expiration;
 //    private boolean isPublished;
