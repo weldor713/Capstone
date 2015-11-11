@@ -9,7 +9,7 @@ public interface CmsDao {
 
     public void addPost(Post post);
 
-    public void addTag(Tag tag);
+    public void addTag(String tag);
 
     public List<Post> getAllPosts();
 

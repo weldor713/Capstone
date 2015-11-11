@@ -39,8 +39,9 @@ public class CmsDaoDbImpl implements CmsDao {
         currentSession().save(post);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     @Override
-    public void addTag(Tag tag) {
+    public void addTag(String tag) {
         currentSession().save(tag);
     }
 

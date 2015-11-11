@@ -35,9 +35,9 @@ public class CreatePostsController {
         return post;
     }
     
-    @RequestMapping(value="/tag", method=RequestMethod.POST)
+    @RequestMapping(value="/addTag", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void addtag(@RequestBody Tag tag){
+    public void addtag(@RequestBody String tag){
         dao.addTag(tag);
     }
 }

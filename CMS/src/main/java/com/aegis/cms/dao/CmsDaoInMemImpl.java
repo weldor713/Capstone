@@ -14,8 +14,10 @@ public class CmsDaoInMemImpl implements CmsDao {
         blog.add(post);
     }
     
-    public void addTag(Tag tag){
-        tags.add(tag);
+    public void addTag(String tag) {
+        Tag g = new Tag();
+        g.setTagName(tag);
+        tags.add(g);
     }
     
     public List<Post> getAllPosts(){

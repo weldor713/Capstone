@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.png">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
         <!--        <script type="text/javascript">
                     tinymce.init({

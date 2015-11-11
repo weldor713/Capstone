@@ -11,7 +11,7 @@
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <!-- SWC Icon -->
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.png">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <style>
             h1.serif {
                 font-family: "Times New Roman", Times, serif;
