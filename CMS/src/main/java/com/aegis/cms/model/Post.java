@@ -41,7 +41,7 @@ public class Post implements Serializable {
         this.body = body;
     }
 
-    public void setTags(Set<Tag> tagSet){
+    public void setTagsFromDb(Set<Tag> tagSet){
         tags = tagSet;
     }
     

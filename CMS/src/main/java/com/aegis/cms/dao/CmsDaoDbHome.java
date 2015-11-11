@@ -20,7 +20,7 @@ public class CmsDaoDbHome implements CmsDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private static final String SQL_SELECT_ALL_POSTS = "select * from post order by postDate asc";
+    private static final String SQL_SELECT_ALL_POSTS = "select * from post order by postDate asc, post_id desc";
     private static final String SQL_SELECT_POST_TAG_TAG_ID_BY_POST_ID
             = "select tag_id from post_tag where post_id = ?";
     private static final String SQL_SELECT_TAG = "select * from tag where tag_id = ?";
@@ -28,13 +28,13 @@ public class CmsDaoDbHome implements CmsDao {
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
             = "select p.post_id, p.title, p.body, p.postDate, p.expiration "
             + "from post p join post_tag pt on tag_id where p.post_id  = pt.post_id and pt.tag_id  =  ? "
-            + "order by postDate asc";
+            + "order by postDate asc, post_id desc";
 
     // HOME PAGE METHODS
     public List<Post> getAllPosts() {
         List<Post> postList = jdbcTemplate.query(SQL_SELECT_ALL_POSTS, new PostMapper());
         for (Post post : postList) {
-            post.setTags(getTagsForPost(post));
+            post.setTagsFromDb(getTagsForPost(post));
         }
         return postList;
     }
@@ -43,7 +43,7 @@ public class CmsDaoDbHome implements CmsDao {
     public List<Post> getAllPostsByTag(int id){
         List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id);
         for (Post post : postList) {
-            post.setTags(getTagsForPost(post));
+            post.setTagsFromDb(getTagsForPost(post));
         }
         return postList;
     }
