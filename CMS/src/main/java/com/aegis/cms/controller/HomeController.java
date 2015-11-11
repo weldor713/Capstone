@@ -6,6 +6,7 @@ import com.aegis.cms.model.Tag;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,6 +36,12 @@ public class HomeController {
     @ResponseBody
     public List<Tag> getAllTags() {
         return dao.getAllTags();
+    }
+    
+    @RequestMapping(value="/postsByTag/{id}", method=RequestMethod.GET)
+    @ResponseBody
+    public List<Post> getAllPostsByTag(@PathVariable("id") int id) {
+        return dao.getAllPostsByTag(id);
     }
     
 }

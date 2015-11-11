@@ -4,10 +4,10 @@ package com.aegis.cms.dao;
 import com.aegis.cms.model.Post;
 import com.aegis.cms.model.StaticContent;
 import com.aegis.cms.model.Tag;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.inject.Inject;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
@@ -48,7 +48,7 @@ public class CmsDaoDbImpl implements CmsDao {
     @Override
     @Transactional
     public List<Post> getAllPosts() {
-        return (List<Post>) currentSession().createCriteria(Post.class).list();
+        return (List<Post>) currentSession().createCriteria(Post.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
     
     @Override
@@ -79,6 +79,11 @@ public class CmsDaoDbImpl implements CmsDao {
     @Override
     public StaticContent getStaticContent() {
         return (StaticContent) currentSession().get(StaticContent.class, 1);
+    }
+    
+    public List<Post> getAllPostsByTag(int id){
+        List<Post> postList = new ArrayList<>();
+        return postList;
     }
 
 }
