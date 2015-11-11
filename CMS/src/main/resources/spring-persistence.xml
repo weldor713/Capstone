@@ -21,7 +21,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
-                  value="jdbc:mysql://localhost:3306/CMSTestScott"/>
+                  value="jdbc:mysql://localhost:3306/CmsTest"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <property name="initialSize" value="5"/>
@@ -36,13 +36,18 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
           class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-
+    
+    <bean id="cmsStatic"
+          class="com.aegis.cms.dao.CmsStaticJdbcImpl">
+          <property name="jdbcTemplate" ref="jdbcTemplate">
+    </bean> 
+<!--
     <bean id="cmsDaoDbImpl"
           class="com.aegis.cms.dao.CmsDaoDbImpl">
         <constructor-arg ref="sessionFactory"/>
     </bean>
     
-    <!-- HIBERNATE CONFIGURATION -->
+     HIBERNATE CONFIGURATION 
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -53,5 +58,5 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
                 <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 </beans>
