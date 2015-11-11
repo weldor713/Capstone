@@ -24,12 +24,12 @@ public class UserManagerController {
     // #1 - This endpoint retrieves all users from the database and puts the
     //List of users on the model
     
-//    @RequestMapping(value="/displayUserList", method=RequestMethod.GET)
-//    public String displayUserList(Map<String, Object> model) {
-//        List users = userManDao.getAllUsers();                            //write this method in CmsUserManDao?
-//        model.put("users", users);
-//        return "displayUserList";
-//    }
+    @RequestMapping(value="/displayUserList", method=RequestMethod.GET)
+    public String displayUserList(Map<String, Object> model) {
+        List users = userManDao.getAllUsers();                            
+        model.put("users", users);
+        return "displayUserList";
+    }
 // #2 - This endpoint just displays the Add User form
 
     @RequestMapping(value = "/displayUserForm", method = RequestMethod.GET)

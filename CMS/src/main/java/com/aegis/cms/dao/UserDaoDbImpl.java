@@ -6,8 +6,12 @@
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.User;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 
 /**
  *
@@ -27,6 +31,9 @@ public class UserDaoDbImpl implements CmsUserManDao {
 
     private static final String SQL_DELETE_AUTHORITIES
             = "delete from authorities where username = ?";
+    
+    private static final String SQL_SELECT_ALLUSERS
+            = "select* from users";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -61,10 +68,28 @@ public class UserDaoDbImpl implements CmsUserManDao {
         jdbcTemplate.update(SQL_DELETE_USER, username);
     }
     
-//    @Override
-//    public User getAllUsers (User username){    //fix this
-//         return null;
-//    }
+
+    @Override
+    public List<User> getAllUsers() {
+         return jdbcTemplate.query(SQL_SELECT_ALLUSERS, new UserMapper());
+     
+    }
+
    
+    private static final class UserMapper implements ParameterizedRowMapper<User>{
+        public User mapRow(ResultSet rs, int i) throws SQLException{
+            User user = new User();
+            user.setUserId(rs.getInt("user_id"));
+            user.setUserName(rs.getString("username"));
+            user.setPublicName(rs.getString("publicname"));
+            user.setPassword(rs.getString("password"));
+            user.setIsEnabled(rs.getBoolean("enabled"));
+           // user.setAuthorities(rs.getArray("authority"));
+            return user;
+        }
+    }
 
 }
+
+
+

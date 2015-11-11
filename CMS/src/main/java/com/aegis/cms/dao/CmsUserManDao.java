@@ -6,6 +6,7 @@
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.User;
+import java.util.List;
 
 /**
  *
@@ -17,6 +18,6 @@ public User addUser (User newUser);
 
 public void deleteUser (String username);
 
-//public User getAllUsers (User username);   //fix this one
-//    
+public List<User> getAllUsers ();   //fix this one
+   
 }
