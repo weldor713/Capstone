@@ -11,7 +11,7 @@
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <!-- SWC Icon -->
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.png">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <style>
             h1.serif {
                 font-family: "Times New Roman", Times, serif;
@@ -27,13 +27,8 @@
             </div>
         </div>
         <div class ="container">
-            <!-- display staticContentId -->
 
-            <div  id="static">Static part goes here.ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo
-                ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde 
-                omnis iste natus error sit voluptatem accusantium dolo. ut perspiciatis unde omnis iste natus error
-                sit voluptatem accusantium dolo.
-            </div>
+            <div  id="static"></div>
 
             <br>
 
@@ -41,9 +36,7 @@
 
             <div class="row">
                 <div class="col-sm-2" style="background-color:lavenderblush;">
-                    <p id="tag">Tags</p>
-                    <p>Here</p>
-                    <p>Tag 1</p>
+                    <div id="tagDisplay"></div>
 
 
                 </div>
@@ -63,6 +56,7 @@
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/postDisplay.js"></script>
+        <script src="${pageContext.request.contextPath}/js/staticContentManager.js"></script>
 
     </body>
 </html>

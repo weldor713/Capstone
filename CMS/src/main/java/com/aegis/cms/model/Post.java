@@ -21,7 +21,7 @@ import org.codehaus.jackson.annotate.JsonManagedReference;
 @Entity
 @Table(name = "post")
 public class Post implements Serializable {
-    
+
     @Id
     @GeneratedValue
     @Column(name = "post_id")
@@ -30,19 +30,21 @@ public class Post implements Serializable {
     private String title;
     @Column(name = "body")
     private String body;
-    
+
 //    private User author;
-    
-    @ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinTable(name = "post_tag",
-                joinColumns = {@JoinColumn(name="post_id")},
-                inverseJoinColumns = {@JoinColumn(name="tag_id")})
-    @JsonManagedReference
-    private Set<Tag> tags = new HashSet<Tag>();
-    
+            joinColumns = {
+                @JoinColumn(name = "post_id")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "tag_id")})
+    //@JsonManagedReference
+    private Set<Tag> tags = new HashSet();
+
     @Temporal(value = TemporalType.DATE)
     @Column(name = "postDate")
     private Date postDate;
+
     @Temporal(value = TemporalType.DATE)
     @Column(name = "expiration")
     private Date expiration;
@@ -55,6 +57,7 @@ public class Post implements Serializable {
     public void setPostId(int postId) {
         this.postId = postId;
     }
+
     public String getTitle() {
         return title;
     }
@@ -86,7 +89,7 @@ public class Post implements Serializable {
     public void setTags(String tags) {
         Set<Tag> tagSet = new HashSet<>();
         String[] tempArray = tags.split(",");
-        for(int i = 0; i < tempArray.length; i++){
+        for (int i = 0; i < tempArray.length; i++) {
             Tag tempTag = new Tag();
             tempTag.setTagName(tempArray[i]);
             tagSet.add(tempTag);
@@ -94,11 +97,27 @@ public class Post implements Serializable {
         this.tags.addAll(tagSet);
         //tags = tagSet;
     }
-    
-    public void setTags(Set<Tag> tagnames) {
-        tags = tagnames;
-    }
-    
+
+//    public void setTags(String g) {
+//        Tag gg = new Tag();
+//        gg.setTagName(g);
+//        this.tags.add(gg);
+//        
+//    }
+    /*
+     public void setTags(Set<Tag> tagnames) {
+     this.tags = tagnames;
+     Set<Tag> tagSet = new HashSet<>();
+     String[] tempArray = tagnames.split(",");
+     for(int i = 0; i < tempArray.length; i++){
+     Tag tempTag = new Tag();
+     tempTag.setTagName(tempArray[i]);
+     tagSet.add(tempTag);
+     }
+     this.tags.addAll(tagSet);
+     //tags = tagSet;
+     }
+     */
     public Date getPostDate() {
         return postDate;
     }
@@ -107,6 +126,7 @@ public class Post implements Serializable {
         this.postDate = postDate;
     }
 //
+
     public Date getExpiration() {
         return expiration;
     }

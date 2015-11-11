@@ -2,6 +2,7 @@ package com.aegis.cms.controller;
 
 import com.aegis.cms.dao.CmsDao;
 import com.aegis.cms.model.Post;
+import com.aegis.cms.model.Tag;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
@@ -29,4 +30,11 @@ public class HomeController {
     public List<Post> getAllPosts(){
         return dao.getAllPosts();
     }
+    
+    @RequestMapping(value="/tags", method=RequestMethod.GET)
+    @ResponseBody
+    public List<Tag> getAllTags() {
+        return dao.getAllTags();
+    }
+    
 }

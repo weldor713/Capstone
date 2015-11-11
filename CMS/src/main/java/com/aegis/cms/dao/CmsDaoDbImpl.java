@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.Post;
+import com.aegis.cms.model.StaticContent;
 import com.aegis.cms.model.Tag;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -25,38 +24,63 @@ import org.springframework.transaction.annotation.Transactional;
 public class CmsDaoDbImpl implements CmsDao {
 
     private SessionFactory sessionFactory;
-    
+
     @Inject
     public CmsDaoDbImpl(SessionFactory sf) {
         this.sessionFactory = sf;
     }
-    
+
     private Session currentSession() {
         return this.sessionFactory.getCurrentSession();
     }
-    
+
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     @Override
     public void addPost(Post post) {
         currentSession().save(post);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     @Override
     public void addTag(Tag tag) {
         currentSession().save(tag);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional
     public List<Post> getAllPosts() {
         return (List<Post>) currentSession().createCriteria(Post.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
     
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional
     public List<Tag> getAllTags() {
         return (List<Tag>) currentSession().createCriteria(Tag.class).list();
     }
-    
+
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void addStaticContent(StaticContent cont) {
+        currentSession().save(cont);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void updateStaticContent(StaticContent cont) {
+        currentSession().update(cont);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void deleteStaticContent(StaticContent cont) {
+        currentSession().delete(cont);
+    }
+
+    @Override
+    public StaticContent getStaticContent() {
+        return (StaticContent) currentSession().get(StaticContent.class, 1);
+    }
+
 }
 
