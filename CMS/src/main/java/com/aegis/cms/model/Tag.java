@@ -11,19 +11,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonBackReference;
 
-@Entity
-@Table(name = "tag")
+//@Entity
+//@Table(name = "tag")
 public class Tag implements Serializable {
     
-    @Id
-    @GeneratedValue
-    @Column(name = "tag_id")
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "tag_id")
     private int tagId;
     
-    @Column(name = "tagName", unique = true)
+//    @Column(name = "tagName", unique = true)
     private String tagName;
     
-    @ManyToMany(mappedBy = "tags")
+//    @ManyToMany(mappedBy = "tags")
     //@JsonBackReference
     private Set<Post> posts;
 

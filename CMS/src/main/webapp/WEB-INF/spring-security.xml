@@ -20,10 +20,6 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     
     <http pattern="/login" security="none" />
     <http pattern="/home" security="none" />
-<<<<<<< HEAD
-=======
-    <http pattern="/index" security="none" />
->>>>>>> ee47a9e38cb2ffa96ce5abb02f4fb158e73e299e
     <http pattern="/" security="none" />
     <http pattern="/css/**" security="none" />
     <http pattern="/js/**" security="none" />
