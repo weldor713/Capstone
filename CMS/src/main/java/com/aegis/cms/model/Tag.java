@@ -23,7 +23,7 @@ public class Tag implements Serializable {
     @Column(name = "tagName", unique = true)
     private String tagName;
     
-    @ManyToMany(mappedBy = "tags")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
     //@JsonBackReference
     private Set<Post> posts;
 

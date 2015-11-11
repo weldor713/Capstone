@@ -84,11 +84,14 @@ public class Post implements Serializable {
         return tags;
     }   
     
-    public void setTags(String g) {
-        Tag gg = new Tag();
-        gg.setTagName(g);
-        this.tags.add(gg);
-        
+    public void setTags(String tagnames) {
+        String[] tempArray = tagnames.split(",");
+        for(int i = 0; i < tempArray.length; i++){
+            Tag tempTag = new Tag();
+            tempTag.setTagName(tempArray[i]);
+            this.tags.add(tempTag);
+        }
+                
     }
     /*
     public void setTags(Set<Tag> tagnames) {
@@ -101,7 +104,7 @@ public class Post implements Serializable {
             tagSet.add(tempTag);
         }
         this.tags.addAll(tagSet);
-        //tags = tagSet;
+        tags = tagSet;
     }
     */
     public Date getPostDate() {
