@@ -1,3 +1,8 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,53 +57,69 @@
                 <div class="col-md-6">
                     <br>
                     <br>
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="add-userName" class="col-md-4 control-label">
-                                Login Name:
-                            </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control"
-                                       id="add-userName" placeholder="Login Name"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="add-displayName" class="col-md-4 control-label">
-                                Display Name:
-                            </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control"
-                                       id="add-displayName" placeholder="Display Name"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="add-password" class="col-md-4 control-label">
-                                Password:
-                            </label>
-                            <div class="col-md-8">
-                                <input type="password" class="form-control"
-                                       id="add-password" placeholder="Password"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="add-street" class="col-md-4 control-label">
-                                Role:
-                            </label>
-                            <div class="col-md-8">
-                                <select class="form-control" id="add-role">
-                                    <option>1</option>
-                                    <option>2</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-4 col-md-8">
-                                <button type="submit" id="add-button" class="btn btn-default">
-                                    Create User
-                                </button>
-                            </div>
-                        </div>
+
+                    
+                    <!--
+                    <form method="POST" action="addUser">
+                        Username: <input type="text" name="username"/><br/>
+                        Password:&nbsp; <input type="password" name="password"/><br/>
+                        Admin User? <input type="checkbox" name="isAdmin" value="yes"/>
+                        <br/>
+                        <input type="submit" value="Add User"/><br/>
                     </form>
+
+                    -->
+
+
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label for="add-userName" class="col-md-4 control-label">
+                                                    Login Name:
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control"
+                                                           id="add-userName" placeholder="Login Name"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="add-displayName" class="col-md-4 control-label">
+                                                    Display Name:
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control"
+                                                           id="add-displayName" placeholder="Display Name"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="add-password" class="col-md-4 control-label">
+                                                    Password:
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="password" class="form-control"
+                                                           id="add-password" placeholder="Password"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="add-street" class="col-md-4 control-label">
+                                                    Role:
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <select class="form-control" id="add-role">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-4 col-md-8">
+                                                    <button type="submit" id="add-button" class="btn btn-default">
+                                                        Create User
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                    
+                    
                     <div id="validationErrors" style="color: tomato"></div>
                 </div>
             </div>         

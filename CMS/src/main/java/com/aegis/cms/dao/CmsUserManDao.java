@@ -16,5 +16,7 @@ public interface CmsUserManDao {
 public User addUser (User newUser);
 
 public void deleteUser (String username);
-    
+
+//public User getAllUsers (User username);   //fix this one
+//    
 }
