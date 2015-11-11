@@ -19,6 +19,7 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     class="org.springframework.security.webaccess.expression.DefaulWebSecurityExpressionHandler"/>-->
     
     <http pattern="/login" security="none" />
+    <http pattern="/home" security="none" />
     <http pattern="/index" security="none" />
     <http pattern="/" security="none" />
     <http pattern="/css/**" security="none" />

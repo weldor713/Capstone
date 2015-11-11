@@ -36,9 +36,7 @@
 
             <div class="row">
                 <div class="col-sm-2" style="background-color:lavenderblush;">
-                    <p id="tag">Tags</p>
-                    <p>Here</p>
-                    <p>Tag 1</p>
+                    <div id="tagDisplay"></div>
 
 
                 </div>

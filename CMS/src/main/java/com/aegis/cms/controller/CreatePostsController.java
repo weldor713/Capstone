@@ -34,10 +34,11 @@ public class CreatePostsController {
         dao.addPost(post);
         return post;
     }
-    
+    /*
     @RequestMapping(value="/addTag", method=RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void addtag(@RequestBody String tag){
         dao.addTag(tag);
     }
+    */
 }
