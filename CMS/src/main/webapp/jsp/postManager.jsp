@@ -26,6 +26,9 @@
                         <a href="${pageContext.request.contextPath}/staticMan">Manage Static Area</a>
                     </li>
                     <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/home">View Blog</a>
+                    </li>
+                    <li role="presentation">
                         <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
                     </li>
                 </ul>
@@ -48,8 +51,8 @@
                     </table>
                 </div> <!-- end left column -->
                 <div>
-                    
-                    
+
+
                 </div> <!-- end right column -->
 
             </div> <!-- End row div -->  

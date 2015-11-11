@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div>
-                <h1>An error has occurred...</h1>
+                <h1>An error has occurred, you probably don't have permission to do what you wanted to do, maybe see David...</h1>
                 <h3>${errorMessage}</h3>
             </div>
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

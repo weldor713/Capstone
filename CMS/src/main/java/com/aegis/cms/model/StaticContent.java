@@ -5,15 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "static_content")
+//@Entity
+//@Table(name = "static_content")
 public class StaticContent {
     
-    @Id
-    @Column(name = "content_id")
+//    @Id
+//    @Column(name = "content_id")
     private int contentId;
     
-    @Column(name = "content")
+//    @Column(name = "content")
     private String content;
 
     public int getContentId() {

@@ -18,34 +18,34 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.codehaus.jackson.annotate.JsonManagedReference;
 
-@Entity
-@Table(name = "post")
+//@Entity
+//@Table(name = "post")
 public class Post implements Serializable {
     
-    @Id
-    @GeneratedValue
-    @Column(name = "post_id")
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "post_id")
     private int postId;
-    @Column(name = "title")
+//    @Column(name = "title")
     private String title;
-    @Column(name = "body")
+//    @Column(name = "body")
     private String body;
     
 //    private User author;
     
-    @ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-    @JoinTable(name = "post_tag",
-                joinColumns = {@JoinColumn(name="post_id")},
-                inverseJoinColumns = {@JoinColumn(name="tag_id")})
+//    @ManyToMany(fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+//    @JoinTable(name = "post_tag",
+//                joinColumns = {@JoinColumn(name="post_id")},
+//                inverseJoinColumns = {@JoinColumn(name="tag_id")})
     //@JsonManagedReference
     private Set<Tag> tags = new HashSet();
     
-    @Temporal(value = TemporalType.DATE)
-    @Column(name = "postDate")
+//    @Temporal(value = TemporalType.DATE)
+//    @Column(name = "postDate")
     private Date postDate;
     
-    @Temporal(value = TemporalType.DATE)
-    @Column(name = "expiration")
+//    @Temporal(value = TemporalType.DATE)
+//    @Column(name = "expiration")
     private Date expiration;
 //    private boolean isPublished;
 
