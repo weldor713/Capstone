@@ -37,8 +37,8 @@ public class Post implements Serializable {
     @JoinTable(name = "post_tag",
                 joinColumns = {@JoinColumn(name="post_id")},
                 inverseJoinColumns = {@JoinColumn(name="tag_id")})
-    @JsonManagedReference
-    private Set<Tag> tags = new HashSet<Tag>();
+    //@JsonManagedReference
+    private Set<Tag> tags = new HashSet();
     
     @Temporal(value = TemporalType.DATE)
     @Column(name = "postDate")
@@ -82,25 +82,28 @@ public class Post implements Serializable {
 //
     public Set<Tag> getTags() {
         return tags;
-    }
-
-//    public void setTags(String tags) {
-//        Set<Tag> tagSet = new HashSet<>();
-//        String[] tempArray = tags.split(",");
+    }   
     
+    public void setTags(String g) {
+        Tag gg = new Tag();
+        gg.setTagName(g);
+        this.tags.add(gg);
+        
+    }
+    /*
     public void setTags(Set<Tag> tagnames) {
         this.tags = tagnames;
-//        Set<Tag> tagSet = new HashSet<>();
-//        String[] tempArray = tagnames.split(",");
-//        for(int i = 0; i < tempArray.length; i++){
-//            Tag tempTag = new Tag();
-//            tempTag.setTagName(tempArray[i]);
-//            tagSet.add(tempTag);
-//        }
-//        this.tags.addAll(tagSet);
-//        //tags = tagSet;
+        Set<Tag> tagSet = new HashSet<>();
+        String[] tempArray = tagnames.split(",");
+        for(int i = 0; i < tempArray.length; i++){
+            Tag tempTag = new Tag();
+            tempTag.setTagName(tempArray[i]);
+            tagSet.add(tempTag);
+        }
+        this.tags.addAll(tagSet);
+        //tags = tagSet;
     }
-    
+    */
     public Date getPostDate() {
         return postDate;
     }

@@ -30,7 +30,21 @@ $(document).ready(function () {
             console.log("Success!");
         }).error(function (data, status) {
             console.log("Error!");
-        });
+        }); 
+//        $.ajax({
+//            type: 'POST',
+//            url: 'addTag',
+//            data: JSON.stringify({
+//                tagName: $('#add-tags').val()
+//            }),
+//            headers: {'Accept': 'application/json',
+//                'Content-Type': 'application/json'},
+//            dataType: 'json'
+//        }).success(function (data, status) {
+//            $('#add-tags').val("");
+//        }).error(function (data, status){
+//            console.log("ohno");
+//        });
     });
 
 //    $("#add-expiration").datepicker("getDate");

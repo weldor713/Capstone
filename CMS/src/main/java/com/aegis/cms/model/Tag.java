@@ -24,7 +24,7 @@ public class Tag implements Serializable {
     private String tagName;
     
     @ManyToMany(mappedBy = "tags")
-    @JsonBackReference
+    //@JsonBackReference
     private Set<Post> posts;
 
     public Set<Post> getPosts() {

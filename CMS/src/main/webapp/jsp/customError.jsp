@@ -16,7 +16,7 @@
               rel="stylesheet">
         <!-- SWC Icon -->
         <link rel="shortcut icon"
-              href="${pageContext.request.contextPath}/img/icon.png">
+              href="${pageContext.request.contextPath}/img/icon.gif">
     </head>
     <body>
         <div class="container">
