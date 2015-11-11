@@ -15,8 +15,8 @@ http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     <!-- #2 - Make sure we don’t need authorization to get to the login or home page -->
     
-<!--    <beans:bean id="webexpressionHandler"
-                  class="org.springframework.security.webaccess.expression.DefaulWebSecurityExpressionHandler"/>-->
+    <!--    <beans:bean id="webexpressionHandler"
+    class="org.springframework.security.webaccess.expression.DefaulWebSecurityExpressionHandler"/>-->
     
     <http pattern="/login" security="none" />
     <http pattern="/home" security="none" />
@@ -24,7 +24,7 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     <http pattern="/css/**" security="none" />
     <http pattern="/js/**" security="none" />
     <http pattern="/img/**" security="none" />
-     <http pattern="/error" security="none" />
+    <http pattern="/error" security="none" />
     <!-- #3 - Authentication/login form and protected endpoint configuration -->
     <http auto-config="true" use-expressions="false">
         <!-- #3a - Login via html form, use Spring to do the security check -->

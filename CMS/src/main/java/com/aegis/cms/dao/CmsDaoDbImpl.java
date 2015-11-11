@@ -39,19 +39,20 @@ public class CmsDaoDbImpl implements CmsDao {
         currentSession().save(post);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     @Override
     public void addTag(Tag tag) {
         currentSession().save(tag);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional
     public List<Post> getAllPosts() {
         return (List<Post>) currentSession().createCriteria(Post.class).list();
     }
     
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional
     public List<Tag> getAllTags() {
         return (List<Tag>) currentSession().createCriteria(Tag.class).list();
     }
