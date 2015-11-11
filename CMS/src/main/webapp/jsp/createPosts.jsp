@@ -6,7 +6,7 @@
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/js/jquery-ui.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.png">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
     </head>
     <body>
         <div class="container">
