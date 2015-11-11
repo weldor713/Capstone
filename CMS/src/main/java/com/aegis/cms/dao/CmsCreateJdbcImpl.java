@@ -2,11 +2,15 @@ package com.aegis.cms.dao;
 
 import com.aegis.cms.model.Post;
 import com.aegis.cms.model.Tag;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Set;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +35,9 @@ public class CmsCreateJdbcImpl implements CmsCreateDao {
     private static final String SQL_ADD_TAG
             = "insert into tag (tagName) "
             + "values (?)";
+    private static final String SQL_GET_TAG
+            = "select * from tag "
+            + "where tagName = ?";
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
@@ -50,9 +57,15 @@ public class CmsCreateJdbcImpl implements CmsCreateDao {
         int[] tagIds = new int[tags.size()];
         int counter = 0;
         for (Tag t : tags) {
-            templ.update(SQL_ADD_TAG, 
-                    t.getTagName());
-            t.setTagId(templ.queryForObject("select LAST_INSERT_ID()", Integer.class));
+            try {
+                templ.update(SQL_ADD_TAG,
+                        t.getTagName());
+                t.setTagId(templ.queryForObject("select LAST_INSERT_ID()", Integer.class));
+            } catch (DuplicateKeyException ex) {
+                Tag dbTag = templ.queryForObject(SQL_GET_TAG, new TagMapper(), t.getTagName());
+                t.setTagId(dbTag.getTagId());
+            }
+           
             tagIds[counter] = t.getTagId();
             counter++;
         }
@@ -70,5 +83,16 @@ public class CmsCreateJdbcImpl implements CmsCreateDao {
             }
 
         });
+    }
+
+    private static final class TagMapper implements ParameterizedRowMapper<Tag> {
+
+        @Override
+        public Tag mapRow(ResultSet rs, int i) throws SQLException {
+            Tag tag = new Tag();
+            tag.setTagId(rs.getInt("tag_id"));
+            tag.setTagName(rs.getString("tagName"));
+            return tag;
+        }
     }
 }

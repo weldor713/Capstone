@@ -34,7 +34,7 @@ public class CmsDaoDbHome implements CmsDao {
     public List<Post> getAllPosts() {
         List<Post> postList = jdbcTemplate.query(SQL_SELECT_ALL_POSTS, new PostMapper());
         for (Post post : postList) {
-            post.setTags(getTagsForPost(post));
+            post.setTagsFromDb(getTagsForPost(post));
         }
         return postList;
     }
@@ -43,7 +43,7 @@ public class CmsDaoDbHome implements CmsDao {
     public List<Post> getAllPostsByTag(int id){
         List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id);
         for (Post post : postList) {
-            post.setTags(getTagsForPost(post));
+            post.setTagsFromDb(getTagsForPost(post));
         }
         return postList;
     }
