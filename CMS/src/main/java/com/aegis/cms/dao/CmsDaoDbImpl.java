@@ -4,9 +4,8 @@ package com.aegis.cms.dao;
 import com.aegis.cms.model.Post;
 import com.aegis.cms.model.StaticContent;
 import com.aegis.cms.model.Tag;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -80,6 +79,11 @@ public class CmsDaoDbImpl implements CmsDao {
     @Override
     public StaticContent getStaticContent() {
         return (StaticContent) currentSession().get(StaticContent.class, 1);
+    }
+    
+    public List<Post> getAllPostsByTag(int id){
+        List<Post> postList = new ArrayList<>();
+        return postList;
     }
 
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -22,17 +23,17 @@ public class Tag implements Serializable {
     @Column(name = "tagName", unique = true)
     private String tagName;
     
-    @ManyToMany(mappedBy = "tags")
-    //@JsonBackReference
-    private Set<Post> posts;
-
-    public Set<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Set<Post> posts) {
-        this.posts = posts;
-    }
+//    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
+//    //@JsonBackReference
+//    private Set<Post> posts;
+//
+//    public Set<Post> getPosts() {
+//        return posts;
+//    }
+//
+//    public void setPosts(Set<Post> posts) {
+//        this.posts = posts;
+//    }
 
     public int getTagId() {
         return tagId;

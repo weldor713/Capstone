@@ -3,50 +3,38 @@ package com.aegis.cms.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import org.codehaus.jackson.annotate.JsonManagedReference;
 
-@Entity
-@Table(name = "post")
+//@Entity
+//@Table(name = "post")
 public class Post implements Serializable {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "post_id")
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "post_id")
     private int postId;
-    @Column(name = "title")
+//    @Column(name = "title")
     private String title;
-    @Column(name = "body")
+//    @Column(name = "body")
     private String body;
 
 //    private User author;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    @JoinTable(name = "post_tag",
-            joinColumns = {
-                @JoinColumn(name = "post_id")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "tag_id")})
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//    @JoinTable(name = "post_tag",
+//            joinColumns = {
+//                @JoinColumn(name = "post_id")},
+//            inverseJoinColumns = {
+//                @JoinColumn(name = "tag_id")})
     //@JsonManagedReference
-    private Set<Tag> tags = new HashSet();
+    private Set<Tag> tags;
 
-    @Temporal(value = TemporalType.DATE)
-    @Column(name = "postDate")
+//    @Temporal(value = TemporalType.DATE)
+//    @Column(name = "postDate")
     private Date postDate;
 
-    @Temporal(value = TemporalType.DATE)
-    @Column(name = "expiration")
+//    @Temporal(value = TemporalType.DATE)
+//    @Column(name = "expiration")
     private Date expiration;
 //    private boolean isPublished;
 
@@ -82,20 +70,24 @@ public class Post implements Serializable {
 //        this.author = author;
 //    }
 //
+    public void setTags(Set<Tag> tagSet){
+        tags = tagSet;
+    }
+    
     public Set<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(String tagString) {
         Set<Tag> tagSet = new HashSet<>();
-        String[] tempArray = tags.split(",");
+        String[] tempArray = tagString.split(",");
         for (int i = 0; i < tempArray.length; i++) {
             Tag tempTag = new Tag();
             tempTag.setTagName(tempArray[i]);
             tagSet.add(tempTag);
         }
         this.tags.addAll(tagSet);
-        //tags = tagSet;
+//        //tags = tagSet;
     }
 
 //    public void setTags(String g) {

@@ -37,13 +37,16 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="cmsDaoDbImpl"
+    <!-- <bean id="cmsDaoDbImpl"
           class="com.aegis.cms.dao.CmsDaoDbImpl">
         <constructor-arg ref="sessionFactory"/>
+    </bean> -->
+    <bean id="cmsDaoDbHome" class="com.aegis.cms.dao.CmsDaoDbHome">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
     
     <!-- HIBERNATE CONFIGURATION -->
-    <bean id="sessionFactory"
+    <!-- <bean id="sessionFactory"
           class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan"
@@ -53,5 +56,5 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
                 <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
             </props>
         </property>
-    </bean>
+    </bean> -->
 </beans>
