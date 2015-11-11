@@ -40,6 +40,16 @@ public class Post implements Serializable {
     //@JsonManagedReference
     private Set<Tag> tags = new HashSet();
     
+    private int[] tagIds;
+
+    public int[] getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(int[] tagIds) {
+        this.tagIds = tagIds;
+    }
+    
 //    @Temporal(value = TemporalType.DATE)
 //    @Column(name = "postDate")
     private Date postDate;

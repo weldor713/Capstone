@@ -1,8 +1,7 @@
 package com.aegis.cms.controller;
 
-import com.aegis.cms.dao.CmsDao;
+import com.aegis.cms.dao.CmsCreateDao;
 import com.aegis.cms.model.Post;
-import com.aegis.cms.model.Tag;
 import javax.inject.Inject;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -15,10 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 public class CreatePostsController {
-    private CmsDao dao;
+    private CmsCreateDao dao;
     
     @Inject
-    public CreatePostsController(CmsDao dao){
+    public CreatePostsController(CmsCreateDao dao){
         this.dao = dao;
     }
     

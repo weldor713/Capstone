@@ -24,7 +24,7 @@ public class CmsDaoDbImpl implements CmsDao {
 
     private SessionFactory sessionFactory;
 
-    @Inject
+//    @Inject
     public CmsDaoDbImpl(SessionFactory sf) {
         this.sessionFactory = sf;
     }
