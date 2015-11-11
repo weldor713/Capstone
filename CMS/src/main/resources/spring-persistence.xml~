@@ -40,15 +40,21 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
     <!-- EMMA'S DAO -->
     <bean id="cmsStatic"
           class="com.aegis.cms.dao.CmsStaticJdbcImpl">
+<<<<<<< HEAD
           <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean> 
+    
     <bean id="userDao" class="com.aegis.cms.dao.UserDaoDbImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+<!--
     <bean id="cmsDaoDbImpl"
           class="com.aegis.cms.dao.CmsDaoDbImpl">
+        <constructor-arg ref="sessionFactory"/>
+=======
           <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
+
     <bean id="cmsCreate"
           class="com.aegis.cms.dao.CmsCreateJdbcImpl">
           <property name="jdbcTemplate" ref="jdbcTemplate" />
@@ -56,7 +62,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
     <!-- SCOTT'S DAO -->    
     <bean id="cmsDaoDbHome" class="com.aegis.cms.dao.CmsDaoDbHome">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
-
+>>>>>>> master
     </bean>
 
 </beans>

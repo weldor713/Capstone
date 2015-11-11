@@ -40,26 +40,27 @@ function clearPosts() {
     $('#contentRows').empty();
 }
 
-$('#detailsModal').on('show.bs.modal', function (event) {
-
-    var element = $(event.relatedTarget);
-    var addressId = element.data('address-id');
-    var modal = $(this);
-
-    $.ajax({
-        type: 'GET',
-        url: 'address/' + addressId
-    }).success(function (address) {
-        modal.find('#address-id').text(address.addressId);
-        modal.find('#address-firstName').text(address.firstName);
-        modal.find('#address-lastName').text(address.lastName);
-        modal.find('#address-street').text(address.street);
-        modal.find('#address-city').text(address.city);
-        modal.find('#address-state').text(address.state);
-        modal.find('#address-zip').text(address.zip);
-    });
-
-});
+// AJAX VERSION
+//$('#detailsModal').on('show.bs.modal', function (event) {
+//
+//    var element = $(event.relatedTarget);
+//    var addressId = element.data('address-id');
+//    var modal = $(this);
+//
+//    $.ajax({
+//        type: 'GET',
+//        url: 'address/' + addressId
+//    }).success(function (address) {
+//        modal.find('#address-id').text(address.addressId);
+//        modal.find('#address-firstName').text(address.firstName);
+//        modal.find('#address-lastName').text(address.lastName);
+//        modal.find('#address-street').text(address.street);
+//        modal.find('#address-city').text(address.city);
+//        modal.find('#address-state').text(address.state);
+//        modal.find('#address-zip').text(address.zip);
+//    });
+//
+//});
 
 $('#detailsModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
@@ -67,19 +68,35 @@ $('#detailsModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     modal.find('#title').text(dummyPost.postId);
     modal.find('#author').text(dummyPost.author.publicName);
-    modal.find('#content').text(dummyPost.body);
+    modal.find('#body').text(dummyPost.body);
     modal.find('#postDate').text(dummyPost.postDate);
     modal.find('#expiration').text(dummyPost.expiration);
     modal.find('#isApproved').text(dummyPost.isApproved);
     modal.find('#isVisible').text(dummyPost.isVisible);
-    var tagString;
-    $.each(dummyPost.tags, function (index, tag) {
-        tagString += tag + " ";
+    var tagString = " ";
+    $.each(dummyPost.taggs, function (index, tag) {
+        tagString += tag.tagName;
     });
     modal.find('#tags').text(tagString);
 });
 
-
+$('#editModal').on('show.bs.modal', function (event) {
+    var element = $(event.relatedTarget);
+    var postId = element.data('post-id');
+    var modal = $(this);
+    modal.find('#edit-title').text(dummyPost.postId);
+    modal.find('#edit-author').text(dummyPost.author.publicName);
+    modal.find('#edit-body').text(dummyPost.body);
+    modal.find('#edit-postDate').text(dummyPost.postDate);
+    modal.find('#edit-expiration').text(dummyPost.expiration);
+    modal.find('#edit-isApproved').text(dummyPost.isApproved);
+    modal.find('#edit-isVisible').text(dummyPost.isVisible);
+    var tagString = " ";
+    $.each(dummyPost.taggs, function (index, tag) {
+        tagString += tag.tagName;
+    });
+    modal.find('#edit-tags').text(tagString);
+});
 
 
 
@@ -97,7 +114,7 @@ var testPostData = [
             isEnabled: true,
             publicName: "Dave LastName"
         },
-        tags: {
+        tags: [{
             tag: {
                 tagId: 1,
                 tagName: "happy"
@@ -110,7 +127,7 @@ var testPostData = [
                 tagId: 3,
                 tagName: "mad"
             }
-        },
+        }],
         postDate: "11/15/2015",
         expirationDate: "12/31/2015",
         isApproved: true,
@@ -158,7 +175,7 @@ var dummyPost =
                 isEnabled: true,
                 publicName: "Dave LastName"
             },
-            tags: {
+            taggs: [{
                 tag: {
                     tagId: 1,
                     tagName: "happy"
@@ -171,7 +188,7 @@ var dummyPost =
                     tagId: 3,
                     tagName: "mad"
                 }
-            },
+            }],
             postDate: "11/15/2015",
             expirationDate: "12/31/2015",
             isApproved: true,
