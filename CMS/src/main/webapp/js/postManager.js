@@ -1,4 +1,15 @@
 $(document).ready(function () {
+    tinymce.init({
+        selector: "#edit-body",
+        inline: false,
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+
     loadPosts();
 });
 //Functions
@@ -79,20 +90,22 @@ $('#editModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
     var postId = element.data('postid');
     var modal = $(this);
-    $('#body').empty();
+    $('#edit-body').empty();
 
     $.ajax({
         type: 'GET',
         url: 'post/' + postId
     }).success(function (post) {
+
+
         modal.find("#postid").text(post.postId);
         modal.find('#edit-title').val(post.title);
         //modal.find('#edit-author').val(post.author.publicName);
-        modal.find('#edit-body').val(post.body);
+        tinyMCE.activeEditor.setContent(post.body);
         modal.find('#edit-postDate').val(post.postDate);
         modal.find('#edit-expiration').val(post.expiration);
         modal.find('#edit-isPublished').val(post.isPublished);
-        var tagString = " ";
+        var tagString = "";
         $.each(post.tags, function (index, tag) {
             tagString += tag.tagName;
         });

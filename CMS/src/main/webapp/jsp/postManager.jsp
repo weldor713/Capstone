@@ -6,30 +6,11 @@
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
-        <script type="text/javascript" src="${pageContext.request.contextPath}/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
-            tinymce.init({
-                selector: "h1.editable",
-                inline: true,
-                toolbar: "undo redo",
-                menubar: false
-            });
-
-            tinymce.init({
-                selector: "div.editable",
-                inline: true,
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-            });
-        </script>
 
 
     </head>
     <body>
+        <!--nav bar-->
         <div class="container">
             <h1>Manage Posts</h1>
             <hr/>
@@ -79,7 +60,7 @@
             </div> <!-- End row div -->  
 
         </div>
-
+        <!--Details Modal-->
         <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog"
              aria-labelledby="detailsModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -103,7 +84,7 @@
                                 <td id="author"></td>
                             </tr>
                             <tr>
-                                <th>body:</th>
+                                <th>Body:</th>
                                 <td id="body"></td>
                             </tr>
                             <tr>
@@ -132,6 +113,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Edit Modal -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
              aria-labelledby="detailsModalLabel" aria-hidden="true">
@@ -151,17 +133,15 @@
                                     Title:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-title"
-                                           placeholder="First Name">
+                                    <input type="text" class="form-control" id="edit-title">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-body" class="col-md-4 control-label">
                                     Body:
                                 </label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-body"
-                                           placeholder="Last Name">
+                                <div class="col-md-8" >
+                                    <div id="edit-body" class=""></div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -169,8 +149,7 @@
                                     Post Date:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-postDate"
-                                           placeholder="Street">
+                                    <input type="date" class="form-control" id="edit-postDate">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -178,8 +157,7 @@
                                     Expiration Date:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-expiration"
-                                           placeholder="city">
+                                    <input type="date" class="form-control" id="edit-expiration">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -187,8 +165,7 @@
                                     Is Published:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-isPublished"
-                                           placeholder="Zip">
+                                    <input type="checkbox" class="form-control" id="edit-isPublished">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -196,8 +173,7 @@
                                     Tags:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-tags"
-                                           placeholder="Zip">
+                                    <input type="text" class="form-control" id="edit-tags">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -219,6 +195,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/postManager.js"></script>
