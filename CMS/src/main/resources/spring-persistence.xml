@@ -37,26 +37,19 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     
+    <!-- EMMA'S DAO -->
     <bean id="cmsStatic"
           class="com.aegis.cms.dao.CmsStaticJdbcImpl">
-          <property name="jdbcTemplate" ref="jdbcTemplate">
-    </bean> 
-<!--
-    <bean id="cmsDaoDbImpl"
-          class="com.aegis.cms.dao.CmsDaoDbImpl">
-        <constructor-arg ref="sessionFactory"/>
+          <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
-    
-     HIBERNATE CONFIGURATION 
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan"
-                  value="com.aegis.cms.model" />
-        <property name="hibernateProperties">
-            <props>
-                <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
-            </props>
-        </property>
-    </bean>-->
+
+    <bean id="cmsCreate"
+          class="com.aegis.cms.dao.CmsCreateJdbcImpl">
+          <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean> 
+    <!-- SCOTT'S DAO -->    
+    <bean id="cmsDaoDbHome" class="com.aegis.cms.dao.CmsDaoDbHome">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
 </beans>

@@ -22,5 +22,7 @@ public interface CmsDao {
     public void updateStaticContent(StaticContent cont);
 
     public void deleteStaticContent(StaticContent cont);
+    
+    public List<Post> getAllPostsByTag(int id);
 
 }

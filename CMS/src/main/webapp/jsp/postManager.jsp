@@ -82,8 +82,8 @@
                                 <td id="author"></td>
                             </tr>
                             <tr>
-                                <th>Content:</th>
-                                <td id="content"></td>
+                                <th>body:</th>
+                                <td id="body"></td>
                             </tr>
                             <tr>
                                 <th>Post Date:</th>
@@ -125,69 +125,78 @@
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="detailsModalLabel">Edit
-                            Address</h4>
+                            Post</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 id="address-id"></h3>
+                        <h3 id="post-id"></h3>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label for="edit-first-name" class="col-md-4 control-label">
-                                    First Name:
+                                <label for="edit-title" class="col-md-4 control-label">
+                                    Title:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-first-name"
+                                    <input type="text" class="form-control" id="edit-title"
                                            placeholder="First Name">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-last-name" class="col-md-4 control-label">
-                                    Last Name:
+                                <label for="edit-body" class="col-md-4 control-label">
+                                    Body:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-last-name"
+                                    <input type="text" class="form-control" id="edit-body"
                                            placeholder="Last Name">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-street" class="col-md-4 control-label">
-                                    Street:
+                                <label for="edit-postDate" class="col-md-4 control-label">
+                                    Post Date:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-street"
+                                    <input type="text" class="form-control" id="edit-postDate"
                                            placeholder="Street">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-city" class="col-md-4 control-label">
-                                    City:
+                                <label for="edit-expiration" class="col-md-4 control-label">
+                                    Expiration Date:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-city"
+                                    <input type="text" class="form-control" id="edit-expiration"
                                            placeholder="city">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-state" class="col-md-4 control-label">
-                                    State:
+                                <label for="edit-isApproved" class="col-md-4 control-label">
+                                    Approved:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-state"
+                                    <input type="text" class="form-control" id="edit-isApproved"
                                            placeholder="State">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-zip" class="col-md-4 control-label">
-                                    Zip:
+                                <label for="edit-isVisible" class="col-md-4 control-label">
+                                    Is Visible:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-zip"
+                                    <input type="text" class="form-control" id="edit-isVisible"
+                                           placeholder="Zip">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-tags" class="col-md-4 control-label">
+                                    Tags:
+                                </label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="edit-tags"
                                            placeholder="Zip">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-8">
                                     <button  id="edit-button" class="btn btn-default">
-                                        Edit Address
+                                        Edit Post
                                     </button>
                                     <button id="edit-modal-cancel" type="button" class="btn btn-default" data-dismiss="modal">
                                         Cancel
