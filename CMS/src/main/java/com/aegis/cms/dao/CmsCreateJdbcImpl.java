@@ -2,7 +2,6 @@ package com.aegis.cms.dao;
 
 import com.aegis.cms.model.Post;
 import com.aegis.cms.model.Tag;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
