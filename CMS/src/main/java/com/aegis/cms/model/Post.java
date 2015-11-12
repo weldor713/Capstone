@@ -77,11 +77,7 @@ public class Post implements Serializable {
     public void setExpiration(Date expiration) {
         this.expiration = expiration;
     }
-//
-//    public boolean getIsApproved() {
-//        return isPublished;
-//    }
-//
+
     public boolean getIsPublished() {
         return isPublished;
     }

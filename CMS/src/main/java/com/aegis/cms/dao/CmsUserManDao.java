@@ -6,15 +6,22 @@
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.User;
+import java.util.List;
 
 /**
  *
  * @author apprentice
  */
 public interface CmsUserManDao {
-    
-public User addUser (User newUser);
 
-public void deleteUser (String username);
+    public void addUser(User newUser);
+
+    public void deleteUser(int id);
+
+    public List<User> getAllUsers();
+
+    public void editUser(User user);
     
+    public User getUserById(int id);
+
 }
