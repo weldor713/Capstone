@@ -7,14 +7,24 @@ import java.util.List;
 
 public interface CmsDao {
 
+    // Create Post 
     public void addPost(Post post);
 
     public void addTag(Tag tag);
 
-    public List<Post> getAllPosts();
+    // Home Page
+    public List<Post> getAllVisiblePosts();
 
     public List<Tag> getAllTags();
 
+    public List<Post> getAllPostsByTag(int id);
+
+    // Post Manager
+    public Post getPostById(int id);
+
+    public List<Post> getAllPosts();
+
+    // Static Content
     public void addStaticContent(StaticContent cont);
 
     public StaticContent getStaticContent();
@@ -22,7 +32,5 @@ public interface CmsDao {
     public void updateStaticContent(StaticContent cont);
 
     public void deleteStaticContent(StaticContent cont);
-    
-    public List<Post> getAllPostsByTag(int id);
 
 }

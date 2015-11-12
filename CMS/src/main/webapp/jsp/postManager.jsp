@@ -6,6 +6,28 @@
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+            tinymce.init({
+                selector: "h1.editable",
+                inline: true,
+                toolbar: "undo redo",
+                menubar: false
+            });
+
+            tinymce.init({
+                selector: "div.editable",
+                inline: true,
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            });
+        </script>
+
+
     </head>
     <body>
         <div class="container">
@@ -37,15 +59,14 @@
 
                 <div class="col-md-9">
                     <h2>Blog Posts</h2>
-                    <table id="addressTable" class="table table-hover">
+                    <table class="table table-hover">
                         <tr>
                             <th width="15%">Post Date</th>
-                            <th width="20%">Title</th>
-                            <th width="10%">Approved</th>
+                            <th width="25%">Title</th>
                             <th width="15%">Expiration Date</th>
-                            <th width="15%">Visible to Public</th>
-                            <th width="12%"></th>
-                            <th width="12%"></th>
+                            <th width="15%">Published to Public</th>
+                            <th width="15%"></th>
+                            <th width="15%"></th>
                         </tr>
                         <tbody id="contentRows"></tbody>
                     </table>
@@ -71,7 +92,7 @@
                         <h4 class="modal-title" id="detailsModalLabel">Post Details</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 id="post-id"></h3>
+                        <h3 id="postId"></h3>
                         <table class="table table-bordered">
                             <tr>
                                 <th>Title:</th>
@@ -94,12 +115,8 @@
                                 <td id="expiration"></td>
                             </tr>
                             <tr>
-                                <th>Approved:</th>
-                                <td id="isApproved"></td>
-                            </tr>
-                            <tr>
-                                <th>Visible:</th>
-                                <td id="isVisible"></td>
+                                <th>Published:</th>
+                                <td id="isPublished"></td>
                             </tr>
                             <tr>
                                 <th>Tags:</th>
@@ -124,11 +141,10 @@
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="detailsModalLabel">Edit
-                            Post</h4>
+                        <h4 class="modal-title" id="detailsModalLabel">Edit Post</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 id="post-id"></h3>
+                        <h3 id="postId"></h3>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label for="edit-title" class="col-md-4 control-label">
@@ -167,20 +183,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-isApproved" class="col-md-4 control-label">
-                                    Approved:
+                                <label for="edit-isPublished" class="col-md-4 control-label">
+                                    Is Published:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-isApproved"
-                                           placeholder="State">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="edit-isVisible" class="col-md-4 control-label">
-                                    Is Visible:
-                                </label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-isVisible"
+                                    <input type="text" class="form-control" id="edit-isPublished"
                                            placeholder="Zip">
                                 </div>
                             </div>
