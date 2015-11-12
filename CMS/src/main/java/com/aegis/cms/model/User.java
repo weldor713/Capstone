@@ -1,16 +1,15 @@
-
 package com.aegis.cms.model;
 
 import java.util.ArrayList;
 
 public class User {
+
     private int userId;
     private String userName;
     private String password;
-    private boolean isEnabled;    //do we need this?
+//    private boolean isEnabled;
     private String publicName;
-    
-    private ArrayList<String> authorities = new ArrayList<>();
+    private String authority;
 
     public int getUserId() {
         return userId;
@@ -36,13 +35,13 @@ public class User {
         this.password = password;
     }
 
-    public boolean getIsEnabled() {
-        return isEnabled;
-    }
-
-    public void setIsEnabled(boolean isEnabled) {
-        this.isEnabled = isEnabled;
-    }
+//    public boolean getIsEnabled() {
+//        return isEnabled;
+//    }
+//
+//    public void setIsEnabled(boolean isEnabled) {
+//        this.isEnabled = isEnabled;
+//    }
 
     public String getPublicName() {
         return publicName;
@@ -51,16 +50,13 @@ public class User {
     public void setPublicName(String publicName) {
         this.publicName = publicName;
     }
-    
-    public ArrayList<String> getAuthorities() {
-        return authorities;
+
+    public String getAuthority() {
+        return authority;
     }
-    
-    public void setAuthorities(ArrayList<String> authorities) {
-        this.authorities = authorities;
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
-    
-    public void addAuthority (String authority) {
-        authorities.add(authority);
-    }
+
 }
