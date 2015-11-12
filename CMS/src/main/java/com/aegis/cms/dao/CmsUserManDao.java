@@ -13,11 +13,15 @@ import java.util.List;
  * @author apprentice
  */
 public interface CmsUserManDao {
+
+    public void addUser(User newUser);
+
+    public void deleteUser(int id);
+
+    public List<User> getAllUsers();
+
+    public void editUser(User user);
     
-public User addUser (User newUser);
+    public User getUserById(int id);
 
-public void deleteUser (String username);
-
-public List<User> getAllUsers ();   //fix this one
-   
 }
