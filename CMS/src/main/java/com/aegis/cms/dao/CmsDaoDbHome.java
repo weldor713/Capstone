@@ -29,8 +29,9 @@ public class CmsDaoDbHome implements CmsDao {
             + "where isPublished = ? "
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
-            = "select p.post_id, p.title, p.body, p.postDate, p.expiration "
+            = "select p.post_id, p.title, p.body, p.postDate, p.expiration, p.isPublished "
             + "from post p join post_tag pt on tag_id where p.post_id  = pt.post_id and pt.tag_id  =  ? "
+            + "where isPublished = ? "
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POST
             = "select * from post where post_id = ?";
@@ -59,7 +60,7 @@ public class CmsDaoDbHome implements CmsDao {
 
     @Override
     public List<Post> getAllPostsByTag(int id) {
-        List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id);
+        List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id, "1");
         for (Post post : postList) {
             post.setTagsFromDb(getTagsForPost(post));
         }
