@@ -13,35 +13,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
-    
+
     CmsDao dao;
-    
+
     @Inject
-    public HomeController(CmsDao dao){
+    public HomeController(CmsDao dao) {
         this.dao = dao;
     }
-    
-    @RequestMapping(value={"/", "/home"}, method=RequestMethod.GET)
-    public String displayHome(){
+
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
+    public String displayHome() {
         return "home";
     }
-    
-    @RequestMapping(value="/posts", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
     @ResponseBody
-    public List<Post> getAllPosts(){
-        return dao.getAllPosts();
+    public List<Post> getAllVisiblePosts() {
+        return dao.getAllVisiblePosts();
     }
-    
-    @RequestMapping(value="/tags", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/tags", method = RequestMethod.GET)
     @ResponseBody
     public List<Tag> getAllTags() {
         return dao.getAllTags();
     }
-    
-    @RequestMapping(value="/postsByTag/{id}", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/postsByTag/{id}", method = RequestMethod.GET)
     @ResponseBody
     public List<Post> getAllPostsByTag(@PathVariable("id") int id) {
         return dao.getAllPostsByTag(id);
     }
-    
+
 }

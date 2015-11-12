@@ -1,50 +1,94 @@
-///*
-// * To change this license header, choose License Headers in Project Properties.
-// * To change this template file, choose Tools | Templates
-// * and open the template in the editor.
-// */
-//package com.aegis.cms.dao;
-//
-///**
-// *
-// * @author apprentice
-// */
-//public class UserDaoDbImpl implements CmsUserManDao {
-//
-//    // #1 - We need to update both the users and authorities tables
-//    private static final String SQL_INSERT_USER =
-//        "insert into users (username, password, enabled) values (?, ?, 1)";
-//    
-//    private static final
-//"insert into
-//private static final
-//"delete from
-//private static final
-//"delete from
-//String SQL_INSERT_AUTHORITY =
-//authorities (username, authority) values (?, ?)";
-//String SQL_DELETE_USER =
-//users where username = ?";
-//String SQL_DELETE_AUTHORITIES =
-//authorities where username = ?";
-//private JdbcTemplate jdbcTemplate;
-//public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-//this.jdbcTemplate = jdbcTemplate;
-//}
-//@Override
-//public User addUser(User newUser) {
-//// #2 - First insert user data into the users table and then insert
-//data into
-////
-//the authorities table (failing to do so will result in
-//foreign key
-////
-//constraint errors)
-//jdbcTemplate.update(SQL_INSERT_USER, newUser.getUsername(),
-//newUser.getPassword());
-//newUser.setId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
-//Integer.class));
-//    
-//
-//
-//    }
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.aegis.cms.dao;
+
+import com.aegis.cms.model.User;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+
+/**
+ *
+ * @author apprentice
+ */
+public class UserDaoDbImpl implements CmsUserManDao {
+
+    // #1 - We need to update both the users and authorities tables
+    private static final String SQL_INSERT_USER
+            = "insert into users (publicname, username, authority, password) values (?, ?, ?, ?)";
+
+
+    private static final String SQL_DELETE_USER
+            = "delete from users where user_id = ?";
+    
+    private static final String SQL_UPDATE_USER
+            ="update users set publicname = ?, username = ?, authority = ?, password = ? where user_id = ?";
+
+
+    private static final String SQL_SELECT_ALLUSERS
+            = "select * from users";
+    
+    private static final String SQL_SELECT_USER
+                ="select * from users where user_id = ?";
+
+    private JdbcTemplate jdbcTemplate;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public void addUser(User newUser) {
+        jdbcTemplate.update(SQL_INSERT_USER, newUser.getPublicName(), newUser.getUserName(), newUser.getAuthority(), newUser.getPassword());
+        newUser.setUserId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()",Integer.class));
+        
+    }
+    
+    public User getUserById(int id) {
+        try{
+            return jdbcTemplate.queryForObject(SQL_SELECT_USER, new UserMapper(), id);
+        }
+        catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        jdbcTemplate.update(SQL_DELETE_USER, id);
+    
+    }
+    
+    
+    public void editUser(User user) {
+        jdbcTemplate.update(SQL_UPDATE_USER, user.getPublicName(), user.getUserName(), user.getAuthority(), user.getPassword(), user.getUserId());
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return jdbcTemplate.query(SQL_SELECT_ALLUSERS, new UserMapper());
+
+    }
+
+
+    private static final class UserMapper implements ParameterizedRowMapper<User> {
+
+        public User mapRow(ResultSet rs, int i) throws SQLException {
+            User user = new User();
+            user.setUserId(rs.getInt("user_id"));
+            user.setUserName(rs.getString("username"));
+            user.setPublicName(rs.getString("publicname"));
+            user.setPassword(rs.getString("password"));
+//            user.setIsEnabled(rs.getBoolean("enabled"));
+            user.setAuthority(rs.getString("authority"));
+            return user;
+        }
+    }
+
+}

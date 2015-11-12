@@ -43,6 +43,7 @@ public class CmsStaticJdbcImpl implements CmsStaticDao {
     public StaticContent getStaticContent() {
         try {
             return templ.queryForObject(SQL_GET_STATIC_CONTENT, new StaticContentMapper(), 1);
+            
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }

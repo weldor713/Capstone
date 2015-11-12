@@ -15,7 +15,7 @@ public class Post implements Serializable {
 
     private Date postDate;
     private Date expiration;
-    private char isPublished;
+    private boolean isPublished;
 
     public int getPostId() {
         return postId;
@@ -78,11 +78,11 @@ public class Post implements Serializable {
         this.expiration = expiration;
     }
 
-    public char getIsPublished() {
+    public boolean getIsPublished() {
         return isPublished;
     }
 
-    public void setIsPublished(char isPublished) {
+    public void setIsPublished(boolean isPublished) {
         this.isPublished = isPublished;
     }
 }

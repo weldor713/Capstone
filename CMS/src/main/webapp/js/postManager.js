@@ -6,191 +6,96 @@ $(document).ready(function () {
 function loadPosts() {
     clearPosts();
     var cTable = $('#contentRows');
-    $.each(testPostData, function (index, post) {
-        cTable.append($('<tr>')
-                .append($('<td>').text(post.postDate))
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    "data-postId": post.postId,
-                                    "data-toggle": "modal",
-                                    "data-target": "#detailsModal"
-                                })
-                                .text(post.title)
-                                )
-                        )
-                .append($('<td>').text(post.isApproved))
-                .append($('<td>').text(post.expirationDate))
-                .append($('<td>').text(post.isVisible))
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    "data-postId": post.postId,
-                                    "data-toggle": "modal",
-                                    "data-target": "#editModal"
-                                })
-                                .text('Edit')
-                                ) // </td>
-                        )
-                .append($('<td>').text('Delete'))
-                );
+
+    $.ajax({
+        url: 'allposts'
+    }).success(function (allposts, status) {
+        $.each(allposts, function (index, post) {
+            cTable.append($('<tr>')
+                    .append($('<td>').text(post.postDate))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        "data-postid": post.postId,
+                                        "data-toggle": "modal",
+                                        "data-target": "#detailsModal"
+                                    })
+                                    .text(post.title)
+                                    )
+                            )
+                    .append($('<td>').text(post.expiration))
+                    .append($('<td>').text(post.isPublished))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        "data-postid": post.postId,
+                                        "data-toggle": "modal",
+                                        "data-target": "#editModal"
+                                    })
+                                    .text('Edit')
+                                    ) // </td>
+                            )
+                    .append($('<td>').text('Delete'))
+                    );
+        });
     });
 }
+
 function clearPosts() {
     $('#contentRows').empty();
 }
 
-// AJAX VERSION
-//$('#detailsModal').on('show.bs.modal', function (event) {
-//
-//    var element = $(event.relatedTarget);
-//    var addressId = element.data('address-id');
-//    var modal = $(this);
-//
-//    $.ajax({
-//        type: 'GET',
-//        url: 'address/' + addressId
-//    }).success(function (address) {
-//        modal.find('#address-id').text(address.addressId);
-//        modal.find('#address-firstName').text(address.firstName);
-//        modal.find('#address-lastName').text(address.lastName);
-//        modal.find('#address-street').text(address.street);
-//        modal.find('#address-city').text(address.city);
-//        modal.find('#address-state').text(address.state);
-//        modal.find('#address-zip').text(address.zip);
-//    });
-//
-//});
-
 $('#detailsModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
-    var postId = element.data('post-id');
+    var postId = element.data('postid');
     var modal = $(this);
-    modal.find('#title').text(dummyPost.postId);
-    modal.find('#author').text(dummyPost.author.publicName);
-    modal.find('#body').text(dummyPost.body);
-    modal.find('#postDate').text(dummyPost.postDate);
-    modal.find('#expiration').text(dummyPost.expiration);
-    modal.find('#isApproved').text(dummyPost.isApproved);
-    modal.find('#isVisible').text(dummyPost.isVisible);
-    var tagString = " ";
-    $.each(dummyPost.taggs, function (index, tag) {
-        tagString += tag.tagName;
+    $('#body').empty();
+
+    $.ajax({
+        type: 'GET',
+        url: 'post/' + postId
+    }).success(function (post) {
+        modal.find('#title').text(post.title);
+        //modal.find('#author').text(post.author.publicName);
+        modal.find('#body').append(post.body);
+        modal.find('#postDate').text(post.postDate);
+        modal.find('#expiration').text(post.expiration);
+        modal.find('#isPublished').text(post.isPublished);
+        var tagString = "";
+        $.each(post.tags, function (index, tag) {
+            if (index >= post.tags.length - 1) {
+                tagString += tag.tagName;
+            } else {
+                tagString += tag.tagName + ", ";
+            }
+        });
+        modal.find('#tags').text(tagString);
+
     });
-    modal.find('#tags').text(tagString);
+
 });
 
 $('#editModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
-    var postId = element.data('post-id');
+    var postId = element.data('postid');
     var modal = $(this);
-    modal.find('#edit-title').text(dummyPost.postId);
-    modal.find('#edit-author').text(dummyPost.author.publicName);
-    modal.find('#edit-body').text(dummyPost.body);
-    modal.find('#edit-postDate').text(dummyPost.postDate);
-    modal.find('#edit-expiration').text(dummyPost.expiration);
-    modal.find('#edit-isApproved').text(dummyPost.isApproved);
-    modal.find('#edit-isVisible').text(dummyPost.isVisible);
-    var tagString = " ";
-    $.each(dummyPost.taggs, function (index, tag) {
-        tagString += tag.tagName;
+    $('#body').empty();
+
+    $.ajax({
+        type: 'GET',
+        url: 'post/' + postId
+    }).success(function (post) {
+        modal.find("#postid").text(post.postId);
+        modal.find('#edit-title').val(post.title);
+        //modal.find('#edit-author').val(post.author.publicName);
+        modal.find('#edit-body').val(post.body);
+        modal.find('#edit-postDate').val(post.postDate);
+        modal.find('#edit-expiration').val(post.expiration);
+        modal.find('#edit-isPublished').val(post.isPublished);
+        var tagString = " ";
+        $.each(post.tags, function (index, tag) {
+            tagString += tag.tagName;
+        });
+        modal.find('#edit-tags').val(tagString);
     });
-    modal.find('#edit-tags').text(tagString);
 });
-
-
-
-// dummy data
-
-var testPostData = [
-    {
-        postId: 1,
-        title: "Title of Post",
-        body: "This is the body of my post",
-        author: {
-            userId: 1,
-            userName: "Dave",
-            password: "password",
-            isEnabled: true,
-            publicName: "Dave LastName"
-        },
-        tags: [{
-            tag: {
-                tagId: 1,
-                tagName: "happy"
-            },
-            tag: {
-                tagId: 2,
-                tagName: "sad"
-            },
-            tag: {
-                tagId: 3,
-                tagName: "mad"
-            }
-        }],
-        postDate: "11/15/2015",
-        expirationDate: "12/31/2015",
-        isApproved: true,
-        isVisible: true},
-    {
-        postId: 2,
-        title: "Title of Post 2",
-        body: "This is the body of second my post",
-        author: {
-            userId: 1,
-            userName: "Dave",
-            password: "password",
-            isEnabled: true,
-            publicName: "Dave LastName"
-        },
-        tags: {
-            tag: {
-                tagId: 1,
-                tagName: "happy"
-            },
-            tag: {
-                tagId: 2,
-                tagName: "sad"
-            },
-            tag: {
-                tagId: 3,
-                tagName: "mad"
-            }
-        },
-        postDate: "11/15/2015",
-        expirationDate: "12/31/2015",
-        isApproved: true,
-        isVisible: true}
-];
-
-var dummyPost =
-        {
-            postId: 2,
-            title: "Dummy Title of Post 2",
-            body: "This is the dummy body of second my post",
-            author: {
-                userId: 1,
-                userName: "Dave",
-                password: "password",
-                isEnabled: true,
-                publicName: "Dave LastName"
-            },
-            taggs: [{
-                tag: {
-                    tagId: 1,
-                    tagName: "happy"
-                },
-                tag: {
-                    tagId: 2,
-                    tagName: "sad"
-                },
-                tag: {
-                    tagId: 3,
-                    tagName: "mad"
-                }
-            }],
-            postDate: "11/15/2015",
-            expirationDate: "12/31/2015",
-            isApproved: true,
-            isVisible: true
-        };
