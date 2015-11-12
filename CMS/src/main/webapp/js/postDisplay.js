@@ -29,7 +29,7 @@ function loadTags(){
         url: 'tags'
     }).success(function (alltags, status){
         $.each(alltags, function(index, tag){
-            tagList.append($('<ul>')).append($('<li>')).append($('<a>')
+            tagList.append($('<ul class="nav">')).append($('<li>')).append($('<a>')
             .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text(tag.tagName));
         });
     });
@@ -57,5 +57,12 @@ function clearPosts() {
     $('#blogContent').empty();
 }
 
+function doRotate(elementId) {
+    var g = $(elementId);
+    g.delay(300).animate({rotate: '360deg'}, 1500);
+    
+}
 
-
+function spinorama() {
+    
+}

@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 12, 2015, 4:23:30 PM
+    Author     : apprentice
+*/
+
+a {
+    cursor: pointer; 
+}
+
+h1.serif {
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
+    text-shadow: 2px 2px #C0C0C0;
+    color:#5f97bf;
+}
+
+#grad1 {
+    height: 200px;
+    background: -webkit-linear-gradient(left, Gainsboro , Navy); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, Gainsboro, Navy); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, Gainsboro, Navy); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, Gainsboro, Navy); /* Standard syntax (must be last) */
+}
