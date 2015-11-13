@@ -12,7 +12,10 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <!-- SWC Icon -->
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
+<<<<<<< HEAD
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css"
+        
+=======
         <style>
             h1.serif {
                 font-family: "Times New Roman", Times, serif;
@@ -38,6 +41,7 @@
                 background: linear-gradient(to left, Gainsboro, Navy); /* Standard syntax (must be last) */
             }
         </style>
+>>>>>>> master
     </head>
     <body  style='background-color:#b3ffd9'>
         <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
