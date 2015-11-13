@@ -54,18 +54,18 @@ public class CmsCreateJdbcImplTest {
      * Test of addPost method, of class CmsCreateJdbcImpl.
      */
     
-    @Test
-    public void testAddPost() {
-        Date date = new Date();
-        
-        Post tPost = new Post();
-        tPost.setBody("LOLOL");
-        tPost.setExpiration(date);
-        tPost.setPostDate(date);
-        tPost.setTags("A Bay Bay");
-        tPost.setTitle("Test Post");
-        System.out.println(tPost);
-        dao.addPost(tPost);
-    }
+//    @Test
+//    public void testAddPost() {
+//        Date date = new Date();
+//        
+//        Post tPost = new Post();
+//        tPost.setBody("LOLOL");
+//        tPost.setExpiration(date);
+//        tPost.setPostDate(date);
+//        tPost.setTags("A Bay Bay");
+//        tPost.setTitle("Test Post");
+//        System.out.println(tPost);
+//        dao.addPost(tPost);
+//    }
     
 }

@@ -18,18 +18,22 @@
                 text-shadow: 2px 2px #C0C0C0;
                 color:#5f97bf;
             }
-
-            #grad1 {
-                height: 200px;
-                background: -webkit-linear-gradient(left, Gainsboro , Navy); /* For Safari 5.1 to 6.0 */
-                background: -o-linear-gradient(right, Gainsboro, Navy); /* For Opera 11.1 to 12.0 */
-                background: -moz-linear-gradient(right, Gainsboro, Navy); /* For Firefox 3.6 to 15 */
-                background: linear-gradient(to right, Gainsboro, Navy); /* Standard syntax (must be last) */
+            
+            #xyz {
+                font color = "gainsboro";
             }
+
+/*            #grad1 {
+                height: 200px;
+                background: -webkit-linear-gradient(left, Gainsboro , Navy);  For Safari 5.1 to 6.0 
+                background: -o-linear-gradient(right, Gainsboro, Navy);  For Opera 11.1 to 12.0 
+                background: -moz-linear-gradient(right, Gainsboro, Navy);  For Firefox 3.6 to 15 
+                background: linear-gradient(to right, Gainsboro, Navy);  Standard syntax (must be last) 
+            }*/
         </style>
     </head>
-    <body  style='background-color:teal'>
-        <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
+    <body  style='background-color:gainsboro'>
+        <a  id="xyz" href="${pageContext.request.contextPath}/createPosts" >Click here, Emma!</a>
         <br>
         <div class="container">
             <!--<div id="grad1"></div>-->
