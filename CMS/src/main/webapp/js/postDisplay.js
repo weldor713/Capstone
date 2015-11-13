@@ -29,7 +29,7 @@ function loadTags(){
         url: 'tags'
     }).success(function (alltags, status){
         $.each(alltags, function(index, tag){
-            tagList.append($('<ul>')).append($('<li>')).append($('<a class="tags">')
+            tagList.append($('<li>')).append($('<a class="tags">')
             .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text(tag.tagName));
             //.css({'color': '#b3ffd9'}));
         });

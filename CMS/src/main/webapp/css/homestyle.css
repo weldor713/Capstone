@@ -10,6 +10,11 @@ a.tags {
     color: #b3ffd9;
     text-decoration: none;
 }
+li {
+    list-style-type: none;
+    margin: 15px;
+    
+}
 h1.serif {
     font-family: "Times New Roman", Times, serif;
     text-shadow: 1px 1px #C0C0C0;
