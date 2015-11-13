@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 
 //have the postById function pass through this to support the same layout
-function loadPosts() {
+function loadPosts(data, status) {
     clearPosts();
     var blogRoll = $('#blogContent');
     
@@ -26,15 +26,18 @@ function loadPosts() {
     blogRoll.fadeIn(3000);
 }
 
+function clearPosts() {
+    $('#blogContent').empty();
+}
+
 function loadTags() {
     var tagList = $('#tagDisplay');
     $.ajax({
         url: 'tags'
     }).success(function (alltags, status) {
         $.each(alltags, function (index, tag) {
-            tagList.append($('<li>')).append($('<a class="tags">')
+            tagList.append($('<li class="tagList">')).append($('<a class="tags">')
                     .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text(tag.tagName));
-            //.css({'color': '#b3ffd9'}));
         });
     });
 

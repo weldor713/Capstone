@@ -28,7 +28,7 @@
 
             <br>
 
-            <div class="row">
+            <div class="container">
                 <div id="tagContainer" class="col-sm-2">
                     <div id="tagDisplay"></div>
 

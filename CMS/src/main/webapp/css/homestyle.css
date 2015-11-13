@@ -2,13 +2,12 @@ a {
     cursor: pointer; 
 }
 a.tags:hover {
-    //background-color: black;
     color: red;
 }
 a.tags {
-    //background-color: black;
     color: #b3ffd9;
     text-decoration: none;
+    text-align: right;
 }
 div.postContain {
     color: #b3ffd9;
@@ -24,9 +23,9 @@ p.tagToPost {
     color: navy;
     padding-left: 25px;
 }
-li {
+li.tagList {
     list-style-type: none;
-    margin: 15px;
+    margin: 10px;
 }
 h1.serif {
     font-family: "Times New Roman", Times, serif;
