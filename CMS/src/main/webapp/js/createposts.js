@@ -53,13 +53,13 @@ $(document).ready(function () {
 
     $(function () {
         $("#add-postDate").datepicker({
-            dateFormat: "mm/dd/yy"
+            dateFormat: "yy-mm-dd"
         });
     });
 
     $(function () {
         $("#add-expiration").datepicker({
-            dateFormat: "mm/dd/yy"
+            dateFormat: "yy-mm-dd"
         });
     });
 });
