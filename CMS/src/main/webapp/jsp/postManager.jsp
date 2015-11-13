@@ -73,7 +73,7 @@
                         <h4 class="modal-title" id="detailsModalLabel">Post Details</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 id="postId"></h3>
+                        <h3 id="details-postId"></h3>
                         <table class="table table-bordered">
                             <tr>
                                 <th>Title:</th>
@@ -126,7 +126,7 @@
                         <h4 class="modal-title" id="detailsModalLabel">Edit Post</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 id="postId"></h3>
+                        <h3 id="edit-postId"></h3>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label for="edit-title" class="col-md-4 control-label">

@@ -9,8 +9,34 @@ $(document).ready(function () {
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
-
     loadPosts();
+    
+        $('#edit-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'PUT',
+            url: 'post/' + $('#edit-postId').val(),
+            data: JSON.stringify({
+                postId: $('#edit-postId').val(),
+                title: $('#edit-title').val(),
+                body: tinyMCE.activeEditor.getContent({format: 'raw'}),
+                postDate: $('#edit-postDate').val(),
+                expiration: $('#edit-expiration').val(),
+                isPublished: $('#edit-isPublished').val(),
+                tags: $('#edit-tags').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            'dataType': 'json'
+        }).success(function () {
+            loadPosts();
+            $('#editModal').modal('hide');
+        }).error(function (data, status) {
+            console.log("Error");
+        });
+    });
 });
 //Functions
 
@@ -22,6 +48,10 @@ function loadPosts() {
         url: 'allposts'
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
+            if (post.expiration == null) {
+                post.expiration = "none";
+            }
+
             cTable.append($('<tr>')
                     .append($('<td>').text(post.postDate))
                     .append($('<td>')
@@ -35,7 +65,13 @@ function loadPosts() {
                                     )
                             )
                     .append($('<td>').text(post.expiration))
-                    .append($('<td>').text(post.isPublished))
+                    // .append($('<td>').text(post.isPublished))
+                    .append($('<td>')
+                            .append($('<input>')
+                                    .attr({'type': 'checkbox',
+                                        'id': post.postId,
+                                        'onClick': 'pubUnpub(' + post.postId + ')'
+                                    }).prop('checked', post.isPublished)))
                     .append($('<td>')
                             .append($('<a>')
                                     .attr({
@@ -50,6 +86,29 @@ function loadPosts() {
                     );
         });
     });
+}
+
+function pubUnpub(id) {
+    $('#' + id).change(function () {
+        if ($(this).is(':checked')) {
+            console.log("CCCCheckeddddddd");
+            $.ajax({
+                    url: "publish/" + id,
+                    method: 'PUT'
+                }).success(function () {
+                    loadPosts();});
+        }
+        else
+        {
+            console.log("UNCheckeddddddd");
+            $.ajax({
+                    url: "unpublish/" + id,
+                    method: 'PUT'
+                }).success(function () {
+                    loadPosts();});
+        }
+    });
+
 }
 
 function clearPosts() {
@@ -98,7 +157,7 @@ $('#editModal').on('show.bs.modal', function (event) {
     }).success(function (post) {
 
 
-        modal.find("#postid").text(post.postId);
+        modal.find("#edit-postId").val(post.postId);
         modal.find('#edit-title').val(post.title);
         //modal.find('#edit-author').val(post.author.publicName);
         tinyMCE.activeEditor.setContent(post.body);

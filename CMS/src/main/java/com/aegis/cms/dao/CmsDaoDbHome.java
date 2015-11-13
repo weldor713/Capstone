@@ -3,14 +3,19 @@ package com.aegis.cms.dao;
 import com.aegis.cms.model.Post;
 import com.aegis.cms.model.StaticContent;
 import com.aegis.cms.model.Tag;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 public class CmsDaoDbHome implements CmsDao {
 
@@ -34,11 +39,20 @@ public class CmsDaoDbHome implements CmsDao {
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POST
             = "select * from post where post_id = ?";
+    private static final String SQL_UPDATE_POST_PUB_UNPUB
+            ="update post set isPublished = ? where post_id = ?";
+    private static final String SQL_UPDATE_POST
+            ="update post set title = ?, body = ?, postDate = ?, expiration = ?, isPublished = ? where post_id = ?";
+    private static final String SQL_ADD_POST
+            = "insert into post (title, body, postDate, expiration, isPublished) "
+            + "values (?, ?, ?, ?, ?)";
 
     //post_tag queries
     private static final String SQL_SELECT_POST_TAG_TAG_ID_BY_POST_ID
             = "select tag_id from post_tag "
             + "where post_id = ?";
+    private static final String SQL_INSERT_POST_TAG
+            = "insert into post_tag (post_id, tag_id) values(?, ?)";
 
     // tag queries
     private static final String SQL_SELECT_TAG
@@ -46,6 +60,12 @@ public class CmsDaoDbHome implements CmsDao {
             + "where tag_id = ?";
     private static final String SQL_SELECT_ALL_TAGS
             = "select * from tag";
+    private static final String SQL_ADD_TAG
+            = "insert into tag (tagName) "
+            + "values (?)";
+    private static final String SQL_GET_TAG
+            = "select * from tag "
+            + "where tagName = ?";
 
     // HOME PAGE METHODS
     @Override
@@ -70,6 +90,20 @@ public class CmsDaoDbHome implements CmsDao {
     public List<Tag> getAllTags() {
         return jdbcTemplate.query(SQL_SELECT_ALL_TAGS, new TagMapper());
     }
+    
+    // CREATE POST METHODS
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void addPost(Post post) {
+        jdbcTemplate.update(SQL_ADD_POST,
+                post.getTitle(),
+                post.getBody(),
+                post.getPostDate(),
+                post.getExpiration(),
+                post.getIsPublished());
+        post.setPostId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
+        insertPostTag(post);
+    }
 
     // POST MANAGER METHODS
     @Override
@@ -86,6 +120,28 @@ public class CmsDaoDbHome implements CmsDao {
             post.setTagsFromDb(getTagsForPost(post));
         }
         return postList;
+    }
+    
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void editPost(Post post){
+        jdbcTemplate.update(SQL_UPDATE_POST,
+                post.getTitle(),
+                post.getBody(),
+                post.getPostDate(),
+                post.getExpiration(),
+                post.getIsPublished(),
+                post.getPostId());
+                
+        insertPostTag(post);
+    }
+    
+    public void publishPost(int id){
+        jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, true, id);
+    }
+    
+    public void unpublishPost(int id){
+        jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, false, id);
     }
 
     // helper methods
@@ -112,8 +168,40 @@ public class CmsDaoDbHome implements CmsDao {
     }
 
     // OTHER METHODS
-    public void addPost(Post post) {
+    private void insertPostTag(Post post) {
+        int postId = post.getPostId();
+        Set<Tag> tags = post.getTags();
+        int[] tagIds = new int[tags.size()];
+        int counter = 0;
+        for (Tag t : tags) {
+            try {
+                jdbcTemplate.update(SQL_ADD_TAG,
+                        t.getTagName());
+                t.setTagId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
+            } catch (DuplicateKeyException ex) {
+                Tag dbTag = jdbcTemplate.queryForObject(SQL_GET_TAG, new TagMapper(), t.getTagName());
+                t.setTagId(dbTag.getTagId());
+            }
+           
+            tagIds[counter] = t.getTagId();
+            counter++;
+        }
+
+        jdbcTemplate.batchUpdate(SQL_INSERT_POST_TAG, new BatchPreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                ps.setInt(1, postId);
+                ps.setInt(2, tagIds[i]);
+            }
+
+            @Override
+            public int getBatchSize() {
+                return tagIds.length;
+            }
+
+        });
     }
+    
 
     public void addTag(Tag tag) {
     }

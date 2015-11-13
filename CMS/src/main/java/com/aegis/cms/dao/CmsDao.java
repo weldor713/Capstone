@@ -23,6 +23,12 @@ public interface CmsDao {
     public Post getPostById(int id);
 
     public List<Post> getAllPosts();
+    
+    public void editPost(Post post);
+    
+    public void publishPost(int id);
+    
+    public void unpublishPost(int id);
 
     // Static Content
     public void addStaticContent(StaticContent cont);
