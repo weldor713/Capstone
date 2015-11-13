@@ -33,9 +33,11 @@ public class CreatePostsController {
     public Post addPost(@RequestBody Post post, HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")) {
             post.setIsPublished(true);
+            post.setAuthor(dao.getAuthorFromUserName(request.getRemoteUser()));
             dao.addPost(post);
         } else if (request.isUserInRole("ROLE_USER")) {
             post.setIsPublished(false);
+            post.setAuthor(dao.getAuthorFromUserName(request.getRemoteUser()));
             dao.addPost(post);
         }
         return post;

@@ -13,7 +13,7 @@ function loadPosts() {
         url: 'posts'
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
-            blogRoll.append($('<p>').text(post.title + " " + post.postDate)) // </p>
+            blogRoll.append($('<p>').text(post.title + " " + post.postDate + " by " + post.author)) // </p>
                     .append(post.body);
 
             $.each(post.tags, function (index, tag) {
