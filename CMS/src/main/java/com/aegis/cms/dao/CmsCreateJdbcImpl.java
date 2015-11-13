@@ -23,8 +23,8 @@ public class CmsCreateJdbcImpl implements CmsCreateDao {
 
     //Post Crud
     private static final String SQL_ADD_POST
-            = "insert into post (title, body, postDate, expiration) "
-            + "values (?, ?, ?, ?)";
+            = "insert into post (title, body, postDate, expiration, isPublished) "
+            + "values (?, ?, ?, ?, ?)";
 
     //Post_Tag    
     private static final String SQL_INSERT_POST_TAG
@@ -45,7 +45,8 @@ public class CmsCreateJdbcImpl implements CmsCreateDao {
                 post.getTitle(),
                 post.getBody(),
                 post.getPostDate(),
-                post.getExpiration());
+                post.getExpiration(),
+                post.getIsPublished());
         post.setPostId(templ.queryForObject("select LAST_INSERT_ID()", Integer.class));
         insertPostTag(post);
     }
