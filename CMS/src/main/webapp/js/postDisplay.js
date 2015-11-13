@@ -13,11 +13,11 @@ function loadPosts() {
         url: 'posts'
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
-            blogRoll.append($('<p>').text(post.title + " " + post.postDate)) // </p>
-                    .append(post.body);
+            blogRoll.append($('<div class="postContain">')
+                    .text(post.title + " " + post.postDate).append(post.body));
 
             $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<p style="color:blue">').text(tag.tagName + " "));
+                blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
             });
         });
     });

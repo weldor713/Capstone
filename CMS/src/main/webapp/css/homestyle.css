@@ -10,6 +10,20 @@ a.tags {
     color: #b3ffd9;
     text-decoration: none;
 }
+div.postContain {
+    color: #b3ffd9;
+    padding: 10px;
+    background-color: navy;
+    border-radius: 8px;
+}
+p.posts {
+    color: #b3ffd9;
+    padding-left: 25px;
+}
+p.tagToPost {
+    color: navy;
+    padding-left: 25px;
+}
 li {
     list-style-type: none;
     margin: 15px;
@@ -26,10 +40,12 @@ h1.serif {
     padding: 7px;
 
 }
+/*
 #blogContent {
     background-color: navy;
     border-radius: 20px;
 }
+*/
 #tagContainer {
     background-color: navy;
     border-radius: 10px;
