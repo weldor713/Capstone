@@ -4,9 +4,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AEGiS Content Management System</title>
+        <link href="${pageContext.request.contextPath}/js/jquery-ui.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
-
+        <style>
+            .clsDatePicker {
+                z-index: 100000;
+            }
+        </style>
 
     </head>
     <body>
@@ -44,10 +49,11 @@
                         <tr>
                             <th width="15%">Post Date</th>
                             <th width="25%">Title</th>
+                            <th width="10%">Author</th>
                             <th width="15%">Expiration Date</th>
                             <th width="15%">Published to Public</th>
                             <th width="15%"></th>
-                            <th width="15%"></th>
+                            <!--<th width="15%">Delete</th>-->
                         </tr>
                         <tbody id="contentRows"></tbody>
                     </table>
@@ -73,7 +79,7 @@
                         <h4 class="modal-title" id="detailsModalLabel">Post Details</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 id="postId"></h3>
+                        <h3 id="details-postId"></h3>
                         <table class="table table-bordered">
                             <tr>
                                 <th>Title:</th>
@@ -126,7 +132,7 @@
                         <h4 class="modal-title" id="detailsModalLabel">Edit Post</h4>
                     </div>
                     <div class="modal-body">
-                        <h3 id="postId"></h3>
+                        <h3 id="edit-postId"></h3>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label for="edit-title" class="col-md-4 control-label">
@@ -149,7 +155,7 @@
                                     Post Date:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" id="edit-postDate">
+                                    <input type="text" class="clsdatepicker form-control" id="edit-postDate">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -157,15 +163,7 @@
                                     Expiration Date:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" id="edit-expiration">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="edit-isPublished" class="col-md-4 control-label">
-                                    Is Published:
-                                </label>
-                                <div class="col-md-8">
-                                    <input type="checkbox" class="form-control" id="edit-isPublished">
+                                    <input type="text" class="clsdatepicker form-control" id="edit-expiration">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -198,6 +196,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/postManager.js"></script>
 </body>
 </html>

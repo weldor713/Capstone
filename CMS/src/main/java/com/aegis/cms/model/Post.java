@@ -10,9 +10,8 @@ public class Post implements Serializable {
     private int postId;
     private String title;
     private String body;
-//    private User author;
+    private String author;
     private Set<Tag> tags = new HashSet();
-
     private Date postDate;
     private Date expiration;
     private boolean isPublished;
@@ -54,7 +53,7 @@ public class Post implements Serializable {
         String[] tempArray = tagString.split(",");
         for (int i = 0; i < tempArray.length; i++) {
             Tag tempTag = new Tag();
-            tempTag.setTagName(tempArray[i]);
+            tempTag.setTagName(tempArray[i].trim());
             tagSet.add(tempTag);
         }
         this.tags.addAll(tagSet);
@@ -84,5 +83,13 @@ public class Post implements Serializable {
 
     public void setIsPublished(boolean isPublished) {
         this.isPublished = isPublished;
+    }
+    
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

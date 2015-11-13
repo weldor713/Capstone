@@ -1,6 +1,6 @@
 package com.aegis.cms.controller;
 
-import com.aegis.cms.dao.CmsCreateDao;
+import com.aegis.cms.dao.CmsDao;
 import com.aegis.cms.model.Post;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class CreatePostsController {
 
-    private CmsCreateDao dao;
+    private CmsDao dao;
 
     @Inject
-    public CreatePostsController(CmsCreateDao dao) {
+    public CreatePostsController(CmsDao dao) {
         this.dao = dao;
     }
 
@@ -33,19 +33,13 @@ public class CreatePostsController {
     public Post addPost(@RequestBody Post post, HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")) {
             post.setIsPublished(true);
+            post.setAuthor(dao.getAuthorFromUserName(request.getRemoteUser()));
             dao.addPost(post);
         } else if (request.isUserInRole("ROLE_USER")) {
             post.setIsPublished(false);
+            post.setAuthor(dao.getAuthorFromUserName(request.getRemoteUser()));
             dao.addPost(post);
         }
         return post;
     }
-
-    /*
-     @RequestMapping(value="/addTag", method=RequestMethod.POST)
-     @ResponseStatus(HttpStatus.CREATED)
-     public void addtag(@RequestBody String tag){
-     dao.addTag(tag);
-     }
-     */
 }

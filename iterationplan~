@@ -28,3 +28,21 @@ Iteration #2 - Nov 10-11
 - dao start
 - clean db
 
+post mortem: security basic functionality done, user manager started.
+static content area, can only edit but not add. future discussion to be made
+content displays with newest at top
+tags show and relate to posts, tags must be unique attach appropriately
+
+
+
+Iteration #3 - Nov 12-13
+- prettying it up - the front page
+- user manager
+	- listing users
+	- get user details
+	- edit users - somehow
+	- add users
+- post manager and create post
+	- enable isPublished functionality
+- JUnit
+
