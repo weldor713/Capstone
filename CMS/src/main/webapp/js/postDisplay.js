@@ -7,7 +7,6 @@ $(document).ready(function () {
 
 //have the postById function pass through this to support the same layout
 function loadPosts(data, status) {
-    clearPosts();
     var blogRoll = $('#blogContent');
     
     $.ajax({
@@ -72,5 +71,5 @@ function doRotate(elementId) {
 }
 
 function spinorama() {
-
+    
 }

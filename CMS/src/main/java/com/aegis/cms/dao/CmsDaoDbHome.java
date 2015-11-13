@@ -31,7 +31,7 @@ public class CmsDaoDbHome implements CmsDao {
             + "order by postDate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_VISIBLE_POSTS
             = "select * from post "
-            + "where isPublished = ? AND post.postDate <= CURDATE() AND (CURDATE() < post.expiration OR post.expiration IS NULL) "
+            + "where isPublished = ? AND post.postDate <= CURDATE() OR (CURDATE() < post.expiration OR post.expiration IS NULL) "
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
             = "select * "
