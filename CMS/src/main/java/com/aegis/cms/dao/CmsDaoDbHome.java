@@ -31,12 +31,12 @@ public class CmsDaoDbHome implements CmsDao {
             + "order by postDate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_VISIBLE_POSTS
             = "select * from post "
-            + "where isPublished = ? "
+            + "where isPublished = ? AND post.postdate <= CURDATE() AND (CURDATE() < post.expiration OR post.expiration IS NULL) "
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
             = "select p.post_id, p.title, p.body, p.postDate, p.expiration, p.isPublished "
             + "from post p join post_tag pt on tag_id where p.post_id  = pt.post_id and pt.tag_id  =  ? and p.isPublished = ?"
-            + "order by postDate desc, post_id desc";
+            + "order by p.postDate desc, p.post_id desc";
     private static final String SQL_SELECT_POST
             = "select * from post where post_id = ?";
     private static final String SQL_UPDATE_POST_PUB_UNPUB
