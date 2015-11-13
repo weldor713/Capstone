@@ -17,7 +17,7 @@ function loadPosts() {
             blogRoll.append($('<div class="postContain">')
                     .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
             $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
+                blogRoll.append($('<span class="tagToPost">').text("#" + tag.tagName + " "));
             });
 
         });
@@ -51,7 +51,7 @@ function showByTag(id) {
                     .append(post.body);
 
             $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<p>').text(tag.tagName
+                blogRoll.append($('<span>').text(tag.tagName
                         + " "));
             });
         });
