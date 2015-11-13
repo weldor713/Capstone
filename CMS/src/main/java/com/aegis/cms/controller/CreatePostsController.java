@@ -32,10 +32,10 @@ public class CreatePostsController {
     @ResponseBody
     public Post addPost(@RequestBody Post post, HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")) {
-            post.setIsPublished('Y');
+            post.setIsPublished(true);
             dao.addPost(post);
         } else if (request.isUserInRole("ROLE_USER")) {
-            post.setIsPublished('N');
+            post.setIsPublished(false);
             dao.addPost(post);
         }
         return post;

@@ -30,7 +30,8 @@ function loadTags(){
     }).success(function (alltags, status){
         $.each(alltags, function(index, tag){
             tagList.append($('<ul>')).append($('<li>')).append($('<a>')
-            .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text(tag.tagName));
+            .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text(tag.tagName)
+            .css({'color': '#b3ffd9'}));
         });
     });
     
@@ -47,7 +48,8 @@ function showByTag(id){
                     .append(post.body);
 
             $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<p style="color:blue">').text(tag.tagName + " "));
+                blogRoll.append($('<p>').text(tag.tagName
+                        + " "));
             });
         });
     });
