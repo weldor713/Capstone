@@ -12,32 +12,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <!-- SWC Icon -->
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css"
-        <style>
-            h1.serif {
-                font-family: "Times New Roman", Times, serif;
-                text-shadow: 1px 1px #C0C0C0;
-                color:#b3ffd9;
-            }
-            #static {
-                background-color: lightslategray;
-                border-radius: 5px;
-                padding: 7px;
-                
-            }
-            #blogContent {
-                background-color: navy;
-                border-radius: 20px;
-            }
-            #tagContainer {
-                background-color: navy;
-                border-radius: 10px;
-            }
-            #grad1 {
-                height: 200px;
-                background: linear-gradient(to left, Gainsboro, Navy); /* Standard syntax (must be last) */
-            }
-        </style>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
     <body  style='background-color:#b3ffd9'>
         <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
