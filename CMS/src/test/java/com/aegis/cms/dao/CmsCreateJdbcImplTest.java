@@ -53,7 +53,7 @@ public class CmsCreateJdbcImplTest {
     /**
      * Test of addPost method, of class CmsCreateJdbcImpl.
      */
-    
+    /*
     @Test
     public void testAddPost() {
         Date date = new Date();
@@ -64,8 +64,9 @@ public class CmsCreateJdbcImplTest {
         tPost.setPostDate(date);
         tPost.setTags("A Bay Bay");
         tPost.setTitle("Test Post");
+        tPost.setIsPublished(true);
         System.out.println(tPost);
         dao.addPost(tPost);
     }
-    
+    */
 }
