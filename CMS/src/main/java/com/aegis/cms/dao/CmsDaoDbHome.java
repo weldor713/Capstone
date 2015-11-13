@@ -59,7 +59,7 @@ public class CmsDaoDbHome implements CmsDao {
 
     @Override
     public List<Post> getAllPostsByTag(int id) {
-        List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id);
+        List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id, "1");
         for (Post post : postList) {
             post.setTagsFromDb(getTagsForPost(post));
         }
