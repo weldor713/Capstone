@@ -42,7 +42,7 @@ public class CmsDaoDbHome implements CmsDao {
     private static final String SQL_UPDATE_POST_PUB_UNPUB
             ="update post set isPublished = ? where post_id = ?";
     private static final String SQL_UPDATE_POST
-            ="update post set title = ?, body = ?, postDate = ?, expiration = ?, isPublished = ? where post_id = ?";
+            ="update post set title = ?, body = ?, postDate = ?, expiration = ? where post_id = ?";
     private static final String SQL_ADD_POST
             = "insert into post (title, body, postDate, expiration, isPublished, author) "
             + "values (?, ?, ?, ?, ?, ?)";
@@ -57,6 +57,9 @@ public class CmsDaoDbHome implements CmsDao {
             + "where post_id = ?";
     private static final String SQL_INSERT_POST_TAG
             = "insert into post_tag (post_id, tag_id) values(?, ?)";
+    private static final String SQL_DELETE_POST_TAG 
+            = "delete from post_tag "
+            + "where post_id = ?";
 
     // tag queries
     private static final String SQL_SELECT_TAG
@@ -139,16 +142,17 @@ public class CmsDaoDbHome implements CmsDao {
                 post.getBody(),
                 post.getPostDate(),
                 post.getExpiration(),
-                post.getIsPublished(),
                 post.getPostId());
-                
+        deletePostTag(post);
         insertPostTag(post);
     }
     
+    @Override
     public void publishPost(int id){
         jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, true, id);
     }
     
+    @Override
     public void unpublishPost(int id){
         jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, false, id);
     }
@@ -195,7 +199,7 @@ public class CmsDaoDbHome implements CmsDao {
             tagIds[counter] = t.getTagId();
             counter++;
         }
-
+    
         jdbcTemplate.batchUpdate(SQL_INSERT_POST_TAG, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
@@ -211,6 +215,9 @@ public class CmsDaoDbHome implements CmsDao {
         });
     }
     
+    private void deletePostTag(Post post) {
+        jdbcTemplate.update(SQL_DELETE_POST_TAG, post.getPostId());
+    }
 
     public void addTag(Tag tag) {
     }
