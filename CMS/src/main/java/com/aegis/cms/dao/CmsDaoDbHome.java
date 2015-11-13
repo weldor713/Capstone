@@ -44,8 +44,12 @@ public class CmsDaoDbHome implements CmsDao {
     private static final String SQL_UPDATE_POST
             ="update post set title = ?, body = ?, postDate = ?, expiration = ?, isPublished = ? where post_id = ?";
     private static final String SQL_ADD_POST
-            = "insert into post (title, body, postDate, expiration, isPublished) "
-            + "values (?, ?, ?, ?, ?)";
+            = "insert into post (title, body, postDate, expiration, isPublished, author) "
+            + "values (?, ?, ?, ?, ?, ?)";
+    
+    //user queries
+    private static final String SQL_GET_PUBNAME_BY_USERNAME
+            = "select publicname from users where username = ?";
 
     //post_tag queries
     private static final String SQL_SELECT_POST_TAG_TAG_ID_BY_POST_ID
@@ -100,9 +104,14 @@ public class CmsDaoDbHome implements CmsDao {
                 post.getBody(),
                 post.getPostDate(),
                 post.getExpiration(),
-                post.getIsPublished());
+                post.getIsPublished(),
+                post.getAuthor());
         post.setPostId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
         insertPostTag(post);
+    }
+    
+    public String getAuthorFromUserName(String username){
+        return jdbcTemplate.queryForObject(SQL_GET_PUBNAME_BY_USERNAME, String.class, username);
     }
 
     // POST MANAGER METHODS
@@ -232,6 +241,7 @@ public class CmsDaoDbHome implements CmsDao {
             post.setPostDate(rs.getDate("postDate"));
             post.setExpiration(rs.getDate("expiration"));
             post.setIsPublished(rs.getBoolean("isPublished"));
+            post.setAuthor(rs.getString("author"));
             return post;
         }
     }

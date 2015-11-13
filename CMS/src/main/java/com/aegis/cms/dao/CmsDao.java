@@ -11,6 +11,8 @@ public interface CmsDao {
     public void addPost(Post post);
 
     public void addTag(Tag tag);
+    
+    public String getAuthorFromUserName(String username);
 
     // Home Page
     public List<Post> getAllVisiblePosts();
