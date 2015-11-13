@@ -85,7 +85,6 @@ public class UserDaoDbImpl implements CmsUserManDao {
             user.setUserName(rs.getString("username"));
             user.setPublicName(rs.getString("publicname"));
             user.setPassword(rs.getString("password"));
-//            user.setIsEnabled(rs.getBoolean("enabled"));
             user.setAuthority(rs.getString("authority"));
             return user;
         }
