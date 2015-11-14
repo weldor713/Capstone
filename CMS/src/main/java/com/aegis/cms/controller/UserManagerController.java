@@ -1,6 +1,6 @@
 package com.aegis.cms.controller;
 
-import com.aegis.cms.dao.CmsUserManDao;
+import com.aegis.cms.dao.CmsUserDao;
 import com.aegis.cms.model.User;
 import java.util.List;
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class UserManagerController {
 
-    private CmsUserManDao userManDao;
+    private CmsUserDao userManDao;
     
         @RequestMapping(value = "/userMan", method = RequestMethod.GET)
     public String displayUserManager() {
@@ -24,7 +24,7 @@ public class UserManagerController {
     }
 
     @Inject
-    public UserManagerController(CmsUserManDao userManDao) {
+    public UserManagerController(CmsUserDao userManDao) {
         this.userManDao = userManDao;
     }
 

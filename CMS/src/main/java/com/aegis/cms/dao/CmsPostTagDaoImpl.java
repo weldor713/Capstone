@@ -1,7 +1,6 @@
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.Post;
-import com.aegis.cms.model.StaticContent;
 import com.aegis.cms.model.Tag;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +16,7 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-public class CmsDaoDbHome implements CmsDao {
+public class CmsPostTagDaoImpl implements CmsPostTagDao {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -31,18 +30,25 @@ public class CmsDaoDbHome implements CmsDao {
             + "order by postDate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_VISIBLE_POSTS
             = "select * from post "
-            + "where isPublished = ? AND post.postDate <= CURDATE() AND (CURDATE() < post.expiration OR post.expiration IS NULL) "
+            + "where isPublished = ? "
+            + "AND post.postDate <= CURDATE() "
+            + "AND (CURDATE() < post.expiration "
+            + "OR post.expiration IS NULL) "
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
-            = "select * "
-            + "from post p join post_tag pt on tag_id where p.post_id  = pt.post_id and pt.tag_id  =  ? and p.isPublished = ? "
+            = "select * from post p "
+            + "join post_tag pt on tag_id "
+            + "where p.post_id  = pt.post_id "
+            + "and pt.tag_id  =  ? and p.isPublished = ? "
             + "order by p.postDate desc, p.post_id desc";
     private static final String SQL_SELECT_POST
             = "select * from post where post_id = ?";
     private static final String SQL_UPDATE_POST_PUB_UNPUB
             ="update post set isPublished = ? where post_id = ?";
     private static final String SQL_UPDATE_POST
-            ="update post set title = ?, body = ?, postDate = ?, expiration = ? where post_id = ?";
+            ="update post "
+            + "set title = ?, body = ?, postDate = ?, expiration = ? "
+            + "where post_id = ?";
     private static final String SQL_ADD_POST
             = "insert into post (title, body, postDate, expiration, isPublished, author) "
             + "values (?, ?, ?, ?, ?, ?)";
@@ -116,6 +122,7 @@ public class CmsDaoDbHome implements CmsDao {
         insertPostTag(post);
     }
     
+    @Override
     public String getAuthorFromUserName(String username){
         return jdbcTemplate.queryForObject(SQL_GET_PUBNAME_BY_USERNAME, String.class, username);
     }
@@ -160,8 +167,7 @@ public class CmsDaoDbHome implements CmsDao {
         jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, false, id);
     }
 
-    // helper methods
-
+    // HELPER METHODS
     private Set<Tag> getTagsForPost(Post post) {
         Set<Tag> tagSet = new HashSet<>();
         List<Integer> tagIds = jdbcTemplate.queryForList(SQL_SELECT_POST_TAG_TAG_ID_BY_POST_ID,
@@ -183,7 +189,6 @@ public class CmsDaoDbHome implements CmsDao {
         }
     }
 
-    // OTHER METHODS
     private void insertPostTag(Post post) {
         int postId = post.getPostId();
         Set<Tag> tags = post.getTags();
@@ -220,23 +225,6 @@ public class CmsDaoDbHome implements CmsDao {
     
     private void deletePostTag(Post post) {
         jdbcTemplate.update(SQL_DELETE_POST_TAG, post.getPostId());
-    }
-
-    public void addTag(Tag tag) {
-    }
-
-    public void addStaticContent(StaticContent cont) {
-    }
-
-    public StaticContent getStaticContent() {
-        StaticContent sc = new StaticContent();
-        return sc;
-    }
-
-    public void updateStaticContent(StaticContent cont) {
-    }
-
-    public void deleteStaticContent(StaticContent cont) {
     }
 
     // MAPPERS
