@@ -53,7 +53,7 @@ public class Post implements Serializable {
         String[] tempArray = tagString.split(",");
         for (int i = 0; i < tempArray.length; i++) {
             Tag tempTag = new Tag();
-            tempTag.setTagName(tempArray[i]);
+            tempTag.setTagName(tempArray[i].trim());
             tagSet.add(tempTag);
         }
         this.tags.addAll(tagSet);
