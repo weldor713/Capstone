@@ -72,7 +72,7 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
             = "select * from tag "
             + "where tag_id = ?";
     private static final String SQL_SELECT_ALL_TAGS
-            = "select t.tag_id, t.tagName from tag t "
+            = "select distinct t.tag_id, t.tagName from tag t "
             + "join post_tag pt on t.tag_id = pt.tag_id "
             + "join post p on pt.post_id = p.post_id "
             + "where p.isPublished = 1 AND p.postDate <= CURDATE() AND (CURDATE() < p.expiration OR p.expiration IS NULL) ";

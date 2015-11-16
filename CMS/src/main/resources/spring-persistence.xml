@@ -21,7 +21,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
-                  value="jdbc:mysql://localhost:3306/cms_live"/>
+                  value="jdbc:mysql://localhost:3306/CMSTestScott"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <property name="initialSize" value="5"/>
