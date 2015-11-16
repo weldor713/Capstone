@@ -14,7 +14,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
-    <body  style='background-color:#b3ffd9'>
+    <body  style='background-color:#27ae60'>
         <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
         <br>
         <div class="container">
@@ -30,8 +30,9 @@
 
             <div class="container">
                 <div id="tagContainer" class="col-sm-2">
+                    <h1>TAGS:</h1>
                     <div id="tagDisplay"></div>
-
+                    
 
                 </div>
                 <div class="container col-sm-10" >
