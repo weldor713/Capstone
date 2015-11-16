@@ -30,7 +30,10 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
             + "order by postDate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_VISIBLE_POSTS
             = "select * from post "
-            + "where isPublished = ? AND post.postDate <= CURDATE() AND (CURDATE() < post.expiration) "
+            + "where isPublished = ? "
+            + "AND post.postDate <= CURDATE() "
+            + "AND (CURDATE() < post.expiration "
+            + "OR post.expiration IS NULL) "
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
             = "select * from post p "
@@ -63,18 +66,19 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     private static final String SQL_DELETE_POST_TAG 
             = "delete from post_tag "
             + "where post_id = ?";
+    private static final String SQL_DELETE_POST 
+            = "delete from post "
+            + "where post_id = ?";
 
     // tag queries
     private static final String SQL_SELECT_TAG
             = "select * from tag "
             + "where tag_id = ?";
     private static final String SQL_SELECT_ALL_TAGS
-            = "select * from tag";
-            /*
-            = "select t.tag_id, t.tagName from tag t "
+            = "select distinct t.tag_id, t.tagName from tag t "
             + "join post_tag pt on t.tag_id = pt.tag_id "
             + "join post p on pt.post_id = p.post_id "
-            + "where p.isPublished = 1 AND p.postDate <= CURDATE() AND (CURDATE() < p.expiration OR p.expiration IS NULL) ";*/
+            + "where p.isPublished = 1 AND p.postDate <= CURDATE() AND (CURDATE() < p.expiration OR p.expiration IS NULL) ";
     private static final String SQL_ADD_TAG
             = "insert into tag (tagName) "
             + "values (?)";
@@ -166,6 +170,11 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     @Override
     public void unpublishPost(int id){
         jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, false, id);
+    }
+    
+    @Override
+    public void deletePostTagById(int id) {
+        jdbcTemplate.update(SQL_DELETE_POST, id);
     }
 
     // HELPER METHODS

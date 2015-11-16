@@ -58,4 +58,10 @@ public class PostManagerController {
         post.setPostId(postId);
         dao.editPost(post);
     }
+    
+    @RequestMapping (value="post/{id}", method=RequestMethod.DELETE)
+    @ResponseStatus (HttpStatus.NO_CONTENT)
+    public void deletePost(@PathVariable("id")int id) {
+        dao.deletePostTagById(id);
+    }
 }

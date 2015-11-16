@@ -28,5 +28,7 @@ public interface CmsPostTagDao {
     public void publishPost(int id);
     
     public void unpublishPost(int id);
+    
+    public void deletePostTagById(int id);
 
 }

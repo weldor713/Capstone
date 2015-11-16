@@ -49,11 +49,11 @@
                         <tr>
                             <th width="15%">Post Date</th>
                             <th width="25%">Title</th>
-                            <th width="10%">Author</th>
+                            <th width="15%">Author</th>
                             <th width="15%">Expiration Date</th>
-                            <th width="15%">Published to Public</th>
-                            <th width="15%"></th>
-                            <!--<th width="15%">Delete</th>-->
+                            <th width="10%">Published?</th>
+                            <th width="10%"></th>
+                            <th width="10%"></th>
                         </tr>
                         <tbody id="contentRows"></tbody>
                     </table>

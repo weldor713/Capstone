@@ -47,12 +47,14 @@ function showByTag(id) {
         url: 'postsByTag/' + id
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
-        blogRoll.append($('<div class="postContain">')
-                .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
-        $.each(post.tags, function (index, tag) {
-            blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));;
+
+            blogRoll.append($('<div class="postContain">')
+                    .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
+            $.each(post.tags, function (index, tag) {
+                blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
+                ;
+            });
         });
-    });
     });
 }
 
@@ -67,6 +69,4 @@ function doRotate(elementId) {
 
 }
 
-function spinorama() {
 
-}

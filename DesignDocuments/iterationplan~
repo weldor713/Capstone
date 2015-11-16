@@ -1,0 +1,81 @@
+AEGiS CMS Project 
+
+ITERATION #1 - Nov. 3 - Nov. 6
+TO DO:
+- User stories
+- Wireframes
+- Sitemap
+- Class diagrams
+- Entity relationship diagram
+- Implementation plan for controllers and dao
+- Stubs for all JSPs
+- Implement CreatePostController
+- Implement CreatePost.jsp including AJAX calls
+- Implement create post methods in CmsDao
+- Implement display of posts on index including AJAX calls
+
+POST MORTEM: 
+
+
+Iteration #2 - Nov 10-11
+- Static Content Area - Emma
+- Security - Anthony
+	- basic functionality, user and admin
+- tags - Geoff
+- display content - Scott
+
+- cleaning models
+- dao start
+- clean db
+
+post mortem: 
+switching away from hibernate was the best thing we've done yet.
+security basic functionality done, user manager started.
+static content area, can only edit but not add. future discussion to be made
+content displays with newest at top
+tags show and relate to posts, tags must be unique attach appropriately
+
+
+
+Iteration #3 - Nov 12-13
+- prettying it up - the front page
+- user manager
+	- listing users
+	- get user details
+	- edit users - somehow
+	- add users
+- post manager and create post
+	- enable isPublished functionality
+- JUnit
+
+Post mortem: css is a constant process, junit testing is also a constant process. good to start but still developing code.
+
+Iteration #4 - Nov 13-16
+- Front page work -- directed to a goat themed focus
+- tags on the front page 
+	populate horizontally
+- tags on the front page
+	limiting by isPublished
+- tags on the front page
+	styled in some way
+-GEOFF
+
+- post manager and create post
+	add author functionality
+	add functionality for expiration
+	deal with if PostDate is after today
+-SCOTT
+
+- static content
+	pre populate edit field
+	make a singleton?
+-Junit testing
+- post manager, details, edit? - author field x
+- update database shared schema
+-EMMA
+
+- image functionality
+	wherever tinymce is - can add images
+-ANTHONY
+
+
