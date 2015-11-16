@@ -42,7 +42,7 @@ public class CmsDaoDbHome implements CmsDao {
     private static final String SQL_UPDATE_POST_PUB_UNPUB
             ="update post set isPublished = ? where post_id = ?";
     private static final String SQL_UPDATE_POST
-            ="update post set title = ?, body = ?, postDate = ?, expiration = ?, isPublished = ? where post_id = ?";
+            ="update post set title = ?, body = ?, postDate = ?, expiration = ? where post_id = ?";
     private static final String SQL_ADD_POST
             = "insert into post (title, body, postDate, expiration, isPublished, author) "
             + "values (?, ?, ?, ?, ?, ?)";
@@ -142,7 +142,6 @@ public class CmsDaoDbHome implements CmsDao {
                 post.getBody(),
                 post.getPostDate(),
                 post.getExpiration(),
-                post.getIsPublished(),
                 post.getPostId());
                 
         insertPostTag(post);
