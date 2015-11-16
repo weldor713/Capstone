@@ -22,7 +22,7 @@ function loadPosts(data, status) {
 
     $.each(data, function (index, post) {
         blogRoll.append($('<div class="postContain">')
-                .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
+                .text(post.title + " " + post.postDate + " by " + post.author).append('<p class="postBody">').append(post.body));
         $.each(post.tags, function (index, tag) {
             blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
             tagList.append($('<li class="tagList">')).append($('<a class="tags">')
