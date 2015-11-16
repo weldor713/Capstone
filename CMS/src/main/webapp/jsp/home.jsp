@@ -14,7 +14,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
-    <body  style='background-color:#b3ffd9'>
+    <body>
         <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
         <br>
         <div class="container">
@@ -28,8 +28,9 @@
 
             <br>
 
-            <div class="row">
+            <div class="container">
                 <div id="tagContainer" class="col-sm-2">
+                    <h1>TAGS:</h1>
                     <div id="tagDisplay"></div>
 
 
@@ -37,7 +38,9 @@
                 <div class="container col-sm-10" >
                     <!--                <div class="col-sm-9 col-sm-offset-1" style="background-color:lightgoldenrodyellow;">-->
                     <div class="col-sm-12">
+                        <h1 style="font-size:72px">Posts (needs nice header):</h1>
                         <div id="blogContent">
+
                         </div>
 
 
@@ -47,8 +50,6 @@
             </div>
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>

@@ -31,7 +31,7 @@ public class CmsDaoDbHome implements CmsDao {
             + "order by postDate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_VISIBLE_POSTS
             = "select * from post "
-            + "where isPublished = ? AND post.postDate <= CURDATE() AND (CURDATE() < post.expiration OR post.expiration IS NULL) "
+            + "where isPublished = ? AND post.postDate <= CURDATE() AND (CURDATE() < post.expiration) "
             + "order by postDate desc, post_id desc";
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
             = "select * "
@@ -66,10 +66,12 @@ public class CmsDaoDbHome implements CmsDao {
             = "select * from tag "
             + "where tag_id = ?";
     private static final String SQL_SELECT_ALL_TAGS
+            = "select * from tag";
+            /*
             = "select t.tag_id, t.tagName from tag t "
             + "join post_tag pt on t.tag_id = pt.tag_id "
             + "join post p on pt.post_id = p.post_id "
-            + "where p.isPublished = 1 AND p.postDate <= CURDATE() AND (CURDATE() < p.expiration OR p.expiration IS NULL) ";
+            + "where p.isPublished = 1 AND p.postDate <= CURDATE() AND (CURDATE() < p.expiration OR p.expiration IS NULL) ";*/
     private static final String SQL_ADD_TAG
             = "insert into tag (tagName) "
             + "values (?)";
