@@ -1,12 +1,20 @@
 
 $(document).ready(function () {
 
-    loadStaticContent();
-
-    tinymce.init({
-        selector: "#staticContent"
+    tinyMCE.init({
+        selector: "#staticContent",
+        inline: false,
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 
+    loadStaticContent();
+
+//    loadStaticContent();
 
     $("#add-content-button").click(function (event) {
         event.preventDefault();
@@ -15,19 +23,19 @@ $(document).ready(function () {
             url: 'header',
             data: JSON.stringify({
                 contentId: 1,
-                content: tinymce.activeEditor.getContent({format: 'raw'})
+                content: tinyMCE.activeEditor.getContent({format: 'raw'})
             }),
             headers: {'Accept': 'application/json',
                 'Content-Type': 'application/json'},
             dataType: 'json'
         }).success(function (data, status) {
-            tinymce.activeEditor.setContent("");
+            tinyMCE.activeEditor.setContent("");
             console.log("Success!");
         }).error(function (data, status) {
             console.log("Error!");
         });
 
-        tinymce.activeEditor.setContent("");
+        tinyMCE.activeEditor.setContent("");
     });
 
 });
@@ -35,8 +43,10 @@ $(document).ready(function () {
 function loadStaticContent() {
     $.ajax({
         url: 'header'
-    }).success(function (data, status) {
-        $('#static').append(data.content);
+    }).success(function (staticContent) {
+        //var content = data.content;
+        tinyMCE.activeEditor.setContent(staticContent.contentId);
+        //$('#staticContent').activeEditor.setContent(data.content);
     });
 
 }
