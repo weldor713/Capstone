@@ -211,14 +211,14 @@ public class CmsDaoTest {
 //        tPost3.setAuthor("Larry");
 //        ptDao.addPost(tPost3);
 //        
-//        List<Post> result = ptDao.getAllPostsByTag(1);
+//        List<Post> result = ptDao.getAllPostsByTag(id1);
 //        assertEquals(3, result.size());
-//        List<Post> result2 = ptDao.getAllPostsByTag(2);
+//        List<Post> result2 = ptDao.getAllPostsByTag(id2);
 //        assertEquals(2, result2.size());
-//        List<Post> result3 = ptDao.getAllPostsByTag(3);
+//        List<Post> result3 = ptDao.getAllPostsByTag(id3);
 //        assertEquals(1, result3.size());
-//        // TODO review the generated test code and remove the default call to fail.
-//        //fail("The test case is a prototype.");
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
 //    }
 
 //    @Test
