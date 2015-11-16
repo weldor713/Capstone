@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CmsPostTagDao {
 
-    // Create Post 
-    public void addPost(Post post);
+    // Create Post  -- addPost returns post for purposes of testing
+    public Post addPost(Post post);
     
     public String getAuthorFromUserName(String username);
 

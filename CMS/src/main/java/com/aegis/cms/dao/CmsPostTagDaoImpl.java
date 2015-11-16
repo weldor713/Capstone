@@ -110,7 +110,7 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     // CREATE POST METHODS
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public void addPost(Post post) {
+    public Post addPost(Post post) {
         jdbcTemplate.update(SQL_ADD_POST,
                 post.getTitle(),
                 post.getBody(),
@@ -120,6 +120,8 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
                 post.getAuthor());
         post.setPostId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
         insertPostTag(post);
+        
+        return post;
     }
     
     @Override
