@@ -1,12 +1,14 @@
 body {
     //background-color:#D9D5C5;
     background: url("../img/goata.png");
-    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    
 }
 #grad1 {
     height: 200px;
     background-image: url("../img/header.jpg");
-    //box-shadow: 10px 10px #888888;
+    background-size: cover;
     -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
@@ -18,15 +20,19 @@ body {
 h1.serif {
     font-family:"lucida calligraphy",arial,'sans serif';
     text-shadow: 2px 2px #888888;
+    font-weight: bold;
+    font-size: 72px;
     color:white;
     position: relative;
     padding: 2px;
     margin: 2px;
-    width: 400px;
-    left: -50px;
-    -webkit-transform: rotate(-20deg);
-    -moz-transform: rotate(-20deg);   
-    -o-transform: rotate(-20deg);;
+    width: 600px;
+    margin-left: -55px;
+    margin-top: -20px;
+    display: block;
+    -webkit-transform: rotate(-15deg);
+    -moz-transform: rotate(-15deg);   
+    -o-transform: rotate(-15deg);;
 }
 #static {
     background-color: #9CB293;
@@ -66,7 +72,7 @@ div.postContain {
     color: black; //#b3ffd9;
     padding: 10px;
     background-color: #B9C2AA;
-    //background-image: linear-gradient(to left, #B9C2AA, #9CB293);
+    background-image: linear-gradient(to left, #B9C2AA, #BBFFFF); //#9CB293);
     border-radius: 8px;
     //box-shadow: 5px 5px #888888;
     -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
