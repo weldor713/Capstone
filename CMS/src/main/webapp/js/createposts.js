@@ -1,6 +1,7 @@
 $(document).ready(function () {
     tinymce.init({
-            selector: "#bodytextarea"
+            selector: "#bodytextarea",
+            plugins:[ "image preview"]
         });
 
     

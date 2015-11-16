@@ -3,12 +3,22 @@ $(document).ready(function () {
         selector: "#edit-body",
         inline: false,
         plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
+            " autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste"
+            "insertdatetime table contextmenu paste"
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
+   
+   
+   //fixed image issue in editmodal
+    $(document).on('focusin', function(e) {
+    if ($(event.target).closest(".mce-window").length) {
+        e.stopImmediatePropagation();
+    }
+});
+
+    
     loadPosts();
 
     $('#edit-button').click(function (event) {
