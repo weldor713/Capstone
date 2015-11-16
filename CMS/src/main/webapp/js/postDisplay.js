@@ -1,27 +1,32 @@
 $(document).ready(function () {
     $('#blogContent').hide();
-    loadPosts();
+    loadAllPosts();
     //loadTags();
 
 });
 
-//have the postById function pass through this to support the same layout
-function loadPosts(data, status) {
-    var blogRoll = $('#blogContent');
-    var tagList = $('#tagDisplay');
-    
+function loadAllPosts() {
     $.ajax({
         url: 'posts'
     }).success(function (allposts, status) {
-        $.each(allposts, function (index, post) {
-            blogRoll.append($('<div class="postContain">')
-                    .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
-            $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
-                tagList.append($('<li class="tagList">')).append($('<a class="tags">')
-                    .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text(tag.tagName));
-            });
+        loadPosts(allposts, status);
+    });
+}
+//have the postById function pass through this to support the same layout
 
+function loadPosts(data, status) {
+    clearPosts();
+    var blogRoll = $('#blogContent');
+    var tagList = $('#tagDisplay');
+
+
+    $.each(data, function (index, post) {
+        blogRoll.append($('<div class="postContain">')
+                .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
+        $.each(post.tags, function (index, tag) {
+            blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
+            tagList.append($('<li class="tagList">')).append($('<a class="tags">')
+                    .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text(tag.tagName));
         });
 
     });
@@ -30,27 +35,27 @@ function loadPosts(data, status) {
 
 function clearPosts() {
     $('#blogContent').empty();
+    $('#tagDisplay').empty();
 }
 
 
 
 function showByTag(id) {
-    clearPosts();
     var blogRoll = $('#blogContent');
+    clearPosts();
     $.ajax({
         url: 'postsByTag/' + id
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
-            blogRoll.append($('<p>').text(post.title + " " + post.postDate)) // </p>
-                    .append(post.body);
-
-            $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<p>').text(tag.tagName
-                        + " "));
-            });
+        blogRoll.append($('<div class="postContain">')
+                .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
+        $.each(post.tags, function (index, tag) {
+            blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));;
         });
     });
+    });
 }
+
 
 function clearPosts() {
     $('#blogContent').empty();
@@ -63,5 +68,5 @@ function doRotate(elementId) {
 }
 
 function spinorama() {
-    
+
 }

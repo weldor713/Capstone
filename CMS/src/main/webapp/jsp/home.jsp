@@ -14,7 +14,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
-    <body  style='background-color:#27ae60'>
+    <body>
         <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
         <br>
         <div class="container">

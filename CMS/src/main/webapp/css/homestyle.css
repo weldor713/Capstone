@@ -1,5 +1,32 @@
-a {
-    cursor: pointer; 
+body {
+    background-color:#27ae60
+}
+#grad1 {
+    height: 200px;
+    background-color: #f1c40f;
+    //background: -webkit-linear-gradient(left, Gainsboro , Navy); /* For Safari 5.1 to 6.0 */
+    //background: -o-linear-gradient(right, Gainsboro, Navy); /* For Opera 11.1 to 12.0 */
+    //background: -moz-linear-gradient(right, Gainsboro, Navy); /* For Firefox 3.6 to 15 */
+    //background: linear-gradient(to left, Gainsboro, Navy); /* Standard syntax (must be last) */
+}
+h1.serif {
+    font-family: "Times New Roman", Times, serif;
+    text-shadow: 1px 1px #C0C0C0;
+    color:black;
+}
+#static {
+    background-color: lightslategrey;
+    border-radius: 5px;
+    padding: 7px;
+
+}
+#tagContainer {
+    background-color: #f1c40f;
+    border-radius: 10px;
+}
+li.tagList {
+    list-style-type: none;
+    margin: 10px;
 }
 a.tags:hover {
     color: red;
@@ -12,7 +39,7 @@ a.tags {
 div.postContain {
     color: black; //#b3ffd9;
     padding: 10px;
-    background-color: white;
+    background-color: #f1c40f;
     border-radius: 8px;
 }
 p.posts {
@@ -24,36 +51,12 @@ p.tagToPost {
     margin-left: 10px;
     display: inline;
 }
-li.tagList {
-    list-style-type: none;
-    margin: 10px;
-}
-h1.serif {
-    font-family: "Times New Roman", Times, serif;
-    text-shadow: 1px 1px #C0C0C0;
-    color:#b3ffd9;
-}
-#static {
-    background-color: lightslategrey;
-    border-radius: 5px;
-    padding: 7px;
-
+a {
+    cursor: pointer; 
 }
 /*
 #blogContent {
-    background-color: white;
+    background-color: #f1c40f;
     border-radius: 20px;
 }
 */
-#tagContainer {
-    background-color: white;
-    border-radius: 10px;
-}
-#grad1 {
-    height: 200px;
-    background-color: white;
-    //background: -webkit-linear-gradient(left, Gainsboro , Navy); /* For Safari 5.1 to 6.0 */
-    //background: -o-linear-gradient(right, Gainsboro, Navy); /* For Opera 11.1 to 12.0 */
-    //background: -moz-linear-gradient(right, Gainsboro, Navy); /* For Firefox 3.6 to 15 */
-    //background: linear-gradient(to left, Gainsboro, Navy); /* Standard syntax (must be last) */
-}
