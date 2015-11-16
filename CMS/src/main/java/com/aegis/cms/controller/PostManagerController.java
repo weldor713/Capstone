@@ -1,6 +1,6 @@
 package com.aegis.cms.controller;
 
-import com.aegis.cms.dao.CmsDao;
+import com.aegis.cms.dao.CmsPostTagDao;
 import com.aegis.cms.model.Post;
 import java.util.List;
 import javax.inject.Inject;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class PostManagerController {
 
-    CmsDao dao;
+    CmsPostTagDao dao;
 
     @Inject
-    public PostManagerController(CmsDao dao) {
+    public PostManagerController(CmsPostTagDao dao) {
         this.dao = dao;
     }
 
@@ -57,5 +57,11 @@ public class PostManagerController {
     public void publishPost(@PathVariable("postId") int postId, @RequestBody Post post){
         post.setPostId(postId);
         dao.editPost(post);
+    }
+    
+    @RequestMapping (value="post/{id}", method=RequestMethod.DELETE)
+    @ResponseStatus (HttpStatus.NO_CONTENT)
+    public void deletePost(@PathVariable("id")int id) {
+        dao.deletePostTagById(id);
     }
 }

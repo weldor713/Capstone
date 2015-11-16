@@ -91,10 +91,8 @@ function loadPosts() {
                                         "data-toggle": "modal",
                                         "data-target": "#editModal"
                                     })
-                                    .text('Edit')
-                                    ) // </td>
-                            )
-                    ///.append($('<td>').text('Delete'))
+                                    .text('Edit')))
+                    .append($('<td>').append($('<a>').attr({'onClick': 'deletePost(' + post.postId + ')'}).text('Delete')))
                     );
         });
     });
@@ -125,6 +123,18 @@ function pubUnpub(id) {
 
 }
 
+function deletePost(id) {
+    var answer = confirm("Do you really want to delete this post?");
+    if (answer == true) {
+        $.ajax({
+            type: 'DELETE',
+            url: 'post/' + id
+        }).success(function () {
+            loadPosts();
+        });
+    }
+}
+
 function clearPosts() {
     $('#contentRows').empty();
 }
@@ -136,7 +146,7 @@ $('#detailsModal').on('show.bs.modal', function (event) {
     $('#body').empty();
 
 
-    
+
     $.ajax({
         type: 'GET',
         url: 'post/' + postId
