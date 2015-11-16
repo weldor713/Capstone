@@ -66,6 +66,9 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     private static final String SQL_DELETE_POST_TAG 
             = "delete from post_tag "
             + "where post_id = ?";
+    private static final String SQL_DELETE_POST 
+            = "delete from post "
+            + "where post_id = ?";
 
     // tag queries
     private static final String SQL_SELECT_TAG
@@ -167,6 +170,11 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     @Override
     public void unpublishPost(int id){
         jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, false, id);
+    }
+    
+    @Override
+    public void deletePostTagById(int id) {
+        jdbcTemplate.update(SQL_DELETE_POST, id);
     }
 
     // HELPER METHODS
