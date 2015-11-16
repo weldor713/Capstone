@@ -4,7 +4,8 @@ $(document).ready(function () {
     loadStaticContent();
 
     tinymce.init({
-        selector: "#staticContent"
+        selector: "#staticContent",
+        plugins: ["image preview"]
     });
 
 
