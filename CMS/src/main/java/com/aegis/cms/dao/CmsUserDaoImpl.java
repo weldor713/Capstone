@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
  *
  * @author apprentice
  */
-public class UserDaoDbImpl implements CmsUserManDao {
+public class CmsUserDaoImpl implements CmsUserDao {
 
     // #1 - We need to update both the users and authorities tables
     private static final String SQL_INSERT_USER
@@ -45,7 +45,11 @@ public class UserDaoDbImpl implements CmsUserManDao {
 
     @Override
     public void addUser(User newUser) {
-        jdbcTemplate.update(SQL_INSERT_USER, newUser.getPublicName(), newUser.getUserName(), newUser.getAuthority(), newUser.getPassword());
+        jdbcTemplate.update(SQL_INSERT_USER, 
+                newUser.getPublicName(), 
+                newUser.getUserName(), 
+                newUser.getAuthority(), 
+                newUser.getPassword());
         newUser.setUserId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()",Integer.class));
         
     }

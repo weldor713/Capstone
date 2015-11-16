@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author apprentice
  */
-public interface CmsUserManDao {
+public interface CmsUserDao {
 
     public void addUser(User newUser);
 

@@ -1,16 +1,10 @@
 package com.aegis.cms.model;
 
-import java.io.Serializable;
+import java.util.Objects;
 
-//@Entity
-//@Table(name = "static_content")
 public class StaticContent {
     
-//    @Id
-//    @Column(name = "content_id")
     private int contentId;
-    
-//    @Column(name = "content")
     private String content;
 
     public int getContentId() {
@@ -27,6 +21,32 @@ public class StaticContent {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + this.contentId;
+        hash = 67 * hash + Objects.hashCode(this.content);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final StaticContent other = (StaticContent) obj;
+        if (this.contentId != other.contentId) {
+            return false;
+        }
+        if (!Objects.equals(this.content, other.content)) {
+            return false;
+        }
+        return true;
     }
     
 }

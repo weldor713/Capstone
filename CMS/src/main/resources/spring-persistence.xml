@@ -21,7 +21,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url"
-                  value="jdbc:mysql://localhost:3306/CMSTestScott"/>
+                  value="jdbc:mysql://localhost:3306/cms_live"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <property name="initialSize" value="5"/>
@@ -37,26 +37,20 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     
-    <!-- EMMA'S DAO -->
-    <bean id="cmsStatic"
-          class="com.aegis.cms.dao.CmsStaticJdbcImpl">
-          <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    <!--Cms Static Dao -->
+    <bean id="cmsstatic"
+          class="com.aegis.cms.dao.CmsStaticDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean> 
-    <bean id="userDao" class="com.aegis.cms.dao.UserDaoDbImpl">
+    <!--Cms user man dao-->
+    <bean id="cmsuser" 
+          class="com.aegis.cms.dao.CmsUserDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-<!--    <bean id="cmsDaoDbImpl"
-          class="com.aegis.cms.dao.CmsDaoDbHome">
-          <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>-->
-    <bean id="cmsCreate"
-          class="com.aegis.cms.dao.CmsCreateJdbcImpl">
-          <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean> 
-    <!-- SCOTT'S DAO -->    
-    <bean id="cmsDaoDbHome" class="com.aegis.cms.dao.CmsDaoDbHome">
+    <!--Cms Post Tag Dao-->
+    <bean id="cmspt" 
+          class="com.aegis.cms.dao.CmsPostTagDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
-
     </bean>
 
 </beans>

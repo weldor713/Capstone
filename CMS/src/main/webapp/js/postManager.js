@@ -10,9 +10,10 @@ $(document).ready(function () {
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
     loadPosts();
-    
-        $('#edit-button').click(function (event) {
+
+    $('#edit-button').click(function (event) {
         event.preventDefault();
+        $('#edit-tag').empty();
         $.ajax({
             type: 'PUT',
             url: 'post/' + $('#edit-postId').val(),
@@ -20,9 +21,8 @@ $(document).ready(function () {
                 postId: $('#edit-postId').val(),
                 title: $('#edit-title').val(),
                 body: tinyMCE.activeEditor.getContent({format: 'raw'}),
-                postDate: $('#edit-postDate').val(),
-                expiration: $('#edit-expiration').val(),
-                isPublished: $('#edit-isPublished').val(),
+                postDate: $('#edit-postDate').datepicker('getDate'),
+                expiration: $('#edit-expiration').datepicker('getDate'),
                 tags: $('#edit-tags').val()
             }),
             headers: {
@@ -37,6 +37,18 @@ $(document).ready(function () {
             console.log("Error");
         });
     });
+
+    $(function () {
+        $("#edit-postDate").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+    });
+
+    $(function () {
+        $("#edit-expiration").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+    });
 });
 //Functions
 
@@ -48,7 +60,7 @@ function loadPosts() {
         url: 'allposts'
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
-            if (post.expiration == null) {
+            if (post.expiration === null) {
                 post.expiration = "none";
             }
 
@@ -64,8 +76,8 @@ function loadPosts() {
                                     .text(post.title)
                                     )
                             )
+                    .append($('<td>').text(post.author))
                     .append($('<td>').text(post.expiration))
-                    // .append($('<td>').text(post.isPublished))
                     .append($('<td>')
                             .append($('<input>')
                                     .attr({'type': 'checkbox',
@@ -82,7 +94,7 @@ function loadPosts() {
                                     .text('Edit')
                                     ) // </td>
                             )
-                    .append($('<td>').text('Delete'))
+                    ///.append($('<td>').text('Delete'))
                     );
         });
     });
@@ -93,19 +105,21 @@ function pubUnpub(id) {
         if ($(this).is(':checked')) {
             console.log("CCCCheckeddddddd");
             $.ajax({
-                    url: "publish/" + id,
-                    method: 'PUT'
-                }).success(function () {
-                    loadPosts();});
+                url: "publish/" + id,
+                method: 'PUT'
+            }).success(function () {
+                loadPosts();
+            });
         }
         else
         {
             console.log("UNCheckeddddddd");
             $.ajax({
-                    url: "unpublish/" + id,
-                    method: 'PUT'
-                }).success(function () {
-                    loadPosts();});
+                url: "unpublish/" + id,
+                method: 'PUT'
+            }).success(function () {
+                loadPosts();
+            });
         }
     });
 
@@ -121,6 +135,8 @@ $('#detailsModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     $('#body').empty();
 
+
+    
     $.ajax({
         type: 'GET',
         url: 'post/' + postId
@@ -128,8 +144,8 @@ $('#detailsModal').on('show.bs.modal', function (event) {
         modal.find('#title').text(post.title);
         //modal.find('#author').text(post.author.publicName);
         modal.find('#body').append(post.body);
-        modal.find('#postDate').text(post.postDate);
-        modal.find('#expiration').text(post.expiration);
+        modal.find('#postDate').datepicker('setDate', post.postDate);
+        modal.find('#expiration').datepicker('setDate', post.expiration);
         modal.find('#isPublished').text(post.isPublished);
         var tagString = "";
         $.each(post.tags, function (index, tag) {
@@ -150,6 +166,7 @@ $('#editModal').on('show.bs.modal', function (event) {
     var postId = element.data('postid');
     var modal = $(this);
     $('#edit-body').empty();
+    $('#edit-tag').empty();
 
     $.ajax({
         type: 'GET',
@@ -166,7 +183,11 @@ $('#editModal').on('show.bs.modal', function (event) {
         modal.find('#edit-isPublished').val(post.isPublished);
         var tagString = "";
         $.each(post.tags, function (index, tag) {
-            tagString += tag.tagName;
+            if (index >= post.tags.length - 1) {
+                tagString += tag.tagName;
+            } else {
+                tagString += tag.tagName + ", ";
+            }
         });
         modal.find('#edit-tags').val(tagString);
     });

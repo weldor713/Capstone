@@ -3,6 +3,7 @@ package com.aegis.cms.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Post implements Serializable {
@@ -53,7 +54,7 @@ public class Post implements Serializable {
         String[] tempArray = tagString.split(",");
         for (int i = 0; i < tempArray.length; i++) {
             Tag tempTag = new Tag();
-            tempTag.setTagName(tempArray[i]);
+            tempTag.setTagName(tempArray[i].trim());
             tagSet.add(tempTag);
         }
         this.tags.addAll(tagSet);
@@ -92,4 +93,55 @@ public class Post implements Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.postId;
+        hash = 47 * hash + Objects.hashCode(this.title);
+        hash = 47 * hash + Objects.hashCode(this.body);
+        hash = 47 * hash + Objects.hashCode(this.author);
+        hash = 47 * hash + Objects.hashCode(this.tags);
+        hash = 47 * hash + Objects.hashCode(this.postDate);
+        hash = 47 * hash + Objects.hashCode(this.expiration);
+        hash = 47 * hash + (this.isPublished ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Post other = (Post) obj;
+        if (this.postId != other.postId) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.body, other.body)) {
+            return false;
+        }
+        if (!Objects.equals(this.author, other.author)) {
+            return false;
+        }
+        if (!Objects.equals(this.tags, other.tags)) {
+            return false;
+        }
+        if (!Objects.equals(this.postDate, other.postDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.expiration, other.expiration)) {
+            return false;
+        }
+        if (this.isPublished != other.isPublished) {
+            return false;
+        }
+        return true;
+    }
+    
 }

@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-public class CmsStaticJdbcImpl implements CmsStaticDao {
+public class CmsStaticDaoImpl implements CmsStaticDao {
 
     private JdbcTemplate templ;
 

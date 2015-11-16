@@ -5,23 +5,18 @@
  */
 package com.aegis.cms.dao;
 
-import com.aegis.cms.model.User;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
  * @author apprentice
  */
-public class UserDaoDbImplTest {
+public class CmsUserDaoTest {
     
-    public UserDaoDbImplTest() {
+    public CmsUserDaoTest() {
     }
     
     @BeforeClass
