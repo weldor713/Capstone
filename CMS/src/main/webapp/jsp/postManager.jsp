@@ -8,6 +8,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/imagecontain.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
         <style>
             .clsDatePicker {
                 z-index: 100000;
@@ -59,8 +60,17 @@
                         <tbody id="contentRows"></tbody>
                     </table>
                 </div> <!-- end left column -->
-                <div>
-
+                <div class="col-md-3 radio">
+                    <h2>Filter</h2>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-all">ALL</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-exp">EXPIRED</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-unpub">NOT PUBLISHED</label>
+                    </div>
 
                 </div> <!-- end right column -->
 
@@ -169,7 +179,9 @@
             </div>
         </div>
     </div>
-</div>
+    <footer class="bot">
+        <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
+    </footer>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>

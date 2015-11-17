@@ -104,3 +104,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.bot {
+    text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    
+}

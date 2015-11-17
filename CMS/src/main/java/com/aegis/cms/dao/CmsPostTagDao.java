@@ -23,6 +23,10 @@ public interface CmsPostTagDao {
 
     public List<Post> getAllPosts();
     
+    public List<Post> getAllExpired();
+    
+    public List<Post> getAllUnpublished();
+    
     public void editPost(Post post);
     
     public void publishPost(int id);

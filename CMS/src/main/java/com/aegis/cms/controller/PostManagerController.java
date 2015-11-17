@@ -41,6 +41,18 @@ public class PostManagerController {
         return dao.getAllPosts();
     }
     
+    @RequestMapping(value = "/allunpub", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Post> getAllUnpublished() {
+        return dao.getAllUnpublished();
+    }
+    
+    @RequestMapping(value = "/allexpired", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Post> getAllExpired() {
+        return dao.getAllExpired();
+    }
+    
     @RequestMapping(value="publish/{postId}", method=RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void publishPost(@PathVariable("postId") int postId){

@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
     <body>
-        <a href="${pageContext.request.contextPath}/createPosts">Click here, Emma!</a>
         <br>
         <div class="container">
             <!--<div id="grad1"></div>-->
@@ -47,7 +46,12 @@
                     </div>
                 </div>
             </div>
+            <footer class="bot">
+                <p>copyright&copy 2015 AEGiS All Rights Reserved  <a href="${pageContext.request.contextPath}/createPosts">CMS login</a></p>
+            </footer>
         </div>
+
+
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
