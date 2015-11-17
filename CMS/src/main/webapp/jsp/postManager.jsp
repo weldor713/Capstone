@@ -6,6 +6,7 @@
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/js/jquery-ui.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/imagecontain.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <style>
             .clsDatePicker {
@@ -133,49 +134,39 @@
                     </div>
                     <div class="modal-body">
                         <h3 id="edit-postId"></h3>
-                        <form class="form-horizontal" role="form">
+                        <form class="form" role="form">
                             <div class="form-group">
-                                <label for="edit-title" class="col-md-4 control-label">
+                                <label for="edit-title">
                                     Title:
                                 </label>
-                                <div class="col-md-8">
                                     <input type="text" class="form-control" id="edit-title">
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-body" class="col-md-4 control-label">
+                                <label for="edit-body">
                                     Body:
                                 </label>
-                                <div class="col-md-8" >
                                     <div id="edit-body" class=""></div>
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-postDate" class="col-md-4 control-label">
+                                <label for="edit-postDate">
                                     Post Date:
                                 </label>
-                                <div class="col-md-8">
                                     <input type="text" class="clsdatepicker form-control" id="edit-postDate">
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-expiration" class="col-md-4 control-label">
+                                <label for="edit-expiration">
                                     Expiration Date:
                                 </label>
-                                <div class="col-md-8">
                                     <input type="text" class="clsdatepicker form-control" id="edit-expiration">
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="edit-tags" class="col-md-4 control-label">
+                                <label for="edit-tags">
                                     Tags:
                                 </label>
-                                <div class="col-md-8">
                                     <input type="text" class="form-control" id="edit-tags">
-                                </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-offset-4 col-md-8">
+                                <div>
                                     <button  id="edit-button" class="btn btn-default">
                                         Edit Post
                                     </button>

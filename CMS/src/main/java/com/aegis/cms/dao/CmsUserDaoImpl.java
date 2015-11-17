@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.User;
@@ -13,13 +9,9 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 
-/**
- *
- * @author apprentice
- */
+
 public class CmsUserDaoImpl implements CmsUserDao {
 
-    // #1 - We need to update both the users and authorities tables
     private static final String SQL_INSERT_USER
             = "insert into users (publicname, username, authority, password) values (?, ?, ?, ?)";
 

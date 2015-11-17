@@ -61,9 +61,5 @@ public class UserManagerController {
     public void editUser(@PathVariable ("id")int id, @Valid @RequestBody User user) {
         user.setUserId(id);
         userManDao.editUser(user);
-    }
-    
-    
-
-
+    } 
 }

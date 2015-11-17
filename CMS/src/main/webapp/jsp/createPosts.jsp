@@ -29,9 +29,9 @@
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/home">View Blog</a>
                     </li>
-                    
-                    
-                    
+
+
+
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
                     </li>
@@ -40,55 +40,45 @@
 
             <div class="row">
                 <br>
-                <div class="col-md-6">
-                    <form class="form-horizontal" role="form">
+                <div class="col-md-11">
+                    <form class="form" role="form">
                         <div class="form-group">
-                            <label for="add-title" class="col-md-4 control-label">
+                            <label for="add-title">
                                 Title:
                             </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control"
-                                       id="add-title" placeholder="Title"/>
-                            </div>
+                            <input type="text" class="form-control"
+                                   id="add-title" placeholder="Title"/>
                         </div>
                         <div class="form-group">
-                            <label for="add-postDate" class="col-md-4 control-label">
+                            <label for="add-postDate">
                                 Post Date:
                             </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control"
-                                       id="add-postDate" />
-                            </div>
+                            <input type="text" class="form-control"
+                                   id="add-postDate" />
                         </div>
                         <div class="form-group">
-                            <label for="add-expiration" class="col-md-4 control-label">
+                            <label for="add-expiration">
                                 Expiration Date:
                             </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control"
-                                       id="add-expiration" />
-                            </div>
+                            <input type="text" class="form-control"
+                                   id="add-expiration" />
                         </div>
                         <div class="form-group">
-                            <label for="bodytextarea" class="col-md-4 control-label">
+                            <label for="bodytextarea">
                                 Body:
                             </label>
-                            <div class="col-md-8">
-                                <input type="textarea"class="form-control"
-                                       id="bodytextarea" placeholder="Body"/>
-                            </div>
+                            <input type="textarea"class="form-control"
+                                   id="bodytextarea" placeholder="Body"/>
                         </div>
                         <div class="form-group">
-                            <label for="add-tags" class="col-md-4 control-label">
+                            <label for="add-tags">
                                 Tags:
                             </label>
-                            <div class="col-md-8">
-                                <input type="text"class="form-control"
-                                       id="add-tags" placeholder="Tags"/>
-                            </div>
+                            <input type="text"class="form-control"
+                                   id="add-tags" placeholder="Tags"/>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-offset-4 col-md-8">
+                            <div>
                                 <button type="submit" id="add-post-button" class="btn btn-default">
                                     Add Post
                                 </button>
