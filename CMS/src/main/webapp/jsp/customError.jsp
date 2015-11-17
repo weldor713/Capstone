@@ -36,6 +36,7 @@
             </div>
             <div>
                 <h3>${errorMessage}</h3>
+
             </div>
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
             <script src="${pageContext.request.contextPath}/js/jquery-

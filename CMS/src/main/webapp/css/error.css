@@ -1,7 +1,10 @@
 body {
-    background: url("../img/goatx.gif");
-    background-position: top;   
+    background-image: url("../img/aa.gif");
+    height: 800px;
 }
 h3 {
-    color: white;
+    color: red;
+}
+h1 {
+    color: red;
 }
