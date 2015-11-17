@@ -7,6 +7,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/js/jquery-ui.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
     <body>
         <div class="container">
@@ -88,7 +89,9 @@
                     <div id="validationErrors" style="color: tomato"></div>
                 </div> 
             </div>
-
+            <footer class="bot">
+                <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
+            </footer>
         </div>
 
         <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>

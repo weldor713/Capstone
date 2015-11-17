@@ -6,6 +6,7 @@
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
         <!--        <script type="text/javascript">
                     tinymce.init({
@@ -64,6 +65,9 @@
                     <div id="completion" class="text-success"></div>
                 </div>
             </div>
+            <footer class="bot">
+                <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
+            </footer>
         </div>
 
 

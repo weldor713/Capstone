@@ -19,6 +19,7 @@
         <!-- SWC Icon -->
         <link rel="shortcut icon"
               href="${pageContext.request.contextPath}/img/icon.gif">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
     <body>
         <div class="container">
@@ -37,10 +38,13 @@
             <div>
                 <h3>${errorMessage}</h3>
             </div>
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <script src="${pageContext.request.contextPath}/js/jquery-
-            1.11.1.min.js"></script>
-            <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+            <footer class="bot">
+                <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
+            </footer>
         </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="${pageContext.request.contextPath}/js/jquery-
+        1.11.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     </body>
 </html>

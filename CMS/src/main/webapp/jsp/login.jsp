@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
         <title>AEGiS Content Management System</title>
     </head>
     <body>
@@ -54,6 +55,9 @@
                     </table>
                 </fieldset>
             </form>
+            <footer class="bot">
+                <p>copyright&copy 2015 AEGiS All Rights Reserved  <a href="${pageContext.request.contextPath}/home">Return Home</a></p>
+            </footer>
         </div>
     </body>
 </html>

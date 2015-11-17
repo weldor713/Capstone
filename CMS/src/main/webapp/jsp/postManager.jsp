@@ -8,6 +8,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/imagecontain.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
         <style>
             .clsDatePicker {
                 z-index: 100000;
@@ -139,31 +140,31 @@
                                 <label for="edit-title">
                                     Title:
                                 </label>
-                                    <input type="text" class="form-control" id="edit-title">
+                                <input type="text" class="form-control" id="edit-title">
                             </div>
                             <div class="form-group">
                                 <label for="edit-body">
                                     Body:
                                 </label>
-                                    <div id="edit-body" class=""></div>
+                                <div id="edit-body" class=""></div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-postDate">
                                     Post Date:
                                 </label>
-                                    <input type="text" class="clsdatepicker form-control" id="edit-postDate">
+                                <input type="text" class="clsdatepicker form-control" id="edit-postDate">
                             </div>
                             <div class="form-group">
                                 <label for="edit-expiration">
                                     Expiration Date:
                                 </label>
-                                    <input type="text" class="clsdatepicker form-control" id="edit-expiration">
+                                <input type="text" class="clsdatepicker form-control" id="edit-expiration">
                             </div>
                             <div class="form-group">
                                 <label for="edit-tags">
                                     Tags:
                                 </label>
-                                    <input type="text" class="form-control" id="edit-tags">
+                                <input type="text" class="form-control" id="edit-tags">
                             </div>
                             <div class="form-group">
                                 <div>
@@ -183,7 +184,9 @@
             </div>
         </div>
     </div>
-</div>
+    <footer class="bot">
+        <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
+    </footer>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
