@@ -10,9 +10,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>AEGiS Content Management System</title>
+        <title>AEGiS ERROR</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+              rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/error.css"
               rel="stylesheet">
         <!-- SWC Icon -->
         <link rel="shortcut icon"
@@ -20,7 +22,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>AEGiS Content Management System</h1>
+            <h1>ERROR</h1>
             <hr/>
             <div class="navbar">
                 <ul class="nav nav-tabs">
@@ -28,12 +30,11 @@
                         <a href="${pageContext.request.contextPath}/createPosts">Create Posts</a>
                     </li>
                     <li role="presentation">
-                        <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
+                        <a style="color: black" href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
                     </li>
                 </ul>
             </div>
             <div>
-                <h3>An error has occurred, you probably don't have permission to do what you wanted to do, maybe see David...</h3>
                 <h3>${errorMessage}</h3>
             </div>
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
