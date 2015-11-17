@@ -9,16 +9,14 @@ $(document).ready(function () {
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
-   
-   
-   //fixed image issue in editmodal
-    $(document).on('focusin', function(e) {
-    if ($(event.target).closest(".mce-window").length) {
-        e.stopImmediatePropagation();
-    }
-});
 
-    
+    //fixed image issue in editmodal
+    $(document).on('focusin', function (e) {
+        if ($(event.target).closest(".mce-window").length) {
+            e.stopImmediatePropagation();
+        }
+    });
+
     loadPosts();
 
     $('#edit-button').click(function (event) {
@@ -48,7 +46,7 @@ $(document).ready(function () {
             $.each(data.responseJSON.fieldErrors, function (index, validationError) {
                 var errorDiv = $("#validationErrorsModal");
                 errorDiv.append(validationError.message).append($("<br>"));
-                });
+            });
         });
     });
 
@@ -64,8 +62,8 @@ $(document).ready(function () {
         });
     });
 });
-//Functions
 
+//Functions
 function loadPosts() {
     clearPosts();
     var cTable = $('#contentRows');
@@ -77,7 +75,6 @@ function loadPosts() {
             if (post.expiration === null) {
                 post.expiration = "none";
             }
-
             cTable.append($('<tr>')
                     .append($('<td>').text(post.postDate))
                     .append($('<td>')
@@ -88,7 +85,7 @@ function loadPosts() {
                                         "data-target": "#detailsModal"
                                     })
                                     .text(post.title)
-                                    )
+                                    ) //</a>
                             )
                     .append($('<td>').text(post.author))
                     .append($('<td>').text(post.expiration))
@@ -97,7 +94,9 @@ function loadPosts() {
                                     .attr({'type': 'checkbox',
                                         'id': post.postId,
                                         'onClick': 'pubUnpub(' + post.postId + ')'
-                                    }).prop('checked', post.isPublished)))
+                                    }).prop('checked', post.isPublished)
+                                    ) //</input>
+                            ) //</td>
                     .append($('<td>')
                             .append($('<a>')
                                     .attr({
@@ -105,9 +104,16 @@ function loadPosts() {
                                         "data-toggle": "modal",
                                         "data-target": "#editModal"
                                     })
-                                    .text('Edit')))
-                    .append($('<td>').append($('<a>').attr({'onClick': 'deletePost(' + post.postId + ')'}).text('Delete')))
-                    );
+                                    .text('Edit')
+                                    ) //</a>
+                            ) //</td>
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({'onClick': 'deletePost(' + post.postId + ')'})
+                                    .text('Delete')
+                                    ) //</a>
+                            ) //</td>
+                    ); //</tr>
         });
     });
 }
@@ -122,9 +128,7 @@ function pubUnpub(id) {
             }).success(function () {
                 loadPosts();
             });
-        }
-        else
-        {
+        } else {
             console.log("UNCheckeddddddd");
             $.ajax({
                 url: "unpublish/" + id,
@@ -139,7 +143,7 @@ function pubUnpub(id) {
 
 function deletePost(id) {
     var answer = confirm("Do you really want to delete this post?");
-    if (answer == true) {
+    if (answer === true) {
         $.ajax({
             type: 'DELETE',
             url: 'post/' + id
@@ -159,17 +163,19 @@ $('#detailsModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     $('#body').empty();
 
-
-
     $.ajax({
         type: 'GET',
         url: 'post/' + postId
     }).success(function (post) {
         modal.find('#title').text(post.title);
-        //modal.find('#author').text(post.author.publicName);
+        modal.find('#author').text(post.author);
         modal.find('#body').append(post.body);
-        modal.find('#postDate').datepicker('setDate', post.postDate);
-        modal.find('#expiration').datepicker('setDate', post.expiration);
+        modal.find('#postDate').text(post.postDate);
+        if (post.expiration === null) {
+            modal.find('#expiration').text('None');
+        } else {
+            modal.find('#expiration').text(post.expiration);
+        }
         modal.find('#isPublished').text(post.isPublished);
         var tagString = "";
         $.each(post.tags, function (index, tag) {
@@ -196,11 +202,8 @@ $('#editModal').on('show.bs.modal', function (event) {
         type: 'GET',
         url: 'post/' + postId
     }).success(function (post) {
-
-
         modal.find("#edit-postId").val(post.postId);
         modal.find('#edit-title').val(post.title);
-        //modal.find('#edit-author').val(post.author.publicName);
         tinyMCE.activeEditor.setContent(post.body);
         modal.find('#edit-postDate').val(post.postDate);
         modal.find('#edit-expiration').val(post.expiration);

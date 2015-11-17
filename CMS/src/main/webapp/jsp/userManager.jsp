@@ -41,7 +41,7 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <br>
+                    <h2>User</h2>
                     <br>
                     <table id="addressTable" class="table table-hover">
                         <tr>
