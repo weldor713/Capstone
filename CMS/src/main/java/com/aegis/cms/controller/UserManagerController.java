@@ -4,6 +4,7 @@ import com.aegis.cms.dao.CmsUserDao;
 import com.aegis.cms.model.User;
 import java.util.List;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +39,7 @@ public class UserManagerController {
     @RequestMapping (value="user", method=RequestMethod.POST)
     @ResponseStatus (HttpStatus.CREATED)
     @ResponseBody
-    public User addUser(@RequestBody User user) {
+    public User addUser(@Valid @RequestBody User user) {
         userManDao.addUser(user);
         return user;
     }
@@ -57,7 +58,7 @@ public class UserManagerController {
     
     @RequestMapping (value = "user/{id}", method=RequestMethod.PUT)
     @ResponseStatus (HttpStatus.NO_CONTENT)
-    public void editUser(@PathVariable ("id")int id,@RequestBody User user) {
+    public void editUser(@PathVariable ("id")int id, @Valid @RequestBody User user) {
         user.setUserId(id);
         userManDao.editUser(user);
     }

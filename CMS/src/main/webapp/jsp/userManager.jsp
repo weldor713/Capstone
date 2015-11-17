@@ -172,8 +172,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-8">
-                                    <button type="submit" id="edit-button" class="btn btn-default"
-                                            data-dismiss="modal">
+                                    <button type="submit" id="edit-button" class="btn btn-default">
                                         Edit User
                                     </button>
                                     <button type="button" class="btn btn-default"
@@ -184,6 +183,7 @@
                                 </div> 
                             </div>
                         </form> 
+                        <div id="validationEditErrors" style="color: tomato"></div>
                     </div>
                 </div> 
             </div>

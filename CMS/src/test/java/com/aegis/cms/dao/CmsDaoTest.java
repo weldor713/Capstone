@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -176,71 +177,93 @@ public class CmsDaoTest {
         //fail("The test case is a prototype.");
     }
 
-//    @Test
-//    public void testGetAllPostsByTag() {
-//        System.out.println("getAllPostsByTag");
-//        Post tPost = new Post();
-//        Post tPost2 = new Post();
-//        Post tPost3 = new Post();
-//        Date date = Calendar.getInstance().getTime();
-//        
-//        tPost.setTitle("Test Post 1");
-//        tPost.setBody("This is a test body");
-//        tPost.setTags("three, two, one");
-//        tPost.setPostDate(date);
-//        tPost.setExpiration(null);
-//        tPost.setIsPublished(true);
-//        tPost.setAuthor("Larry");
-//        ptDao.addPost(tPost);
-//        
-//        tPost2.setTitle("Test Post 2");
-//        tPost2.setBody("This is a test body");
-//        tPost2.setTags("three, two");
-//        tPost2.setPostDate(date);
-//        tPost2.setExpiration(null);
-//        tPost2.setIsPublished(true);
-//        tPost2.setAuthor("Larry");
-//        ptDao.addPost(tPost2);
-//        
-//        tPost3.setTitle("Test Post 3");
-//        tPost3.setBody("This is a test body");
-//        tPost3.setTags("three");
-//        tPost3.setPostDate(date);
-//        tPost3.setExpiration(null);
-//        tPost3.setIsPublished(true);
-//        tPost3.setAuthor("Larry");
-//        ptDao.addPost(tPost3);
-//        
-//        List<Post> result = ptDao.getAllPostsByTag(id1);
-//        assertEquals(3, result.size());
-//        List<Post> result2 = ptDao.getAllPostsByTag(id2);
-//        assertEquals(2, result2.size());
-//        List<Post> result3 = ptDao.getAllPostsByTag(id3);
-//        assertEquals(1, result3.size());
+    @Test
+    public void testGetAllPostsByTag() {
+        System.out.println("getAllPostsByTag");
+        Post tPost = new Post();
+        Post tPost2 = new Post();
+        Post tPost3 = new Post();
+        Post returnedPost1;
+        int id1 = 0; int id2 = 0; int id3 = 0; 
+        Date date = Calendar.getInstance().getTime();
+        
+        tPost.setTitle("Test Post 1");
+        tPost.setBody("This is a test body");
+        tPost.setTags("three, two, one");
+        tPost.setPostDate(date);
+        tPost.setExpiration(null);
+        tPost.setIsPublished(true);
+        tPost.setAuthor("Larry");
+        returnedPost1 = ptDao.addPost(tPost);
+        
+        Set<Tag> tags1 = returnedPost1.getTags();
+        for(Tag tag : tags1){
+            if (tag.getTagName().equals("one")){
+                id1 = tag.getTagId();
+            }
+            else if (tag.getTagName().equals("two")){
+                id2 = tag.getTagId();
+            }
+            else if (tag.getTagName().equals("three")){
+                id3 = tag.getTagId();
+            }
+        }
+        
+        tPost2.setTitle("Test Post 2");
+        tPost2.setBody("This is a test body");
+        tPost2.setTags("three, two");
+        tPost2.setPostDate(date);
+        tPost2.setExpiration(null);
+        tPost2.setIsPublished(true);
+        tPost2.setAuthor("Larry");
+        ptDao.addPost(tPost2);
+        
+        tPost3.setTitle("Test Post 3");
+        tPost3.setBody("This is a test body");
+        tPost3.setTags("three");
+        tPost3.setPostDate(date);
+        tPost3.setExpiration(null);
+        tPost3.setIsPublished(true);
+        tPost3.setAuthor("Larry");
+        ptDao.addPost(tPost3);
+        
+        List<Post> result = ptDao.getAllPostsByTag(id3);
+        assertEquals(3, result.size());
+        List<Post> result2 = ptDao.getAllPostsByTag(id2);
+        assertEquals(2, result2.size());
+        List<Post> result3 = ptDao.getAllPostsByTag(id1);
+        assertEquals(1, result3.size());
+        //TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    @Test
+    public void testGetPostById() {
+        System.out.println("getPostById");
+        Post tPost = new Post();
+        Post returnedPost;
+        Date date = Calendar.getInstance().getTime();
+        int id = 0;
+        
+        tPost.setTitle("Test Post 1");
+        tPost.setBody("This is a test body");
+        tPost.setTags("this post, has, three tags");
+        tPost.setPostDate(date);
+        tPost.setExpiration(null);
+        tPost.setIsPublished(false);
+        tPost.setAuthor("Larry");
+        returnedPost = ptDao.addPost(tPost);
+        id = returnedPost.getPostId();
+        
+        Post result = ptDao.getPostById(id);
+        assertTrue(result.getTitle().equals("Test Post 1"));
+        assertTrue(result.getBody().equals("This is a test body"));
+        assertTrue(result.getAuthor().equals("Larry"));
+        assertFalse(result.getIsPublished());
+        assertEquals(result.getExpiration(), null);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
-//    }
-
-//    @Test
-//    public void testGetPostById() {
-//        System.out.println("getPostById");
-//        Post tPost = new Post();
-//        Date date = Calendar.getInstance().getTime();
-//        tPost.setPostId(1);
-//        tPost.setTitle("Test Post 1");
-//        tPost.setBody("This is a test body");
-//        tPost.setTags("this post, has, three tags");
-//        tPost.setPostDate(date);
-//        tPost.setExpiration(null);
-//        tPost.setIsPublished(false);
-//        tPost.setAuthor("Larry");
-//        ptDao.addPost(tPost);
-//        
-//        Post result = ptDao.getPostById(1);
-//        assertTrue(result.equals(tPost));
-//        // TODO review the generated test code and remove the default call to fail.
-//        //fail("The test case is a prototype.");
-//    }
+    }
 
     @Test
     public void testGetAllPosts() {
@@ -336,32 +359,54 @@ public class CmsDaoTest {
         //fail("The test case is a prototype.");
     }
 
-//    @Test
-//    public void testPublishPost() {
-//        System.out.println("publishPost");
-//        Post tPost = new Post();
-//        Date date = Calendar.getInstance().getTime();
-//        tPost.setPostId(1);
-//        tPost.setTitle("Test Post 1");
-//        tPost.setBody("This is a test body");
-//        tPost.setTags("this post, has, three tags");
-//        tPost.setPostDate(date);
-//        tPost.setExpiration(null);
-//        tPost.setIsPublished(false);
-//        tPost.setAuthor("Larry");
-//        ptDao.addPost(tPost);
-//       
-//        ptDao.publishPost(1);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    @Test
-//    public void testUnpublishPost() {
-//        System.out.println("unpublishPost");
-//        int id = 0;
-//        ptDao.unpublishPost(id);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testPublishPost() {
+        System.out.println("publishPost");
+        Post tPost = new Post();
+        Date date = Calendar.getInstance().getTime();
+        int id = 0;
+        Post returnedPost;
+        
+        tPost.setTitle("Test Post 1");
+        tPost.setBody("This is a test body");
+        tPost.setTags("this post, has, three tags");
+        tPost.setPostDate(date);
+        tPost.setExpiration(null);
+        tPost.setIsPublished(false);
+        tPost.setAuthor("Larry");
+        ptDao.addPost(tPost);
+        returnedPost = ptDao.addPost(tPost);
+        id = returnedPost.getPostId();
+       
+        ptDao.publishPost(id);
+        
+        assertTrue(ptDao.getPostById(id).getIsPublished());
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
+    @Test
+    public void testUnpublishPost() {
+        Post tPost = new Post();
+        Date date = Calendar.getInstance().getTime();
+        int id = 0;
+        Post returnedPost;
+        
+        tPost.setTitle("Test Post 1");
+        tPost.setBody("This is a test body");
+        tPost.setTags("this post, has, three tags");
+        tPost.setPostDate(date);
+        tPost.setExpiration(null);
+        tPost.setIsPublished(true);
+        tPost.setAuthor("Larry");
+        ptDao.addPost(tPost);
+        returnedPost = ptDao.addPost(tPost);
+        id = returnedPost.getPostId();
+       
+        ptDao.unpublishPost(id);
+        
+        assertFalse(ptDao.getPostById(id).getIsPublished());
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
 }
