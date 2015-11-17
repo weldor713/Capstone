@@ -5,14 +5,25 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Post implements Serializable {
 
     private int postId;
+    
+    @NotEmpty(message="You must enter some text into the title field.")
+    @Length(max=50, message="Title must be no more than 50 characters in length.")
     private String title;
+    
+    @NotEmpty(message="You must enter some text into the body field.")
+    @Length(max=10000, message="Title must be no more than 10,000 characters in length.")
     private String body;
     private String author;
     private Set<Tag> tags = new HashSet();
+    
+    @NotNull(message="You must enter a date for this post.")
     private Date postDate;
     private Date expiration;
     private boolean isPublished;
@@ -24,7 +35,7 @@ public class Post implements Serializable {
     public void setPostId(int postId) {
         this.postId = postId;
     }
-
+    
     public String getTitle() {
         return title;
     }

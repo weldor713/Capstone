@@ -1,13 +1,23 @@
 package com.aegis.cms.model;
 
-import java.util.ArrayList;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class User {
-
+    
     private int userId;
+    
+    @NotEmpty(message="You must enter a username into the title field.")
+    @Length(max=20, message="Title must be no more than 20 characters in length.")
     private String userName;
+    
+    @NotEmpty(message="You must enter a password.")
+    @Length(max=20, min=6, message="Passwords must be between 6 and 20 characters.")
     private String password;
-//    private boolean isEnabled;
+    
+    @NotEmpty(message="You must enter a name to display on the blog.")
+    @Length(max=20, message="Display names must be no more than 20 characters in length.")
     private String publicName;
     private String authority;
 
@@ -34,14 +44,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-//    public boolean getIsEnabled() {
-//        return isEnabled;
-//    }
-//
-//    public void setIsEnabled(boolean isEnabled) {
-//        this.isEnabled = isEnabled;
-//    }
 
     public String getPublicName() {
         return publicName;

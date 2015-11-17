@@ -40,7 +40,11 @@ $('#add-button').click(function (event) {
         loadUsers();
         //return false;
     }).error(function (data, status) {
-        console.log("error");
+         $('#validationErrors').empty();
+            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+                var errorDiv = $("#validationErrors");
+                errorDiv.append(validationError.message).append($("<br>"));
+                });
         });
     });
     
@@ -70,7 +74,11 @@ $('#add-button').click(function (event) {
     loadUsers();
         //return false;
     }).error(function (data, status) {
-        console.log("error");
+        $('#validationEditErrors').empty();
+            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+                var errorDiv = $("#validationEditErrors");
+                errorDiv.append(validationError.message).append($("<br>"));
+                });
         });
     });
     
