@@ -30,9 +30,6 @@
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/home">View Blog</a>
                     </li>
-
-
-
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
                     </li>

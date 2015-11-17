@@ -16,7 +16,7 @@
     <body>
         <div class="container">
             <h1>Manage Users</h1>
-            <hr/>
+            <br>
             <div class="nav bar"> 
                 <ul class="nav nav-tabs">
                     <li role="presentation">
@@ -41,10 +41,9 @@
             </div>
 
             <div class="row">
+                <br>
                 <div class="col-md-6">
-                    <h2>User</h2>
-                    <br>
-                    <table id="addressTable" class="table table-hover">
+                    <table class="table table-hover">
                         <tr>
                             <th width="35%">User Name</th>
                             <th width="35%">Role</th>

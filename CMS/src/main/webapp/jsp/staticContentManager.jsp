@@ -43,11 +43,8 @@
             </div>
         </div>
 
-        <div class="container"> 
-            <h2>User</h2>
-            <br>
-        </div>
         <div class="container">
+            <br>
             <div class="form-group">
                 <label for="comment">Enter Static Content:</label>
                 <form>
