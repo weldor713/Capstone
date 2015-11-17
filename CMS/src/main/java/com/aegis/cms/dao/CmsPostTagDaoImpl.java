@@ -28,6 +28,14 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     private static final String SQL_SELECT_ALL_POSTS
             = "select * from post "
             + "order by postDate desc, post_id desc ";
+    private static final String SQL_SELECT_ALL_EXPIRED
+            = "select * from post "
+            + "where CURDATE() > post.expiration "
+            + "order by postDate desc, post_id desc ";
+    private static final String SQL_SELECT_ALL_UNPUBLISHED
+            = "select * from post "
+            + "where post.isPublished = 0 "
+            + "order by postDate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_VISIBLE_POSTS
             = "select * from post "
             + "where isPublished = ? "
@@ -143,6 +151,24 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     @Override
     public List<Post> getAllPosts() {
         List<Post> postList = jdbcTemplate.query(SQL_SELECT_ALL_POSTS, new PostMapper());
+        for (Post post : postList) {
+            post.setTagsFromDb(getTagsForPost(post));
+        }
+        return postList;
+    }
+    
+    @Override
+    public List<Post> getAllExpired() {
+        List<Post> postList = jdbcTemplate.query(SQL_SELECT_ALL_EXPIRED, new PostMapper());
+        for (Post post : postList) {
+            post.setTagsFromDb(getTagsForPost(post));
+        }
+        return postList;
+    }
+    
+    @Override
+    public List<Post> getAllUnpublished() {
+        List<Post> postList = jdbcTemplate.query(SQL_SELECT_ALL_UNPUBLISHED, new PostMapper());
         for (Post post : postList) {
             post.setTagsFromDb(getTagsForPost(post));
         }
