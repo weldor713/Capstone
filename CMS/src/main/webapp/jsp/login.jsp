@@ -1,8 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : Nov 4, 2015, 11:34:01 AM
-    Author     : apprentice
---%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,15 +11,9 @@
     <body>
         <div>
             <h2>Sign in to AEGiS Content Manager System</h2>
-            <!-- #1 - If login_error == 1 then there was a failed login
-            attempt -->
-            <!--
-            so display an error message
-            -->
             <c:if test="${param.login_error == 1}">
                 <h3>Wrong id or password!</h3>
             </c:if>
-            <!-- #2 - Post to Spring security to check our authentication -->
             <form method="post" class="signin"
                   action="j_spring_security_check">
                 <fieldset>
@@ -41,7 +30,6 @@
                         </tr>
                         <tr>
                             <th><label for="password">Password</label></th>
-                            <!-- #2b - must be j_password for Spring -->
                             <td><input id="password"
                                        name="j_password"
                                        type="password" />

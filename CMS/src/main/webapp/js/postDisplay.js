@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('#blogContent').hide();
     loadAllPosts();
-    //loadTags();
     loadStaticContent();
 
 });
@@ -39,8 +38,6 @@ function clearPosts() {
     $('#tagDisplay').empty();
 }
 
-
-
 function showByTag(id) {
     var blogRoll = $('#blogContent');
     clearPosts();
@@ -58,7 +55,6 @@ function showByTag(id) {
         });
     });
 }
-
 
 function clearPosts() {
     $('#blogContent').empty();
@@ -78,8 +74,6 @@ function loadStaticContent() {
     }).success(function (staticContent) {
         $('#static').append(staticContent.content);
     });
-
-    //tinyMCE.activeEditor.setContent(content);
 
 }
 

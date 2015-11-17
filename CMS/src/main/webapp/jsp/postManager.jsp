@@ -44,9 +44,9 @@
                 </ul>
             </div>
             <div class="row">
-
                 <div class="col-md-9">
                     <h2>Blog Posts</h2>
+                    <br>
                     <table class="table table-hover">
                         <tr>
                             <th width="15%">Post Date</th>
@@ -91,35 +91,21 @@
                     </div>
                     <div class="modal-body">
                         <h3 id="details-postId"></h3>
-                        <table class="table table-bordered">
-                            <tr>
-                                <th>Title:</th>
-                                <td id="title"></td>
-                            </tr>
-                            <tr>
-                                <th>Author:</th>
-                                <td id="author"></td>
-                            </tr>
-                            <tr>
-                                <th>Body:</th>
-                                <td id="body"></td>
-                            </tr>
-                            <tr>
-                                <th>Post Date:</th>
-                                <td id="postDate"></td>
-                            </tr>
-                            <tr>
-                                <th>Expiration:</th>
-                                <td id="expiration"></td>
-                            </tr>
-                            <tr>
-                                <th>Published:</th>
-                                <td id="isPublished"></td>
-                            </tr>
-                            <tr>
-                                <th>Tags:</th>
-                                <td id="tags"></td>
-                            </tr>
+                        <table class="table">
+                            <tr><td><strong>Title:</strong></td></tr>
+                            <tr><td id="title"></td></tr>
+                            <tr><td><strong>Author:</strong></td></tr>
+                            <tr><td id="author"></td></tr>
+                            <tr><td><strong>Body:</strong></td></tr>
+                            <tr><td><div id="body"></div></td></tr>
+                            <tr><td><strong>Post Date:</strong></td></tr>
+                            <tr><td id="postDate"></td></tr>
+                            <tr><td><strong>Expiration:</strong></td></tr>
+                            <tr><td id="expiration"></td></tr>
+                            <tr><td><strong>Published:</strong></td></tr>
+                            <tr><td id="isPublished"></td></tr>
+                            <tr><td><strong>Tags:</strong></td></tr>
+                            <tr><td id="tags"></td></tr>
                         </table>
                     </div>
                     <div class="modal-footer">

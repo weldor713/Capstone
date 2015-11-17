@@ -18,7 +18,7 @@
     <body>
         <div class="container">
             <h1>Manage Static Content</h1>
-            <hr/>
+            <br>
             <div class="nav bar"> 
                 <ul class="nav nav-tabs">
                     <li role="presentation">
@@ -44,8 +44,8 @@
         </div>
 
         <div class="container"> 
-            <hr>
-            <h2>Static Area Management</h2>
+            <h2>User</h2>
+            <br>
         </div>
         <div class="container">
             <div class="form-group">

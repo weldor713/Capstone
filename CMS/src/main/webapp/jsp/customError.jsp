@@ -11,12 +11,10 @@
 <html>
     <head>
         <title>AEGiS ERROR</title>
-        <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/error.css"
               rel="stylesheet">
-        <!-- SWC Icon -->
         <link rel="shortcut icon"
               href="${pageContext.request.contextPath}/img/icon.gif">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
@@ -39,13 +37,12 @@
                 <h3>${errorMessage}</h3>
 
             </div>
+
             <footer class="bot">
                 <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
             </footer>
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="${pageContext.request.contextPath}/js/jquery-
-        1.11.1.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </body>
 </html>
