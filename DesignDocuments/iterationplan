@@ -78,6 +78,8 @@ Iteration #4 - Nov 13-16
 	wherever tinymce is - can add images
 -ANTHONY
 
+Post mortem: pretty good. failing of communication. Junit testing still a process. Static content still a process.
+
 Iteration 5 Nov 16-18
 -Add validation for username, postDate, title, body
 Scott
@@ -88,7 +90,6 @@ Anthony
 -junit testing
 
 -Edit modal move labels to above fields
-
 -clean unused files
 -refactor javascript
 -continue with static content

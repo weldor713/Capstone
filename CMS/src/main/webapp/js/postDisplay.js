@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('#blogContent').hide();
     loadAllPosts();
     //loadTags();
+    loadStaticContent();
 
 });
 
@@ -69,4 +70,16 @@ function doRotate(elementId) {
 
 }
 
+function loadStaticContent() {
+    var content = "";
+
+    $.ajax({
+        url: 'header'
+    }).success(function (staticContent) {
+        $('#static').append(staticContent.content);
+    });
+
+    //tinyMCE.activeEditor.setContent(content);
+
+}
 

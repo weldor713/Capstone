@@ -54,7 +54,6 @@
         <script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/postDisplay.js"></script>
-        <script src="${pageContext.request.contextPath}/js/staticContentManager.js"></script>
 
     </body>
 </html>
