@@ -4,6 +4,7 @@ import com.aegis.cms.dao.CmsPostTagDao;
 import com.aegis.cms.model.Post;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,7 +31,7 @@ public class CreatePostsController {
     @RequestMapping(value = "/makePost", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Post addPost(@RequestBody Post post, HttpServletRequest request) {
+    public Post addPost(@Valid @RequestBody Post post, HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")) {
             post.setIsPublished(true);
             post.setAuthor(dao.getAuthorFromUserName(request.getRemoteUser()));

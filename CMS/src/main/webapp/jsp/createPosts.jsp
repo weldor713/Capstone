@@ -95,6 +95,7 @@
                             </div>
                         </div>
                     </form>
+                    <div id="validationErrors" style="color: tomato"></div>
                 </div> 
             </div>
 
