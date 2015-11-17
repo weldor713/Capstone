@@ -31,7 +31,7 @@ function loadPosts(data, status) {
         });
 
     });
-    blogRoll.fadeIn(3000);
+    blogRoll.fadeIn(1000);
 }
 
 function clearPosts() {
