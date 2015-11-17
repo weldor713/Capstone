@@ -59,8 +59,17 @@
                         <tbody id="contentRows"></tbody>
                     </table>
                 </div> <!-- end left column -->
-                <div>
-
+                <div class="col-md-3 radio">
+                    <h2>Filter</h2>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-all">ALL</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-exp">EXPIRED</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-unpub">NOT PUBLISHED</label>
+                    </div>
 
                 </div> <!-- end right column -->
 
@@ -139,31 +148,31 @@
                                 <label for="edit-title">
                                     Title:
                                 </label>
-                                    <input type="text" class="form-control" id="edit-title">
+                                <input type="text" class="form-control" id="edit-title">
                             </div>
                             <div class="form-group">
                                 <label for="edit-body">
                                     Body:
                                 </label>
-                                    <div id="edit-body" class=""></div>
+                                <div id="edit-body" class=""></div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-postDate">
                                     Post Date:
                                 </label>
-                                    <input type="text" class="clsdatepicker form-control" id="edit-postDate">
+                                <input type="text" class="clsdatepicker form-control" id="edit-postDate">
                             </div>
                             <div class="form-group">
                                 <label for="edit-expiration">
                                     Expiration Date:
                                 </label>
-                                    <input type="text" class="clsdatepicker form-control" id="edit-expiration">
+                                <input type="text" class="clsdatepicker form-control" id="edit-expiration">
                             </div>
                             <div class="form-group">
                                 <label for="edit-tags">
                                     Tags:
                                 </label>
-                                    <input type="text" class="form-control" id="edit-tags">
+                                <input type="text" class="form-control" id="edit-tags">
                             </div>
                             <div class="form-group">
                                 <div>
