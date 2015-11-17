@@ -69,12 +69,12 @@ div.postContain {
     margin-bottom: 5px;
     font-size: 25px;
     font-weight: bold;
-    color: black; //#b3ffd9;
+    color: black;//#b3ffd9;
     padding: 10px;
     background-color: #B9C2AA;
-    background-image: linear-gradient(to left, #B9C2AA, #BBFFFF); //#9CB293);
-    border-radius: 8px;
-    //box-shadow: 5px 5px #888888;
+    background-image: linear-gradient(to left, #B9C2AA, #BBFFFF);//#9CB293);
+    border-radius: 8px;//
+    box-shadow: 5px 5px #888888;
     -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
     -box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
@@ -99,3 +99,8 @@ a {
     border-radius: 20px;
 }
 */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
