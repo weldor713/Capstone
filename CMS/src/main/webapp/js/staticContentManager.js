@@ -1,15 +1,14 @@
+var content;
 
 $(document).ready(function () {
 
     loadStaticContent();
 
-    tinymce.init({
-        selector: "#staticContent",
-        plugins: ["image preview"]
-    });
+    initalizeTinyMce();
 
 
     $("#add-content-button").click(function (event) {
+        $('#completion').empty();
         event.preventDefault();
         $.ajax({
             type: 'PUT',
@@ -20,25 +19,45 @@ $(document).ready(function () {
             }),
             headers: {'Accept': 'application/json',
                 'Content-Type': 'application/json'},
-            dataType: 'json'
-        }).success(function (data, status) {
-            tinymce.activeEditor.setContent("");
-            console.log("Success!");
-        }).error(function (data, status) {
-            console.log("Error!");
+            dataType: 'json',
+            complete: function () {
+                $('#completion').append("Content Updated");
+            }
         });
 
-        tinymce.activeEditor.setContent("");
+        loadStaticContent();
+
+        initalizeTinyMce();
     });
 
 });
 
 function loadStaticContent() {
+
     $.ajax({
         url: 'header'
-    }).success(function (data, status) {
-        $('#static').append(data.content);
+    }).success(function (staticContent) {
+        content = staticContent.content;
+        //tinyMCE.activeEditor.setContent(staticContent.contentId);
+        //$('#staticContent').activeEditor.setContent(staticContent.content);
     });
 
+}
+
+function initalizeTinyMce() {
+    tinymce.init({
+        selector: "#staticContent",
+        inline: false,
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste image preview"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        init_instance_callback: function () {
+            tinymce.activeEditor.setContent(content);
+        }
+
+    });
 }
 

@@ -4,6 +4,7 @@ import com.aegis.cms.dao.CmsPostTagDao;
 import com.aegis.cms.model.Post;
 import java.util.List;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +55,7 @@ public class PostManagerController {
     
     @RequestMapping(value="post/{postId}", method=RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void publishPost(@PathVariable("postId") int postId, @RequestBody Post post){
+    public void editPost(@PathVariable("postId") int postId, @Valid @RequestBody Post post){
         post.setPostId(postId);
         dao.editPost(post);
     }

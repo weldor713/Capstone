@@ -45,6 +45,10 @@
           class="com.aegis.cms.dao.CmsUserDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+    <bean id="cmsUserDao"
+         class="com.aegis.cms.dao.CmsUserDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
     <!--Cms Post Tag Dao-->
     <bean id="cmspt" 
           class="com.aegis.cms.dao.CmsPostTagDaoImpl">

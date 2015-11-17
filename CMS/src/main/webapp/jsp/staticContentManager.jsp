@@ -61,6 +61,7 @@
                             Add
                         </button>
                     </div>
+                    <div id="completion" class="text-success"></div>
                 </div>
             </div>
         </div>

@@ -44,7 +44,11 @@ $(document).ready(function () {
             loadPosts();
             $('#editModal').modal('hide');
         }).error(function (data, status) {
-            console.log("Error");
+            $('#validationErrorsModal').empty();
+            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+                var errorDiv = $("#validationErrorsModal");
+                errorDiv.append(validationError.message).append($("<br>"));
+                });
         });
     });
 
