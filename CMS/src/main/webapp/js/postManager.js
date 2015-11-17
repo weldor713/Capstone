@@ -9,16 +9,16 @@ $(document).ready(function () {
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
-   
-   
-   //fixed image issue in editmodal
-    $(document).on('focusin', function(e) {
-    if ($(event.target).closest(".mce-window").length) {
-        e.stopImmediatePropagation();
-    }
-});
 
-    
+
+    //fixed image issue in editmodal
+    $(document).on('focusin', function (e) {
+        if ($(event.target).closest(".mce-window").length) {
+            e.stopImmediatePropagation();
+        }
+    });
+
+
     loadPosts();
 
     $('#edit-button').click(function (event) {
@@ -48,7 +48,7 @@ $(document).ready(function () {
             $.each(data.responseJSON.fieldErrors, function (index, validationError) {
                 var errorDiv = $("#validationErrorsModal");
                 errorDiv.append(validationError.message).append($("<br>"));
-                });
+            });
         });
     });
 
@@ -63,6 +63,20 @@ $(document).ready(function () {
             dateFormat: "yy-mm-dd"
         });
     });
+    
+    $('#radio-exp').click(function (event) {
+        event.preventDefault();
+        loadAllExpired();
+    });
+    $('#radio-unpub').click(function (event) {
+        event.preventDefault();
+        loadAllUnpublished();
+    });
+    $('#radio-all').click(function (event) {
+        event.preventDefault();
+        loadPosts();
+    });
+    
 });
 //Functions
 
@@ -74,6 +88,98 @@ function loadPosts() {
         url: 'allposts'
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
+            if (post.expiration === null) {
+                post.expiration = "none";
+            }
+
+            cTable.append($('<tr>')
+                    .append($('<td>').text(post.postDate))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        "data-postid": post.postId,
+                                        "data-toggle": "modal",
+                                        "data-target": "#detailsModal"
+                                    })
+                                    .text(post.title)
+                                    )
+                            )
+                    .append($('<td>').text(post.author))
+                    .append($('<td>').text(post.expiration))
+                    .append($('<td>')
+                            .append($('<input>')
+                                    .attr({'type': 'checkbox',
+                                        'id': post.postId,
+                                        'onClick': 'pubUnpub(' + post.postId + ')'
+                                    }).prop('checked', post.isPublished)))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        "data-postid": post.postId,
+                                        "data-toggle": "modal",
+                                        "data-target": "#editModal"
+                                    })
+                                    .text('Edit')))
+                    .append($('<td>').append($('<a>').attr({'onClick': 'deletePost(' + post.postId + ')'}).text('Delete')))
+                    );
+        });
+    });
+}
+
+function loadAllExpired() {
+    clearPosts();
+    var cTable = $('#contentRows');
+
+    $.ajax({
+        url: 'allexpired'
+    }).success(function (allexp, status) {
+        $.each(allexp, function (index, post) {
+            if (post.expiration === null) {
+                post.expiration = "none";
+            }
+
+            cTable.append($('<tr>')
+                    .append($('<td>').text(post.postDate))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        "data-postid": post.postId,
+                                        "data-toggle": "modal",
+                                        "data-target": "#detailsModal"
+                                    })
+                                    .text(post.title)
+                                    )
+                            )
+                    .append($('<td>').text(post.author))
+                    .append($('<td>').text(post.expiration))
+                    .append($('<td>')
+                            .append($('<input>')
+                                    .attr({'type': 'checkbox',
+                                        'id': post.postId,
+                                        'onClick': 'pubUnpub(' + post.postId + ')'
+                                    }).prop('checked', post.isPublished)))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        "data-postid": post.postId,
+                                        "data-toggle": "modal",
+                                        "data-target": "#editModal"
+                                    })
+                                    .text('Edit')))
+                    .append($('<td>').append($('<a>').attr({'onClick': 'deletePost(' + post.postId + ')'}).text('Delete')))
+                    );
+        });
+    });
+}
+
+function loadAllUnpublished() {
+    clearPosts();
+    var cTable = $('#contentRows');
+
+    $.ajax({
+        url: 'allunpub'
+    }).success(function (allunpub, status) {
+        $.each(allunpub, function (index, post) {
             if (post.expiration === null) {
                 post.expiration = "none";
             }

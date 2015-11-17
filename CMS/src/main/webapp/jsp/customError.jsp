@@ -37,6 +37,7 @@
             </div>
             <div>
                 <h3>${errorMessage}</h3>
+
             </div>
             <footer class="bot">
                 <p>copyright&copy 2015 AEGiS All Rights Reserved</p>

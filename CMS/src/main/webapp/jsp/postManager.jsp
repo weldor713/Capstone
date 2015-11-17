@@ -60,8 +60,17 @@
                         <tbody id="contentRows"></tbody>
                     </table>
                 </div> <!-- end left column -->
-                <div>
-
+                <div class="col-md-3 radio">
+                    <h2>Filter</h2>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-all">ALL</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-exp">EXPIRED</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" id="radio-unpub">NOT PUBLISHED</label>
+                    </div>
 
                 </div> <!-- end right column -->
 
