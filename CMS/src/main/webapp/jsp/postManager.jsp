@@ -6,6 +6,7 @@
         <title>AEGiS Content Management System</title>
         <link href="${pageContext.request.contextPath}/js/jquery-ui.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/css/imagecontain.css" rel="stylesheet">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/icon.gif">
         <style>
             .clsDatePicker {
