@@ -20,7 +20,7 @@ public interface CmsUserDao {
 
     public List<User> getAllUsers();
 
-    public void editUser(User user);
+    public User editUser(User user);
     
     public User getUserById(int id);
 

@@ -70,9 +70,10 @@ public class CmsUserDaoImpl implements CmsUserDao {
     }
     
     
-    public void editUser(User user) {
+    public User editUser(User user) {
         jdbcTemplate.update(SQL_UPDATE_USER, user.getPublicName(), user.getUserName(), user.getAuthority(), user.getPassword(), user.getUserId());
-    }
+   return user;
+    } 
 
     @Override
     public List<User> getAllUsers() {
