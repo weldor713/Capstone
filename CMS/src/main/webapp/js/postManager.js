@@ -11,7 +11,6 @@ $(document).ready(function () {
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 
-    //fixed image issue in editmodal
     $(document).on('focusin', function (e) {
         if ($(event.target).closest(".mce-window").length) {
             e.stopImmediatePropagation();

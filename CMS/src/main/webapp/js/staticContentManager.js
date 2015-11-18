@@ -38,8 +38,6 @@ function loadStaticContent() {
         url: 'header'
     }).success(function (staticContent) {
         content = staticContent.content;
-        //tinyMCE.activeEditor.setContent(staticContent.contentId);
-        //$('#staticContent').activeEditor.setContent(staticContent.content);
     });
 
 }

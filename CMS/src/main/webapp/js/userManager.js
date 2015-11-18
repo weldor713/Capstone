@@ -66,7 +66,6 @@ $('#add-button').click(function (event) {
     
 });
 
-//Functions
 function loadUsers() {
     clearUsers();
     var userTable = $('#userTable');

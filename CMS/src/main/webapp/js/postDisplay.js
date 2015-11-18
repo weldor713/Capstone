@@ -13,7 +13,6 @@ function loadAllPosts() {
         loadPosts(allposts, status);
     });
 }
-//have the postById function pass through this to support the same layout
 
 function loadPosts(data, status) {
     clearPosts();
@@ -27,8 +26,6 @@ function loadPosts(data, status) {
         $.each(post.tags, function (index, tag) {
             if(tag.tagName !== ""){
             blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
-//            tagList.append($('<li class="tagList">')).append($('<a class="tags">')
-//                    .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text("#" + tag.tagName + ""));
             }
         });
 
