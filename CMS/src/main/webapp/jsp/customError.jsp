@@ -15,28 +15,20 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container centered">
             <h1>ERROR</h1>
-            <hr/>
-            <div class="navbar">
-                <ul class="nav nav-tabs">
-                    <li role="presentation" class="active">
-                        <a href="${pageContext.request.contextPath}/createPosts">Create Posts</a>
-                    </li>
-                    <li role="presentation">
-                        <a style="color: black" href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3>${errorMessage}</h3>
-            </div>
-
-            <footer class="bot">
-                <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
-            </footer>
+            <br>
+            <button type="button" class="btn btn-primary">
+                <a class="bg-primary" href="${pageContext.request.contextPath}/home">Go Baaaaaaack Home!</a>
+            </button>
+            <h3>${errorMessage}</h3>
         </div>
-        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    </body>
+
+        <footer class="bot">
+            <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
+        </footer>
+    </div>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+</body>
 </html>
