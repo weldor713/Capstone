@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     tinymce.init({
         selector: "#bodytextarea",
         plugins: [
@@ -14,7 +15,7 @@ $(document).ready(function () {
         var tagstring;
         event.preventDefault();
         if ($('#add-tags').val() === "") {
-                    tagstring = null;
+            tagstring = null;
         } else {
             tagstring = $('#add-tags').val();
         }
@@ -59,8 +60,5 @@ $(document).ready(function () {
         });
     });
 });
-
-
-
 
 
