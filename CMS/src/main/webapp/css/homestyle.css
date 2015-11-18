@@ -68,7 +68,7 @@ a.tags {
 div.postContain {
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     color: black;//#b3ffd9;
     padding: 10px;
@@ -87,9 +87,9 @@ span.postDetails {
     font-style: italic;
 }
 
-p.postBody {
+div.postBody {
     font-size: 17px;
-    font-weight: bold;
+    font-weight: normal;
 }
 p.tagToPost {
     color: black;
