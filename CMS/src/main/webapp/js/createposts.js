@@ -11,14 +11,20 @@ $(document).ready(function () {
 
 
     $("#add-post-button").click(function (event) {
+        var tagstring;
         event.preventDefault();
+        if ($('#add-tags').val() === "") {
+                    tagstring = null;
+        } else {
+            tagstring = $('#add-tags').val();
+        }
         $.ajax({
             type: 'POST',
             url: 'makePost',
             data: JSON.stringify({
                 title: $('#add-title').val(),
                 body: tinymce.activeEditor.getContent({format: 'raw'}),
-                tags: $('#add-tags').val(),
+                tags: tagstring,
                 postDate: $('#add-postDate').datepicker('getDate'),
                 expiration: $('#add-expiration').datepicker('getDate')
             }),

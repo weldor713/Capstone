@@ -17,8 +17,10 @@
         <div class="container">
             <h1>Manage Users</h1>
             <br>
+        </div><!--end of title container -->
+        <div class="container">
             <div class="nav bar"> 
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-pills">
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/createPosts">Create Posts</a>
                     </li>
@@ -39,92 +41,71 @@
                     </li>
                 </ul>
             </div>
-
+        </div><!--end of nav container -->
+        <div class="container">
             <div class="row">
                 <br>
-                <div class="col-md-6">
-                    <table class="table table-hover">
-                        <tr>
-                            <th width="35%">User Name</th>
-                            <th width="35%">Role</th>
-                            <th width="15%"></th>
-                            <th width="15%"></th>
-                        </tr>
-                        <tbody id="userTable"></tbody>
-                    </table>
-                </div>
+                <div class="col-md-8">
+                    <p><strong>Existing Users</strong></p>
+                    <div class="container-fluid homecontainer" style="background: whitesmoke; border-radius: 5px; border: 5px azure; padding: 15px;">
+                        <table class="table table-hover">
+                            <tr>
+                                <th width="35%">User Name</th>
+                                <th width="35%">Role</th>
+                                <th width="15%"></th>
+                                <th width="15%"></th>
+                            </tr>
+                            <tbody id="userTable"></tbody>
+                        </table>
+                    </div> <!-- end of right container  -->
+                </div> <!-- end of right column -->
 
-                <div class="col-md-6">
-                    <br>
-                    <br>
+                <div class="col-md-4">
+                    <label>Add a New User</label>
+                    <div class="container-fluid" style="background: whitesmoke; border-radius: 5px; border: azure; padding: 15px;">
 
-
-                    <!--
-                    <form method="POST" action="addUser">
-                        Username: <input type="text" name="username"/><br/>
-                        Password:&nbsp; <input type="password" name="password"/><br/>
-                        Admin User? <input type="checkbox" name="isAdmin" value="yes"/>
-                        <br/>
-                        <input type="submit" value="Add User"/><br/>
-                    </form>
-
-                    -->
-
-
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label for="add-publicname" class="col-md-4 control-label">
-                                Public Name:
-                            </label>
-                            <div class="col-md-8">
+                        <form class="form" role="form">
+                            <div class="form-group">    
+                                <label for="add-publicname">
+                                    Public Name:
+                                </label>
                                 <input type="text" class="form-control"
                                        id="add-publicname" placeholder="Name"/>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="add-username" class="col-md-4 control-label">
-                                User Name:
-                            </label>
-                            <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="add-username">
+                                    User Name:
+                                </label>
                                 <input type="text" class="form-control"
                                        id="add-username" placeholder="Display Name"/>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="add-password" class="col-md-4 control-label">
-                                Password:
-                            </label>
-                            <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="add-password">
+                                    Password:
+                                </label>
                                 <input type="password" class="form-control"
                                        id="add-password" placeholder="Password"/>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="add-authority" class="col-md-4 control-label">
-                                Authority:
-                            </label>
-                            <div class="col-md-8">
+                            <div class="form-group">
+                                <label for="add-authority">
+                                    Authority:
+                                </label>
                                 <select class="form-control" id="add-authority">
                                     <option>ROLE_ADMIN</option>
                                     <option>ROLE_USER</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-4 col-md-8">
+                            <div class="form-group">
                                 <button type="submit" id="add-button" class="btn btn-default">
                                     Create User
                                 </button>
                             </div>
-                        </div>
-                    </form>
-
-
-                    <div id="validationErrors" style="color: tomato"></div>
-                </div>
-            </div>         
-        </div>
-
+                        </form>
+                        <div id="validationErrors" style="color: tomato"></div>
+                    </div> <!-- end of left container -->
+                </div> <!-- end of left column -->
+            </div> <!-- end of row -->        
+        </div><!--end of body container -->
         <!--Edit modal-->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -133,54 +114,46 @@
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="detailsModalLabel">Edit  Dvd</h4>
+                        <h4 class="modal-title" id="detailsModalLabel">Edit User</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" role="form">
+                        <form class="form" role="form">
                             <div class="form-group">
-                                <label for="edit-publicname" class="col-md-4 control-label">
+                                <label for="edit-publicname">
                                     Name:
                                 </label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-publicname" placeholder="Name">
-                                </div> </div>
+                                <input type="text" class="form-control" id="edit-publicname" placeholder="Name">
+                            </div> 
                             <div class="form-group">
-                                <label for="edit-username" class="col-md-4 control-label">
+                                <label for="edit-username">
                                     User Name:
                                 </label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="edit-username" placeholder="User Name">
-                                </div> </div>
+                                <input type="text" class="form-control" id="edit-username" placeholder="User Name">
+                            </div>
                             <div class="form-group">
-                                <label for="edit-authority" class="col-md-4 control-label">
+                                <label for="edit-authority">
                                     Authority:
                                 </label>
-                                <div class="col-md-8">
-                                    <select class="form-control" id="edit-authority">
-                                        <option>ROLE_ADMIN</option>
-                                        <option>ROLE_USER</option>
-                                    </select>
-                                </div> 
-                            </div>
+                                <select class="form-control" id="edit-authority">
+                                    <option>ROLE_ADMIN</option>
+                                    <option>ROLE_USER</option>
+                                </select>
+                            </div> 
                             <div class="form-group">
-                                <label for="edit-password" class="col-md-4 control-label">
+                                <label for="edit-password">
                                     Password:
                                 </label>
-                                <div class="col-md-8">
-                                    <input type="password" class="form-control" id="edit-password" placeholder="Password">
-                                </div> 
+                                <input type="password" class="form-control" id="edit-password" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <div class="col-md-offset-4 col-md-8">
-                                    <button type="submit" id="edit-button" class="btn btn-default">
-                                        Edit User
-                                    </button>
-                                    <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">
-                                        Cancel
-                                    </button>
-                                    <input type="hidden" id="edit-user-id">
-                                </div> 
+                                <button type="submit" id="edit-button" class="btn btn-default">
+                                    Edit User
+                                </button>
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <input type="hidden" id="edit-user-id">
                             </div>
                         </form> 
                         <div id="validationEditErrors" style="color: tomato"></div>

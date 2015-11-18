@@ -16,10 +16,11 @@
     <body>
         <div class="container">
             <h1>Create Post</h1>
-            <hr/>
-
+            <br>
+        </div> <!--end of head container -->
+        <div class="container">
             <div class="nav bar"> 
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-pills">
                     <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/createPosts">Create Posts</a>
                     </li>
@@ -42,12 +43,13 @@
                     </li>
                 </ul>
             </div>
+        </div> <!--end of nav container -->
 
-
-
-            <div class="row">
+        <div class="row">
+            <div class="container">
                 <br>
-                <div class="col-md-11">
+                <p><strong>Add New Post</strong></p>
+                <div class="container-fluid col-md-10" style="background: whitesmoke; border-radius: 5px; border: 5px azure; padding: 15px;">
                     <form class="form" role="form">
                         <div class="form-group">
                             <label for="add-title">
@@ -93,18 +95,19 @@
                         </div>
                     </form>
                     <div id="validationErrors" style="color: tomato"></div>
-                </div> 
-            </div>
-            <footer class="bot">
-                <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
-            </footer>
-        </div>
+                </div> <!-- end of right container -->
+            </div> <!-- end of body container -->
+        </div> <!--end of row column -->
+        <footer class="bot">
+            <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
+        </footer> <!-- end of footer -->
+    </div>
 
-        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/createposts.js"></script>
-    </body>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/createposts.js"></script>
+</body>
 </html>
 
