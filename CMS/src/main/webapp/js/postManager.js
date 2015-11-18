@@ -3,9 +3,9 @@ $(document).ready(function () {
         selector: "#edit-body",
         inline: false,
         plugins: [
-            " autolink lists link image charmap print preview anchor",
+            "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
-            "insertdatetime table contextmenu paste"
+            "insertdatetime media table paste image preview"
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
@@ -61,7 +61,7 @@ $(document).ready(function () {
             dateFormat: "yy-mm-dd"
         });
     });
-    
+
     $('#radio-exp').click(function (event) {
         event.preventDefault();
         loadAllExpired();
@@ -74,7 +74,7 @@ $(document).ready(function () {
         event.preventDefault();
         loadPosts();
     });
-    
+
 });
 
 //Functions
