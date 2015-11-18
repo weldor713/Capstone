@@ -29,7 +29,8 @@
 
             <div class="container">
                 <div id="tagContainer" class="col-sm-2">
-                    <h1>TAGS:</h1>
+                    <h4 style="text-align: center">TAG SORT / <a href="javascript:history.go(0)">ALL</a></h4>
+                    <hr>
                     <div id="tagDisplay"></div>
 
 

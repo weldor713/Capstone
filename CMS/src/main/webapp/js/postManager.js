@@ -2,10 +2,11 @@ $(document).ready(function () {
     tinymce.init({
         selector: "#edit-body",
         inline: false,
+        entity_encoding: "raw",
         plugins: [
-            " autolink lists link image charmap print preview anchor",
+            "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
-            "insertdatetime table contextmenu paste"
+            "insertdatetime table paste image preview"
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
@@ -61,7 +62,7 @@ $(document).ready(function () {
             dateFormat: "yy-mm-dd"
         });
     });
-    
+
     $('#radio-exp').click(function (event) {
         event.preventDefault();
         loadAllExpired();
@@ -74,7 +75,7 @@ $(document).ready(function () {
         event.preventDefault();
         loadPosts();
     });
-    
+
 });
 
 //Functions

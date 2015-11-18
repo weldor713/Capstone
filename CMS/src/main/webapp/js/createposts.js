@@ -1,10 +1,15 @@
 $(document).ready(function () {
     tinymce.init({
-            selector: "#bodytextarea",
-            plugins:[ "image preview"],
-        });
+        selector: "#bodytextarea",
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime table paste image preview"
+        ],
+        entity_encoding: "raw"
+    });
 
-    
+
     $("#add-post-button").click(function (event) {
         var tagstring;
         event.preventDefault();
@@ -39,7 +44,7 @@ $(document).ready(function () {
                 var errorDiv = $("#validationErrors");
                 errorDiv.append(validationError.message).append($("<br>"));
             });
-        }); 
+        });
     });
 
     $(function () {

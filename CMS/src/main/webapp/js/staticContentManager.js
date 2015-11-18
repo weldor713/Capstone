@@ -48,10 +48,11 @@ function initalizeTinyMce() {
     tinymce.init({
         selector: "#staticContent",
         inline: false,
+        entity_encoding: "raw",
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste image preview"
+            "insertdatetime table paste image preview"
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
         init_instance_callback: function () {
