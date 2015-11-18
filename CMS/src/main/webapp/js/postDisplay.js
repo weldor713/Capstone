@@ -22,7 +22,7 @@ function loadPosts(data, status) {
 
 
     $.each(data, function (index, post) {
-        blogRoll.append($('<div class="postContain">')
+        blogRoll.append($('<div class="postContain word_wrap">')
                 .text(post.title + " " + post.postDate + " by " + post.author).append('<p class="postBody">').append(post.body));
         $.each(post.tags, function (index, tag) {
             if(tag.tagName !== ""){

@@ -2,6 +2,7 @@ $(document).ready(function () {
     tinymce.init({
         selector: "#edit-body",
         inline: false,
+        entity_encoding: "raw",
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",

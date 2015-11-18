@@ -6,6 +6,7 @@ $(document).ready(function () {
             "searchreplace visualblocks code fullscreen",
             "insertdatetime table paste image preview"
         ],
+        entity_encoding: "raw"
     });
 
 
