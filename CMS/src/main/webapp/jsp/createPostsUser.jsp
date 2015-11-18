@@ -1,8 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@taglib prefix = "s" uri="http://www.springframework.org/tags"  %>
-<%@taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@taglib prefix = "sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,23 +13,11 @@
         <div class="container">
             <h1>Create Post</h1>
             <hr/>
-
             <div class="nav bar"> 
                 <ul class="nav nav-tabs">
                     <li role="presentation" class="active">
                         <a href="${pageContext.request.contextPath}/createPosts">Create Posts</a>
                     </li>
-                    <sec:authorize access ="hasRole('ROLE_ADMIN')"> 
-                        <li role="presentation">
-                            <a href="${pageContext.request.contextPath}/postMan">Manage Posts</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="${pageContext.request.contextPath}/userMan">Manage Users</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="${pageContext.request.contextPath}/staticMan">Manage Static Area</a>
-                        </li>
-                    </sec:authorize> 
                     <li role="presentation">
                         <a href="${pageContext.request.contextPath}/home">View Blog</a>
                     </li>
@@ -42,8 +26,6 @@
                     </li>
                 </ul>
             </div>
-
-
 
             <div class="row">
                 <br>
@@ -107,4 +89,3 @@
         <script src="${pageContext.request.contextPath}/js/createposts.js"></script>
     </body>
 </html>
-
