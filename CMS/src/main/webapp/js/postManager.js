@@ -63,15 +63,18 @@ $(document).ready(function () {
     });
 
     $('#radio-exp').click(function (event) {
-        event.preventDefault();
+        $('#radio-unpub').removeAttr('checked');
+        $('#radio-all').removeAttr('checked');
         loadAllExpired();
     });
     $('#radio-unpub').click(function (event) {
-        event.preventDefault();
+        $('#radio-all').removeAttr('checked');
+        $('#radio-exp').removeAttr('checked');
         loadAllUnpublished();
     });
     $('#radio-all').click(function (event) {
-        event.preventDefault();
+        $('#radio-unpub').removeAttr('checked');
+        $('#radio-exp').removeAttr('checked');
         loadPosts();
     });
 

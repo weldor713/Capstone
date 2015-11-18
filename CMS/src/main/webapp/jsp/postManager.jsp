@@ -67,8 +67,8 @@
                 <div class="col-md-3 radio">
                     <p><strong>Filter Posts</strong></p>
                     <div class="container-fluid" style="background: whitesmoke; border-radius: 5px; border: 5px azure; padding: 15px;">
-                        <div class="radio">
-                            <label><input type="radio" id="radio-all">All</label>
+                        <div class="radio" data-toggle="buttons">
+                            <label><input type="radio" id="radio-all" checked>All</label>
                         </div>
                         <div class="radio">
                             <label><input type="radio" id="radio-exp">Expired</label>

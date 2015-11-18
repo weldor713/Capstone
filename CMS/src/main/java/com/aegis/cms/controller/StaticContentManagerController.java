@@ -40,7 +40,7 @@ public class StaticContentManagerController {
     }
 
     @RequestMapping(value = "/header", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.CREATED) //??
+    @ResponseStatus(HttpStatus.CREATED) 
     @ResponseBody
     public void updateStaticContent(@RequestBody StaticContent cont) {
         dao.updateStaticContent(cont);
