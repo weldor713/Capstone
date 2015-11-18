@@ -4,7 +4,7 @@ $(document).ready(function () {
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table paste image preview"
+            "insertdatetime table paste image preview"
         ],
     });
 
