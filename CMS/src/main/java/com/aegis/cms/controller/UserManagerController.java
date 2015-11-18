@@ -19,7 +19,7 @@ public class UserManagerController {
 
     private CmsUserDao userManDao;
     
-        @RequestMapping(value = "/userMan", method = RequestMethod.GET)
+    @RequestMapping(value = "/userMan", method = RequestMethod.GET)
     public String displayUserManager() {
         return "userManager";
     }
@@ -33,7 +33,6 @@ public class UserManagerController {
     @ResponseBody
     public List <User> displayUserList() {
         return userManDao.getAllUsers();
-       // model.put("users", users);
     }
     
     @RequestMapping (value="user", method=RequestMethod.POST)

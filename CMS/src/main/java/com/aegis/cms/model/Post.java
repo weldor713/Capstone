@@ -12,18 +12,18 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Post implements Serializable {
 
     private int postId;
-    
-    @NotEmpty(message="You must enter some text into the title field.")
-    @Length(max=50, message="Title must be no more than 50 characters in length.")
+
+    @NotEmpty(message = "You must enter some text into the title field.")
+    @Length(max = 50, message = "Title must be no more than 50 characters in length.")
     private String title;
-    
-    @NotEmpty(message="You must enter some text into the body field.")
-    @Length(max=10000, message="Title must be no more than 10,000 characters in length.")
+
+    @NotEmpty(message = "You must enter some text into the body field.")
+    @Length(max = 10000, message = "Title must be no more than 10,000 characters in length.")
     private String body;
     private String author;
     private Set<Tag> tags = new HashSet();
-    
-    @NotNull(message="You must enter a date for this post.")
+
+    @NotNull(message = "You must enter a date for this post.")
     private Date postDate;
     private Date expiration;
     private boolean isPublished;
@@ -35,7 +35,7 @@ public class Post implements Serializable {
     public void setPostId(int postId) {
         this.postId = postId;
     }
-    
+
     public String getTitle() {
         return title;
     }
@@ -52,26 +52,29 @@ public class Post implements Serializable {
         this.body = body;
     }
 
-    public void setTagsFromDb(Set<Tag> tagSet){
+    public void setTagsFromDb(Set<Tag> tagSet) {
         tags = tagSet;
     }
-    
+
     public Set<Tag> getTags() {
         return tags;
     }
 
     public void setTags(String tagString) {
-        Set<Tag> tagSet = new HashSet<>();
-        String[] tempArray = tagString.split(",");
-        for (int i = 0; i < tempArray.length; i++) {
-            Tag tempTag = new Tag();
-            tempTag.setTagName(tempArray[i].trim());
-            tagSet.add(tempTag);
+        if (!tagString.equals("")) {
+            Set<Tag> tagSet = new HashSet<>();
+            String[] tempArray = tagString.split(",");
+            for (int i = 0; i < tempArray.length; i++) {
+                Tag tempTag = new Tag();
+                tempTag.setTagName(tempArray[i].trim());
+                tagSet.add(tempTag);
+            }
+            this.tags.addAll(tagSet);
+            tags = tagSet;
+        } else {
+            tags = null;
         }
-        this.tags.addAll(tagSet);
-        tags = tagSet;
     }
-
 
     public Date getPostDate() {
         return postDate;
@@ -96,7 +99,7 @@ public class Post implements Serializable {
     public void setIsPublished(boolean isPublished) {
         this.isPublished = isPublished;
     }
-    
+
     public String getAuthor() {
         return author;
     }
@@ -154,5 +157,5 @@ public class Post implements Serializable {
         }
         return true;
     }
-    
+
 }

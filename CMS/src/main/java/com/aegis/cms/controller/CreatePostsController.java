@@ -31,7 +31,7 @@ public class CreatePostsController {
     @RequestMapping(value = "/makePost", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Post addPost(@Valid @RequestBody Post post, HttpServletRequest request) {
+    public Post addPost(HttpServletRequest request, @Valid @RequestBody Post post) {
         if (request.isUserInRole("ROLE_ADMIN")) {
             post.setIsPublished(true);
             post.setAuthor(dao.getAuthorFromUserName(request.getRemoteUser()));

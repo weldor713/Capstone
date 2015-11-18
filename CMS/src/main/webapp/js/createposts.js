@@ -13,11 +13,7 @@ $(document).ready(function () {
     $("#add-post-button").click(function (event) {
         var tagstring;
         event.preventDefault();
-        if ($('#add-tags').val() === "") {
-                    tagstring = null;
-        } else {
-            tagstring = $('#add-tags').val();
-        }
+
         $.ajax({
             type: 'POST',
             url: 'makePost',
