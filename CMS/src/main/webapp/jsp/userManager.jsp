@@ -44,9 +44,9 @@
                     <div class="container-fluid" style="background: whitesmoke; border-radius: 5px; border: 5px azure; padding: 15px;">
                         <table class="table table-hover">
                             <tr>
-                                <th width="30%">Public Name</th>
-                                <th width="30%">User Name</th>
-                                <th width="30%">Authority</th>
+                                <th width="25%">Public Name</th>
+                                <th width="25%">User Name</th>
+                                <th width="20%">Authority</th>
                                 <th width="15%"></th>
                                 <th width="15%"></th>
                             </tr>
