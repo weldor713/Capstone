@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $('#blogContent').hide();
     loadAllPosts();
-    //loadTags();
     loadStaticContent();
 
 });
@@ -31,15 +30,13 @@ function loadPosts(data, status) {
         });
 
     });
-    blogRoll.fadeIn(3000);
+    blogRoll.fadeIn(1000);
 }
 
 function clearPosts() {
     $('#blogContent').empty();
     $('#tagDisplay').empty();
 }
-
-
 
 function showByTag(id) {
     var blogRoll = $('#blogContent');
@@ -59,7 +56,6 @@ function showByTag(id) {
     });
 }
 
-
 function clearPosts() {
     $('#blogContent').empty();
 }
@@ -78,8 +74,6 @@ function loadStaticContent() {
     }).success(function (staticContent) {
         $('#static').append(staticContent.content);
     });
-
-    //tinyMCE.activeEditor.setContent(content);
 
 }
 

@@ -18,7 +18,7 @@
     <body>
         <div class="container">
             <h1>Manage Static Content</h1>
-            <hr/>
+            <br>
             <div class="nav bar"> 
                 <ul class="nav nav-tabs">
                     <li role="presentation">
@@ -43,11 +43,8 @@
             </div>
         </div>
 
-        <div class="container"> 
-            <hr>
-            <h2>Static Area Management</h2>
-        </div>
         <div class="container">
+            <br>
             <div class="form-group">
                 <label for="comment">Enter Static Content:</label>
                 <form>

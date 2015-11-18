@@ -1,8 +1,3 @@
-<%-- 
-    Document   : customError
-    Created on : Nov 10, 2015, 10:57:31 AM
-    Author     : apprentice
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -11,12 +6,10 @@
 <html>
     <head>
         <title>AEGiS ERROR</title>
-        <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
               rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/error.css"
               rel="stylesheet">
-        <!-- SWC Icon -->
         <link rel="shortcut icon"
               href="${pageContext.request.contextPath}/img/icon.gif">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homestyle.css">
@@ -37,15 +30,13 @@
             </div>
             <div>
                 <h3>${errorMessage}</h3>
-
             </div>
+
             <footer class="bot">
                 <p>copyright&copy 2015 AEGiS All Rights Reserved</p>
             </footer>
         </div>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="${pageContext.request.contextPath}/js/jquery-
-        1.11.1.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     </body>
 </html>
