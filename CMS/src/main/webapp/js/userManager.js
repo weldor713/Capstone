@@ -1,22 +1,12 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 $(document).ready(function () {
     loadUsers();
     
-    // on click for our add button
 $('#add-button').click(function (event) {
-// we don’t want the button to actually submit
-// we'll handle data submission via ajax
     event.preventDefault();
-// Make an Ajax call to the server. HTTP verb = POST, URL = user 
     $.ajax({
         type: 'POST',
         url: 'user',
-// Build a JSON object from the data in the form 
         data: JSON.stringify({
             publicName: $('#add-publicname').val(),
             userName: $('#add-username').val(),
@@ -30,7 +20,6 @@ $('#add-button').click(function (event) {
         },
         'dataType': 'json'
     }).success(function (data, status) {
-// If the call succeeds, clear the form and reload the summary
         $('#add-publicname').val('');
         $('#add-username').val('');
         $('#add-authority').val('');
@@ -38,7 +27,6 @@ $('#add-button').click(function (event) {
         $('#add-password').val('');
         $('#validationErrors').empty();
         loadUsers();
-        //return false;
     }).error(function (data, status) {
          $('#validationErrors').empty();
             $.each(data.responseJSON.fieldErrors, function (index, validationError) {
@@ -49,14 +37,10 @@ $('#add-button').click(function (event) {
     });
     
     $('#edit-button').click(function (event) {
-// we don’t want the button to actually submit
-// we'll handle data submission via ajax
     event.preventDefault();
-// Make an Ajax call to the server. HTTP verb = POST, URL = user 
     $.ajax({
         type: 'PUT',
         url: 'user/'+  $("#edit-user-id").val(),
-// Build a JSON object from the data in the form 
         data: JSON.stringify({
             publicName: $('#edit-publicname').val(),
             userName: $('#edit-username').val(),
@@ -70,9 +54,7 @@ $('#add-button').click(function (event) {
         'dataType': 'json'
     }).success(function (data, status) {
         $("#editModal").modal("hide");
-
     loadUsers();
-        //return false;
     }).error(function (data, status) {
         $('#validationEditErrors').empty();
             $.each(data.responseJSON.fieldErrors, function (index, validationError) {
@@ -85,17 +67,23 @@ $('#add-button').click(function (event) {
 });
 
 //Functions
-
 function loadUsers() {
     clearUsers();
     var userTable = $('#userTable');
     $.ajax({
         url: 'displayUserList'
     }).success(function (users, status) {
+        var userlevel;
         $.each(users, function (index, user) {
+            if (user.authority === "ROLE_ADMIN") {
+                userlevel = "Admin";
+            } else {
+                userlevel = "User";
+            }
             userTable.append($('<tr>'))
+                    .append($('<td>').text(user.publicName))
                     .append($('<td>').text(user.userName))
-                    .append($('<td>').text(user.authority))
+                    .append($('<td>').text(userlevel))
                     .append($('<td>')
                         .append($('<a>')
                                 .attr({

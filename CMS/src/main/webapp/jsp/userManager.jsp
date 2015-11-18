@@ -1,9 +1,3 @@
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,11 +41,12 @@
                 <br>
                 <div class="col-md-8">
                     <p><strong>Existing Users</strong></p>
-                    <div class="container-fluid homecontainer" style="background: whitesmoke; border-radius: 5px; border: 5px azure; padding: 15px;">
+                    <div class="container-fluid" style="background: whitesmoke; border-radius: 5px; border: 5px azure; padding: 15px;">
                         <table class="table table-hover">
                             <tr>
-                                <th width="35%">User Name</th>
-                                <th width="35%">Role</th>
+                                <th width="30%">Public Name</th>
+                                <th width="30%">User Name</th>
+                                <th width="30%">Authority</th>
                                 <th width="15%"></th>
                                 <th width="15%"></th>
                             </tr>
