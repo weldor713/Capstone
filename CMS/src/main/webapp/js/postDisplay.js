@@ -19,13 +19,23 @@ function loadPosts(data, status) {
     var blogRoll = $('#blogContent');
     var tagList = $('#tagDisplay');
 
-
     $.each(data, function (index, post) {
-        blogRoll.append($('<div class="postContain word_wrap">')
-                .text(post.title).append($('<span class = postDetails>').text("  on " + post.postDate + " by " + post.author)).append($('<div class="postBody">').append(post.body)));
+        blogRoll
+                .append($('<div class="postContain word_wrap">')
+                        .text(post.title)
+                        .append($('<span class = postDetails>')
+                                .text("  on " + post.postDate + " by " + post.author)
+                                ) // </span>
+                        .append($('<div class="postBody">')
+                                .append(post.body)
+                                ) // </div class="postBody">
+                        ); // </div class="postContain word_wrap">
         $.each(post.tags, function (index, tag) {
-            if(tag.tagName !== ""){
-            blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
+            if (tag.tagName !== "") {
+                blogRoll
+                        .append($('<p class="tagToPost">')
+                                .text("#" + tag.tagName + " ")
+                                ); //</p>
             }
         });
 
@@ -33,18 +43,22 @@ function loadPosts(data, status) {
     blogRoll.fadeIn(1000);
 }
 
-function loadTags(){
+function loadTags() {
     var tagList = $('#tagDisplay');
     $.ajax({
         url: 'tags'
-    }).success(function (alltags, status){
-        $.each(alltags, function(index, tag){
-            if(tag.tagName !== ""){
-            tagList.append($('<li class="tagList">')).append($('<a class="tags">')
-            .attr({"onClick": "showByTag(" + tag.tagId + ")"}).text("#" + tag.tagName + ""));
+    }).success(function (alltags, status) {
+        $.each(alltags, function (index, tag) {
+            if (tag.tagName !== "") {
+                tagList.append($('<li class="tagList">')
+                        ) //</li>
+                        .append($('<a class="tags">')
+                                .attr({"onClick": "showByTag(" + tag.tagId + ")"})
+                                .text("#" + tag.tagName + "")
+                                ); //</a>
             }
         });
-    }); 
+    });
 }
 
 function clearPosts() {
@@ -60,10 +74,16 @@ function showByTag(id) {
     }).success(function (allposts, status) {
         $.each(allposts, function (index, post) {
 
-            blogRoll.append($('<div class="postContain">')
-                    .text(post.title + " " + post.postDate + " by " + post.author).append(post.body));
+            blogRoll
+                    .append($('<div class="postContain">')
+                            .text(post.title + " " + post.postDate + " by " + post.author)
+                            .append(post.body)
+                            ); //</div>
             $.each(post.tags, function (index, tag) {
-                blogRoll.append($('<p class="tagToPost">').text("#" + tag.tagName + " "));
+                blogRoll
+                        .append($('<p class="tagToPost">')
+                                .text("#" + tag.tagName + " ")
+                                ); // </p>
                 ;
             });
         });
