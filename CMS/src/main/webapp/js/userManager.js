@@ -79,7 +79,7 @@ function loadUsers() {
             } else {
                 userlevel = "User";
             }
-            userTable.append($('<tr>'))
+            userTable.append($('<tr>')
                     .append($('<td>').text(user.publicName))
                     .append($('<td>').text(user.userName))
                     .append($('<td>').text(userlevel))
@@ -102,13 +102,12 @@ function loadUsers() {
                                 .text('Delete')
                                 ) // ends the <a> tag
 //                        ) // ends the <td> tag for Delete
-                ); // ends the <tr> 
+                )); // ends the <tr> 
 
         });
     });
 
 }
-
 
 $('#editModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
