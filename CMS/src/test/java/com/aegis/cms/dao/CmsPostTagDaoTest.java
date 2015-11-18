@@ -29,13 +29,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *
  * @author apprentice
  */
-public class CmsDaoTest {
+public class CmsPostTagDaoTest {
 
     private CmsPostTagDao ptDao;
     private CmsUserDao userDao;
     private ApplicationContext ctx;
 
-    public CmsDaoTest() {
+    public CmsPostTagDaoTest() {
         ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
     }
 

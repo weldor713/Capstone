@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.aegis.cms.dao;
 
 import com.aegis.cms.model.User;
@@ -18,10 +13,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-/**
- *
- * @author apprentice
- */
 public class CmsUserDaoTest {
 
     private CmsUserDao userDao;
@@ -55,9 +46,6 @@ public class CmsUserDaoTest {
         cleaner.execute("delete from users");
     }
 
-    /**
-     * Test of addUser method, of class UserDaoDbImpl.
-     */
     @Test
     public void testAddUser() {
         System.out.println("addUser");
@@ -73,9 +61,6 @@ public class CmsUserDaoTest {
         assertEquals("lars", result.getUserName());
     }
 
-    /**
-     * Test of getUserById method, of class UserDaoDbImpl.
-     */
     @Test
     public void testGetUserById() {
         System.out.println("getUserById");
@@ -90,9 +75,6 @@ public class CmsUserDaoTest {
         assertEquals("johnny", result.getUserName());
     }
 
-    /**
-     * Test of deleteUser method, of class UserDaoDbImpl.
-     */
     @Test
     public void testDeleteUser() {
         System.out.println("deleteUser");
@@ -108,9 +90,6 @@ public class CmsUserDaoTest {
         assertTrue(result.isEmpty());
     }
 
-    /**
-     * Test of editUser method, of class UserDaoDbImpl.
-     */
     @Test
     public void testEditUser() {
         System.out.println("editUser");
@@ -129,9 +108,6 @@ public class CmsUserDaoTest {
         assertEquals(userDao.getUserById(newUser.getUserId()).getUserName(), "bobby");
     }
 
-    /**
-     * Test of getAllUsers method, of class UserDaoDbImpl.
-     */
     @Test
     public void testGetAllUsers() {
         System.out.println("getAllUsers");
