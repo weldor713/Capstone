@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Create Post</h1>
+            <h1>Create a Post</h1>
             <br>
         </div> <!--end of head container -->
         <div class="container">

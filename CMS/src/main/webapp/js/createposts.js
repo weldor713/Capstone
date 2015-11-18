@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     tinymce.init({
         selector: "#bodytextarea",
         plugins: [
@@ -55,8 +56,5 @@ $(document).ready(function () {
         });
     });
 });
-
-
-
 
 

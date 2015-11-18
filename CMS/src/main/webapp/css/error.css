@@ -8,3 +8,9 @@ h3 {
 h1 {
     color: red;
 }
+
+.centered {
+    padding: 15%;
+    text-align: center;
+    width: 55%;
+}
