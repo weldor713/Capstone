@@ -29,14 +29,12 @@
 
             <div class="container">
                 <div id="tagContainer" class="col-sm-2">
-                    <h4 style="text-align: center">TAG SORT / <a href="javascript:history.go(0)">ALL</a></h4>
-                    <hr>
+                    <h4 style="text-align: center; font-weight: bold"><a href="javascript:history.go(0)">Show all</a><hr>Filter by tag</h4>
                     <div id="tagDisplay"></div>
 
 
                 </div>
                 <div class="container col-sm-10" >
-                    <!--                <div class="col-sm-9 col-sm-offset-1" style="background-color:lightgoldenrodyellow;">-->
                     <div class="col-sm-12">
                         <div id="blogContent">
 

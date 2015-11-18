@@ -79,6 +79,13 @@ div.postContain {
     -moz-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
     -box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
 }
+
+span.postDetails {
+    font-weight: normal;
+    font-size: 15px;
+    font-style: italic;
+}
+
 p.postBody {
     font-size: 17px;
     font-weight: bold;
