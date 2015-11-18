@@ -66,7 +66,6 @@ $('#add-button').click(function (event) {
     
 });
 
-//Functions
 function loadUsers() {
     clearUsers();
     var userTable = $('#userTable');
@@ -110,31 +109,7 @@ function loadUsers() {
 
 }
 
-//// This code runs in response to show.bs.modal event for the details Modal
-//$('#detailsModal').on('show.bs.modal', function (event) {
-//// get the element that triggered the event
-//    var element = $(event.relatedTarget);
-//    var userId = element.data('user-id');
-//    var modal = $(this);
-//// make an ajax call to get user information for given user id
-//// this is a GET request to user/{id}
-//// upon success, put the returned JSON data into the modal dialog
-//
-//
-//    $.ajax({
-//        type: 'GET',
-//        url: 'user/' + userId
-//    }).success(function (user) {
-//        modal.find('#publicname').text(user.publicName);
-//        modal.find('#username').text(user.userName);
-//        modal.find('#authority').text(user.authority);
-//        modal.find('#user_id').text(user.userId);
-////        modal.find('#enabled').text(user.enabled);
-//        modal.find('#password').text(user.password);
-//    });
-//});
 
-// This code runs in response to the show.hs.modal event for the edit Modal
 $('#editModal').on('show.bs.modal', function (event) {
     var element = $(event.relatedTarget);
     var userId = element.data('user-id');
