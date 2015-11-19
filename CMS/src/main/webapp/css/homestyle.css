@@ -59,8 +59,8 @@ a.tags {
     color: black; //#b3ffd9;
     text-decoration: none;
     text-align: right;
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 15px;
+    font-weight: normal;
 }
 #blogContent {
     margin-top: 25px;
