@@ -52,7 +52,7 @@ function loadTags() {
             if (tag.tagName !== "") {
                 tagList.append($('<li class="tagList">')
                         ) //</li>
-                        .append($('<a class="tags">')
+                        .append($('<a class="tags word_wrap">')
                                 .attr({"onClick": "showByTag(" + tag.tagId + ")"})
                                 .text("#" + tag.tagName + "")
                                 ); //</a>
