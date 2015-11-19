@@ -61,7 +61,7 @@ public class Post implements Serializable {
     }
 
     public void setTags(String tagString) {
-        if (!tagString.equals("")) {
+        if (!tagString.equals("") || tagString != null) {
             Set<Tag> tagSet = new HashSet<>();
             String[] tempArray = tagString.split(",");
             for (int i = 0; i < tempArray.length; i++) {

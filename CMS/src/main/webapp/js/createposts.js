@@ -21,7 +21,7 @@ $(document).ready(function () {
             data: JSON.stringify({
                 title: $('#add-title').val(),
                 body: tinymce.activeEditor.getContent({format: 'raw'}),
-                tags: tagstring,
+                tags: $('#add-tags').val(),
                 postDate: $('#add-postDate').datepicker('getDate'),
                 expiration: $('#add-expiration').datepicker('getDate')
             }),
