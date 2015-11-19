@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 
 
-public class CmsUserDaoImpl implements CmsUserDao {
+public class UserDaoImpl implements UserDao {
 
     private static final String SQL_INSERT_USER
             = "insert into users (publicname, username, authority, password) values (?, ?, ?, ?)";

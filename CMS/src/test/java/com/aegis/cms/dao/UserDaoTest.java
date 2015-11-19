@@ -13,12 +13,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class CmsUserDaoTest {
+public class UserDaoTest {
 
-    private CmsUserDao userDao;
+    private UserDao userDao;
     private ApplicationContext ctx;
 
-    public CmsUserDaoTest() {
+    public UserDaoTest() {
 
         ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
     }
@@ -35,7 +35,7 @@ public class CmsUserDaoTest {
     public void setUp() {
         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        userDao = ctx.getBean("cmsUserDao", CmsUserDao.class);
+        userDao = ctx.getBean("cmsUserDao", UserDao.class);
         JdbcTemplate cleaner = (JdbcTemplate) ctx.getBean("jdbcTemplate");
         cleaner.execute("delete from users");
     }

@@ -37,19 +37,19 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     
-    <!--Cms Static Dao -->
+    <!-- Static Dao -->
     <bean id="cmsstatic"
-          class="com.aegis.cms.dao.CmsStaticDaoImpl">
+          class="com.aegis.cms.dao.StaticDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean> 
-    <!--Cms user man dao-->
+    <!-- user man dao-->
     <bean id="cmsuser" 
-          class="com.aegis.cms.dao.CmsUserDaoImpl">
+          class="com.aegis.cms.dao.UserDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
-    <!--Cms Post Tag Dao-->
+    <!-- Post Tag Dao-->
     <bean id="cmspt" 
-          class="com.aegis.cms.dao.CmsPostTagDaoImpl">
+          class="com.aegis.cms.dao.PostTagDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
 

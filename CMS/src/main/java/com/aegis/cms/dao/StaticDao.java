@@ -2,7 +2,7 @@ package com.aegis.cms.dao;
 
 import com.aegis.cms.model.StaticContent;
 
-public interface CmsStaticDao {
+public interface StaticDao {
 
     public void addStaticContent(StaticContent cont);
 

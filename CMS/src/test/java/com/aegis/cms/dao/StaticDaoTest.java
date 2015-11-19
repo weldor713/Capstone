@@ -11,11 +11,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class CmsStaticDaoTest {
+public class StaticDaoTest {
 
-    private CmsStaticDao dao;
+    private StaticDao dao;
 
-    public CmsStaticDaoTest() {
+    public StaticDaoTest() {
     }
 
     @BeforeClass
@@ -30,7 +30,7 @@ public class CmsStaticDaoTest {
     public void setUp() {
         ApplicationContext ctx
                 = new ClassPathXmlApplicationContext("test-applicationContext.xml");
-        dao = ctx.getBean("cmsstatic", CmsStaticDao.class);
+        dao = ctx.getBean("cmsstatic", StaticDao.class);
         JdbcTemplate cleaner = (JdbcTemplate) ctx.getBean("jdbcTemplate");
         cleaner.execute("delete from static_content");
     }

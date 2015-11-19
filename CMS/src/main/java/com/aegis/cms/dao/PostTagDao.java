@@ -4,7 +4,7 @@ import com.aegis.cms.model.Post;
 import com.aegis.cms.model.Tag;
 import java.util.List;
 
-public interface CmsPostTagDao {
+public interface PostTagDao {
 
     // Create Post  -- addPost returns post for purposes of testing
     public Post addPost(Post post);

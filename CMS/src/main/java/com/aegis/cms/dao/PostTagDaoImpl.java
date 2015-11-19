@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-public class CmsPostTagDaoImpl implements CmsPostTagDao {
+public class PostTagDaoImpl implements PostTagDao {
 
     private JdbcTemplate jdbcTemplate;
 

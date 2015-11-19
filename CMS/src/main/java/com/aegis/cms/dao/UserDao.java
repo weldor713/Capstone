@@ -4,7 +4,7 @@ package com.aegis.cms.dao;
 import com.aegis.cms.model.User;
 import java.util.List;
 
-public interface CmsUserDao {
+public interface UserDao {
 
     public void addUser(User newUser);
 

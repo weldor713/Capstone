@@ -1,6 +1,6 @@
 package com.aegis.cms.controller;
 
-import com.aegis.cms.dao.CmsPostTagDao;
+import com.aegis.cms.dao.PostTagDao;
 import com.aegis.cms.model.Post;
 import com.aegis.cms.model.Tag;
 import java.util.List;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    CmsPostTagDao dao;
+    PostTagDao dao;
 
     @Inject
-    public HomeController(CmsPostTagDao dao) {
+    public HomeController(PostTagDao dao) {
         this.dao = dao;
     }
 

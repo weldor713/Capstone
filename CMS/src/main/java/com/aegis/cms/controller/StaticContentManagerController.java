@@ -1,6 +1,6 @@
 package com.aegis.cms.controller;
 
-import com.aegis.cms.dao.CmsStaticDao;
+import com.aegis.cms.dao.StaticDao;
 import com.aegis.cms.model.StaticContent;
 import javax.inject.Inject;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class StaticContentManagerController {
 
-    private CmsStaticDao dao;
+    private StaticDao dao;
 
     @RequestMapping(value = "/staticMan", method = RequestMethod.GET)
     public String displayStaticContentManager() {
@@ -22,7 +22,7 @@ public class StaticContentManagerController {
     }
 
     @Inject
-    public StaticContentManagerController(CmsStaticDao dao) {
+    public StaticContentManagerController(StaticDao dao) {
         this.dao = dao;
     }
 

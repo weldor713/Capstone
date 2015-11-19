@@ -29,13 +29,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *
  * @author apprentice
  */
-public class CmsPostTagDaoTest {
+public class PostTagDaoTest {
 
-    private CmsPostTagDao ptDao;
-    private CmsUserDao userDao;
+    private PostTagDao ptDao;
+    private UserDao userDao;
     private ApplicationContext ctx;
 
-    public CmsPostTagDaoTest() {
+    public PostTagDaoTest() {
         ctx = new ClassPathXmlApplicationContext("test-applicationContext.xml");
     }
 
@@ -49,8 +49,8 @@ public class CmsPostTagDaoTest {
 
     @Before
     public void setUp() {
-        ptDao = ctx.getBean("cmspt", CmsPostTagDao.class);
-        userDao = ctx.getBean("cmsuser", CmsUserDao.class);
+        ptDao = ctx.getBean("cmspt", PostTagDao.class);
+        userDao = ctx.getBean("cmsuser", UserDao.class);
 
     }
 
