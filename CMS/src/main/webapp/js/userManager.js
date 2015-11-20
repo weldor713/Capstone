@@ -1,69 +1,62 @@
 
 $(document).ready(function () {
     loadUsers();
-    
-$('#add-button').click(function (event) {
-    event.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url: 'user',
-        data: JSON.stringify({
-            publicName: $('#add-publicname').val(),
-            userName: $('#add-username').val(),
-            authority: $('#add-authority').val(),
-            user_id: $('#add-user_id').val(),
-            password: $('#add-password').val()
-        }),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        'dataType': 'json'
-    }).success(function (data, status) {
-        $('#add-publicname').val('');
-        $('#add-username').val('');
-        $('#add-authority').val('');
-        $('#add-user_id').val('');
-        $('#add-password').val('');
-        $('#validationErrors').empty();
-        loadUsers();
-    }).error(function (data, status) {
-         $('#validationErrors').empty();
-            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
-                var errorDiv = $("#validationErrors");
-                errorDiv.append(validationError.message).append($("<br>"));
-                });
+
+    $('#add-button').click(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'user',
+            data: JSON.stringify({
+                publicName: $('#add-publicname').val(),
+                userName: $('#add-username').val(),
+                authority: $('#add-authority').val(),
+                user_id: $('#add-user_id').val(),
+                password: $('#add-password').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            'dataType': 'json'
+        }).success(function (data, status) {
+            $('#add-publicname').val('');
+            $('#add-username').val('');
+            $('#add-authority').val('');
+            $('#add-user_id').val('');
+            $('#add-password').val('');
+            loadUsers();
         });
     });
-    
+
     $('#edit-button').click(function (event) {
-    event.preventDefault();
-    $.ajax({
-        type: 'PUT',
-        url: 'user/'+  $("#edit-user-id").val(),
-        data: JSON.stringify({
-            publicName: $('#edit-publicname').val(),
-            userName: $('#edit-username').val(),
-            authority: $('#edit-authority').val(),
-            password: $('#edit-password').val()
-        }),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        'dataType': 'json'
-    }).success(function (data, status) {
-        $("#editModal").modal("hide");
-    loadUsers();
-    }).error(function (data, status) {
-        $('#validationEditErrors').empty();
+        event.preventDefault();
+        $.ajax({
+            type: 'PUT',
+            url: 'user/' + $("#edit-user-id").val(),
+            data: JSON.stringify({
+                publicName: $('#edit-publicname').val(),
+                userName: $('#edit-username').val(),
+                authority: $('#edit-authority').val(),
+                password: $('#edit-password').val()
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            'dataType': 'json'
+        }).success(function (data, status) {
+            $("#editModal").modal("hide");
+            loadUsers();
+        }).error(function (data, status) {
+            $('#validationEditErrors').empty();
             $.each(data.responseJSON.fieldErrors, function (index, validationError) {
                 var errorDiv = $("#validationEditErrors");
                 errorDiv.append(validationError.message).append($("<br>"));
-                });
+            });
         });
     });
-    
+
 });
 
 function loadUsers() {
@@ -84,25 +77,25 @@ function loadUsers() {
                     .append($('<td>').text(user.userName))
                     .append($('<td>').text(userlevel))
                     .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    'data-user-id': user.userId,
-                                    'data-toggle': 'modal',
-                                    'data-target': '#editModal'
-                                })
-                                .text('Edit')
-                                ) // ends the <a> tag
-                        ) // ends the <td> tag for Edit
-                .append($('<td>')
-                        .append($('<a>')
-                                .attr({
-                                    'onClick': 'deleteUser(' +
-                                            user.userId + ')'
-                                })
-                                .text('Delete')
-                                ) // ends the <a> tag
+                            .append($('<a>')
+                                    .attr({
+                                        'data-user-id': user.userId,
+                                        'data-toggle': 'modal',
+                                        'data-target': '#editModal'
+                                    })
+                                    .text('Edit')
+                                    ) // ends the <a> tag
+                            ) // ends the <td> tag for Edit
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .attr({
+                                        'onClick': 'deleteUser(' +
+                                                user.userId + ')'
+                                    })
+                                    .text('Delete')
+                                    ) // ends the <a> tag
 //                        ) // ends the <td> tag for Delete
-                )); // ends the <tr> 
+                            )); // ends the <tr> 
 
         });
     });

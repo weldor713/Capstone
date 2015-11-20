@@ -35,12 +35,6 @@ $(document).ready(function () {
             $('#add-expiration').val("");
             tinymce.activeEditor.setContent("");
             console.log("Success!");
-        }).error(function (data, status) {
-            $('#validationErrors').empty();
-            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
-                var errorDiv = $("#validationErrors");
-                errorDiv.append(validationError.message).append($("<br>"));
-            });
         });
     });
 

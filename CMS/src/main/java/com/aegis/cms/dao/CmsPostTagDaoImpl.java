@@ -26,39 +26,39 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
 
     // Post Queries
     private static final String SQL_SELECT_ALL_POSTS
-            = "select * from post "
-            + "order by postDate desc, post_id desc ";
+            = "select * from post ";
+            //+ "order by postdate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_EXPIRED
             = "select * from post "
-            + "where CURDATE() > post.expiration "
-            + "order by postDate desc, post_id desc ";
+            + "where now()::date > expiration "
+            + "order by postdate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_UNPUBLISHED
             = "select * from post "
-            + "where post.isPublished = 0 "
-            + "order by postDate desc, post_id desc ";
+            + "where ispublished = 0 "
+            + "order by postdate desc, post_id desc ";
     private static final String SQL_SELECT_ALL_VISIBLE_POSTS
             = "select * from post "
-            + "where isPublished = ? "
-            + "AND post.postDate <= CURDATE() "
-            + "AND (CURDATE() < post.expiration "
-            + "OR post.expiration IS NULL) "
-            + "order by postDate desc, post_id desc";
+            + "where ispublished = 1"
+            + "AND postdate <= now()::date "
+            + "AND (expiration > now()::date "
+            + "OR expiration IS NULL) "
+            + "order by postdate desc, post_id desc";
     private static final String SQL_SELECT_POSTS_BY_TAG_ID
             = "select * from post p "
-            + "join post_tag pt on tag_id "
+            + "join post_tag pt on tag_id = pt.tag_id "
             + "where p.post_id  = pt.post_id "
-            + "and pt.tag_id  =  ? and p.isPublished = ? "
-            + "order by p.postDate desc, p.post_id desc";
+            + "and pt.tag_id = ? and p.ispublished = 1 "
+            + "order by p.postdate desc, p.post_id desc";
     private static final String SQL_SELECT_POST
             = "select * from post where post_id = ?";
     private static final String SQL_UPDATE_POST_PUB_UNPUB
-            ="update post set isPublished = ? where post_id = ?";
+            ="update post set ispublished = ? where post_id = ?";
     private static final String SQL_UPDATE_POST
             ="update post "
-            + "set title = ?, body = ?, postDate = ?, expiration = ? "
+            + "set title = ?, body = ?, postdate = ?, expiration = ? "
             + "where post_id = ?";
     private static final String SQL_ADD_POST
-            = "insert into post (title, body, postDate, expiration, isPublished, author) "
+            = "insert into post (title, body, postdate, expiration, ispublished, author) "
             + "values (?, ?, ?, ?, ?, ?)";
     
     //user queries
@@ -83,21 +83,21 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
             = "select * from tag "
             + "where tag_id = ?";
     private static final String SQL_SELECT_ALL_TAGS
-            = "select distinct t.tag_id, t.tagName from tag t "
+            = "select distinct t.tag_id, t.tagname from tag t "
             + "join post_tag pt on t.tag_id = pt.tag_id "
             + "join post p on pt.post_id = p.post_id "
-            + "where p.isPublished = 1 AND p.postDate <= CURDATE() AND (CURDATE() < p.expiration OR p.expiration IS NULL) ";
+            + "where p.ispublished = 1 AND p.postdate <= now()::date AND (now()::date < p.expiration OR p.expiration IS NULL) ";
     private static final String SQL_ADD_TAG
-            = "insert into tag (tagName) "
+            = "insert into tag (tagname) "
             + "values (?)";
     private static final String SQL_GET_TAG
             = "select * from tag "
-            + "where tagName = ?";
+            + "where tagname = ?";
 
     // HOME PAGE METHODS
     @Override
     public List<Post> getAllVisiblePosts() {
-        List<Post> postList = jdbcTemplate.query(SQL_SELECT_ALL_VISIBLE_POSTS, new PostMapper(), "1");
+        List<Post> postList = jdbcTemplate.query(SQL_SELECT_ALL_VISIBLE_POSTS, new PostMapper());
         for (Post post : postList) {
             post.setTagsFromDb(getTagsForPost(post));
         }
@@ -106,7 +106,7 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
 
     @Override
     public List<Post> getAllPostsByTag(int id) {
-        List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id, "1");
+        List<Post> postList = jdbcTemplate.query(SQL_SELECT_POSTS_BY_TAG_ID, new PostMapper(), id);
         for (Post post : postList) {
             post.setTagsFromDb(getTagsForPost(post));
         }
@@ -127,9 +127,9 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
                 post.getBody(),
                 post.getPostDate(),
                 post.getExpiration(),
-                post.getIsPublished(),
+                1,
                 post.getAuthor());
-        post.setPostId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
+        post.setPostId(jdbcTemplate.queryForObject("select nextval('post_post_id_seq')", Integer.class));
         insertPostTag(post);
         
         return post;
@@ -190,12 +190,12 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
     
     @Override
     public void publishPost(int id){
-        jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, true, id);
+        jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, 1, id);
     }
     
     @Override
     public void unpublishPost(int id){
-        jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, false, id);
+        jdbcTemplate.update(SQL_UPDATE_POST_PUB_UNPUB, 0, id);
     }
     
     @Override
@@ -234,7 +234,7 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
             try {
                 jdbcTemplate.update(SQL_ADD_TAG,
                         t.getTagName());
-                t.setTagId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
+                t.setTagId(jdbcTemplate.queryForObject("select nextval('tag_tag_id_seq')", Integer.class));
             } catch (DuplicateKeyException ex) {
                 Tag dbTag = jdbcTemplate.queryForObject(SQL_GET_TAG, new TagMapper(), t.getTagName());
                 t.setTagId(dbTag.getTagId());
@@ -272,9 +272,9 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
             post.setPostId(rs.getInt("post_id"));
             post.setTitle(rs.getString("title"));
             post.setBody(rs.getString("body"));
-            post.setPostDate(rs.getDate("postDate"));
+            post.setPostDate(rs.getDate("postdate"));
             post.setExpiration(rs.getDate("expiration"));
-            post.setIsPublished(rs.getBoolean("isPublished"));
+            post.setIsPublished(rs.getBoolean("ispublished"));
             post.setAuthor(rs.getString("author"));
             return post;
         }
@@ -286,7 +286,7 @@ public class CmsPostTagDaoImpl implements CmsPostTagDao {
         public Tag mapRow(ResultSet rs, int i) throws SQLException {
             Tag tag = new Tag();
             tag.setTagId(rs.getInt("tag_id"));
-            tag.setTagName(rs.getString("tagName"));
+            tag.setTagName(rs.getString("tagname"));
             return tag;
         }
     }

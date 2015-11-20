@@ -3,7 +3,8 @@ body {
     background: url("../img/goata.png");
     background-size: cover;
     background-attachment: fixed;
-    
+    height: 100%;
+
 }
 #grad1 {
     height: 200px;
@@ -35,7 +36,12 @@ h1.serif {
     -o-transform: rotate(-15deg);;
 }
 #static {
-    background-color: #9CB293;
+    //background-color: #9CB293;
+    background-image:-moz-linear-gradient(left, #BBFFFF 20%, #B9C2AA 51%,#BBFFFF 100%);
+    background-image:linear-gradient(left, #BBFFFF 20%, #B9C2AA 51%,#BBFFFF 100%);
+    background-image:-webkit-linear-gradient(left, #BBFFFF 20%, #B9C2AA 51%,#BBFFFF 100%);
+    background-image:-o-linear-gradient(left, #BBFFFF 20%, #B9C2AA 51%,#BBFFFF 100%);
+    background-image:-ms-linear-gradient(left, #BBFFFF 20%, #B9C2AA 51%,#BBFFFF 100%);
     border-radius: 5px;
     padding: 7px;
 
@@ -108,9 +114,9 @@ a {
 }
 */
 img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .bot {
@@ -119,7 +125,7 @@ img {
     position: fixed;
     bottom: 10px;
     right: 10px;
-    
+
 }
 
 .word_wrap

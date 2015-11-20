@@ -27,7 +27,7 @@ public class CmsUserDaoImpl implements CmsUserDao {
             = "select * from users";
     
     private static final String SQL_SELECT_USER
-                ="select * from users where user_id = ?";
+                = "select * from users where user_id = ?";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -42,7 +42,7 @@ public class CmsUserDaoImpl implements CmsUserDao {
                 newUser.getUserName(), 
                 newUser.getAuthority(), 
                 newUser.getPassword());
-        newUser.setUserId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()",Integer.class));
+        newUser.setUserId(jdbcTemplate.queryForObject("select select nextval('users_user_id_seq')", Integer.class));
         
     }
     

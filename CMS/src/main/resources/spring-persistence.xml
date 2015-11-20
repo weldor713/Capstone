@@ -19,13 +19,16 @@ http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
     <context:component-scan base-package="com.ageis.cms.dao" />
     <bean id="dataSource"
           class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+<!--        <property name="url"
+                  value="jdbc:postgresql://ec2-54-83-199-54.compute-1.amazonaws.com:5432/dbrmk77kiglqfv"/>
+        <property name="username" value="utvtrjwzbbfkya"/>
+        <property name="password" value="MB2r39u2FzFE9QTBpKAXf6BBAy"/>-->
         <property name="url"
-                  value="jdbc:mysql://localhost:3306/CMSTemp"/>
-        <property name="username" value="root"/>
+                  value="jdbc:postgresql://localhost:5432/cms"/>
+        <property name="username" value="postgres"/>
         <property name="password" value="root"/>
-        <property name="initialSize" value="5"/>
-        <property name="maxActive" value="10"/>
+        <property name="connectionProperties" value="ssl=true;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
     </bean>
     
     <bean id="transactionManager"
